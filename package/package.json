@@ -24,7 +24,7 @@
     "astro": "^4.5.5"
   },
   "dependencies": {
-    "fulldev-ui": "^0.3.7",
+    "fulldev-ui": "^0.3.8",
     "typescript": "^5.4.3",
     "vite-plugin-virtual": "^0.3.0"
   }
