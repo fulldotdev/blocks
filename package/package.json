@@ -1,6 +1,6 @@
 {
   "name": "fulldev-blocks",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A block library compatible with fulldev-ui",
   "homepage": "https://github.com/fulldotdev/blocks",
   "author": "Fulldev <contact@full.dev> (https://full.dev)",
@@ -22,8 +22,8 @@
   "devDependencies": {
     "@astrojs/check": "^0.5.9",
     "astro": "^4.11.5",
-    "typescript": "^5.5.3",
-    "fulldev-ui": "^0.3.9"
+    "fulldev-ui": "^0.3.9",
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "vite-plugin-virtual": "^0.3.0"
