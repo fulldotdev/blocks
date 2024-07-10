@@ -20,10 +20,10 @@
     ".": "./src/index.ts"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.9"
-  },
-  "peerDependencies": {
-    "fulldev-ui": "^0.3.8"
+    "@astrojs/check": "^0.5.9",
+    "astro": "^4.11.5",
+    "typescript": "^5.5.3",
+    "fulldev-ui": "^0.3.9"
   },
   "dependencies": {
     "vite-plugin-virtual": "^0.3.0"

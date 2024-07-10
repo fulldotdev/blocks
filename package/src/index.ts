@@ -1,3 +1,6 @@
+export * from './schemas/collection-old-schemas'
+
+// Blocks
 export { default as Banner } from './components/blocks/Banner.astro'
 export { default as Categories } from './components/blocks/Categories.astro'
 export { default as Content } from './components/blocks/Content.astro'
