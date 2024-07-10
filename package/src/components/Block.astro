@@ -4,9 +4,15 @@ interface Props {
   [key: string | number | symbol]: any
 }
 
-const packageBlocks = await Astro.glob('../components/blocks/**/*.astro')
-const userBlocks = await Astro.glob('src/components/blocks/**/*.astro')
+const packageBlocks = await Astro.glob('./blocks/**/*.astro')
+// const userBlocks = (await Astro.glob('/src/components/blocks/**/*.astro')) ?? []
+const userBlocks: any = []
+
 const components = [...userBlocks, ...packageBlocks]
+
+console.log({
+  components,
+})
 
 const { _block, ...rest } = Astro.props
 

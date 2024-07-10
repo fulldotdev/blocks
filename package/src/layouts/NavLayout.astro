@@ -15,8 +15,6 @@ const { hero, blocks, ...rest } = Astro.props
 
 const header = await getEntry('globals', 'header')
 const footer = await getEntry('globals', 'footer')
-
-console.log(header)
 ---
 
 <Layout {...rest}>

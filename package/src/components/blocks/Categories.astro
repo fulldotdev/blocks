@@ -1,5 +1,6 @@
 ---
 import type { ComponentProps } from 'astro/types'
+import { getEntries } from 'astro:content'
 import {
   Button,
   Card,
@@ -18,15 +19,12 @@ interface Props extends ComponentProps<typeof Section> {
   paragraph?: string
   text?: string
   buttons?: ComponentProps<typeof Button>[]
-  categories?: {
-    href?: string
-    heading?: string
-    text?: string
-    image?: string
-  }[]
+  categories?: any
 }
 
 const { heading, text, categories, buttons, ...rest } = Astro.props
+
+const entries = await getEntries(categories)
 ---
 
 <Section {...rest}>
@@ -41,20 +39,20 @@ const { heading, text, categories, buttons, ...rest } = Astro.props
   </Spread>
   <Grid>
     {
-      categories?.map(({ image, href, heading, text }) => (
+      entries?.map(({ data, slug }) => (
         <Card
-          {href}
+          href={`/categorieen/${slug}/`}
           frame="panel"
         >
           <Image
-            src={image}
+            src={data.image}
             position="inset"
           />
           <Heading
-            html={heading}
+            html={data.title || data.heading}
             level={3}
           />
-          <Text html={text} />
+          <Text html={data.description || data.text} />
         </Card>
       ))
     }
