@@ -32,6 +32,7 @@ const {
   heading,
   text,
   buttons,
+  frame = 'panel',
   input,
   ...rest
 } = Astro.props
@@ -42,6 +43,7 @@ const {
   {size}
   {structure}
   {...rest}
+  {frame}
 >
   <Column align={structure === 'column' ? align : 'start'}>
     <Heading
