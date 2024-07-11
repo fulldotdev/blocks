@@ -126,6 +126,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"pages": {
+"404.md": {
+	id: "404.md";
+  slug: "404";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
 "index.md": {
 	id: "index.md";
   slug: "index";
@@ -138,7 +145,12 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		
+		"globals": Record<string, {
+  id: string;
+  collection: "globals";
+  data: InferEntrySchema<"globals">;
+}>;
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;

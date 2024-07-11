@@ -1,4 +1,4 @@
-import { defineCollection } from 'astro:content'
+import { defineCollection, z } from 'astro:content'
 import { pageSchema, pathSchema } from '../schemas/collection-old-schemas'
 
 const references = {
@@ -13,4 +13,8 @@ const collection = defineCollection({
 
 export const collections = {
   pages: collection,
+  globals: {
+    type: 'data',
+    schema: z.any(),
+  },
 }
