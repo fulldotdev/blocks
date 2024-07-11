@@ -2,7 +2,7 @@
 import BlocksLayout from '../../layouts/BlocksLayout.astro'
 
 export async function getStaticPaths() {
-  const bookshops: any = await Astro.glob('../components/blocks/**/*.yml')
+  const bookshops: any = await Astro.glob('../../components/blocks/**/*.yml')
   return bookshops.map((bookshop: any) => ({
     params: {
       block: bookshop.default.spec.label,
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { spec, preview } = Astro.props as any
 
-const blocks: any = await Astro.glob('../components/blocks/**/*.astro')
+const blocks: any = await Astro.glob('../../components/blocks/**/*.astro')
 const Block = blocks.find((block: any) => {
   const fileName = block.default.moduleId?.split('/').pop()
   const componentName = fileName?.split('.')[0]

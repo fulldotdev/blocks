@@ -145,11 +145,23 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"globals": Record<string, {
-  id: string;
+		"globals": {
+"cta": {
+	id: "cta";
   collection: "globals";
-  data: InferEntrySchema<"globals">;
-}>;
+  data: InferEntrySchema<"globals">
+};
+"footer": {
+	id: "footer";
+  collection: "globals";
+  data: InferEntrySchema<"globals">
+};
+"header": {
+	id: "header";
+  collection: "globals";
+  data: InferEntrySchema<"globals">
+};
+};
 
 	};
 
