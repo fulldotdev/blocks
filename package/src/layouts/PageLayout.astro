@@ -11,21 +11,24 @@ import NavLayout from './NavLayout.astro'
 interface Props extends ComponentProps<typeof Layout> {
   hero?: any
   blocks?: any
+  header?: boolean
+  footer?: boolean
+  cta?: boolean
 }
 
-const { hero, blocks, ...rest } = Astro.props
+const { hero, header = 'true', footer = 'true', cta = 'true',  blocks, ...rest } = Astro.props
 
-const cta = await getEntry('globals', 'cta')
+const ctaEntry = await getEntry('globals', 'cta')
 ---
 
-<NavLayout {...rest}>
+<NavLayout {header} {footer} {...rest}>
   <Hero {...hero} />
   <Prose>
     <slot name="content" />
   </Prose>
   <Blocks {blocks} />
   <slot />
-  <Newsletter {...cta.data} />
+  {cta && <Newsletter {...ctaEntry.data} />}
 </NavLayout>
 
 <style is:global lang="scss"></style>

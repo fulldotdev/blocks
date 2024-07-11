@@ -9,20 +9,22 @@ import Layout from './Layout.astro'
 interface Props extends ComponentProps<typeof Layout> {
   hero?: any
   blocks?: any
+  header?: boolean
+  footer?: boolean
 }
 
-const { hero, blocks, ...rest } = Astro.props
+const { hero, header, footer, blocks, ...rest } = Astro.props
 
-const header = await getEntry('globals', 'header')
-const footer = await getEntry('globals', 'footer')
+const headerEntry = await getEntry('globals', 'header')
+const footerEntry = await getEntry('globals', 'footer')
 ---
 
 <Layout {...rest}>
-  <Header {...header.data} />
+  {header && <Header {...headerEntry.data} />}
   <Main>
     <slot />
   </Main>
-  <Footer {...footer.data} />
+  {footer && <Footer {...footerEntry.data} />}
 </Layout>
 
 <style is:global lang="scss"></style>
