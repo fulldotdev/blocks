@@ -4,8 +4,8 @@ import { PageLayout } from 'fulldev-blocks'
 
 const { data, render } = await getEntry('pages', '404')
 const { Content } = await render()
-const footer = (await getEntry('globals', 'footer')).data
-const header = (await getEntry('globals', 'header')).data
+const footer = (await getEntry('globals', 'footer'))?.data
+const header = (await getEntry('globals', 'header'))?.data
 ---
 
 <PageLayout
