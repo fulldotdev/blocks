@@ -5,6 +5,7 @@ import {
   Column,
   Form,
   Heading,
+  Image,
   Input,
   Row,
   Section,
@@ -24,7 +25,10 @@ interface Props extends ComponentProps<typeof Section> {
 const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
 ---
 
-<Section {...rest}>
+<Section
+  {...rest}
+  structure="split"
+>
   <Column>
     <Tagline html={tagline} />
     <Heading
@@ -35,42 +39,42 @@ const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
     <Row>
       {buttons?.map((button) => <Button {...button} />)}
     </Row>
+
+    <Form>
+      <Input
+        label="Name"
+        id="Name"
+        name="Name"
+        type="text"
+        required
+      />
+      <Input
+        label="Email"
+        id="Email"
+        name="Email"
+        type="email"
+        required
+      />
+      <Input
+        label="Phone"
+        id="Phone"
+        name="Phone"
+        type="tel"
+        required
+      />
+      <Textarea
+        label="Message"
+        id="Message"
+        name="Message"
+      />
+      <Button
+        color={'brand'}
+        text="Send message"
+      />
+    </Form>
   </Column>
 
-  <Form>
-    <Input
-      label="Name"
-      id="Name"
-      name="Name"
-      type="text"
-      required
-    />
-    <Input
-      label="Email"
-      id="Email"
-      name="Email"
-      type="email"
-      required
-    />
-    <Input
-      label="Phone"
-      id="Phone"
-      name="Phone"
-      type="tel"
-      required
-    />
-    <Textarea
-      label="Message"
-      id="Message"
-      name="Message"
-    />
-    <Button
-      color={'brand'}
-      text="Send message"
-    />
-  </Form>
-
-  <iframe
+  <!-- <iframe
     src={googleMaps}
     width="100%"
     height="450"
@@ -78,5 +82,6 @@ const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
     allowfullscreen="false"
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
+  ></iframe> -->
+  <Image src={'/placeholder.webp'} />
 </Section>

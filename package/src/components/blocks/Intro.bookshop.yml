@@ -4,11 +4,21 @@ spec:
   label: Intro
 
 blueprint:
+  tagline:
   heading:
   text:
+  buttons:
+    - text:
+      href:
 
 preview:
+  tagline: Lorem ipsum
   heading: Lorem ipsum dolor sit amet
   text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  buttons:
+    - text: Lorem ipsum
+      href: '#'
+    - text: Lorem ipsum
+      href: '#'
 
 _inputs:
