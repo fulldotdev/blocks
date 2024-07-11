@@ -9,6 +9,9 @@ blueprint:
   buttons:
     - text:
       href:
+  input:
+    placeholder:
+    button:
 
 preview:
   heading: Lorem ipsum dolor sit amet
@@ -18,8 +21,7 @@ preview:
       href: '#'
     - text: Lorem ipsum
       href: '#'
-  input:
-    placeholder: Email
-    button: Meld je aan
+  structure: column
+  align: center
 
 _inputs:

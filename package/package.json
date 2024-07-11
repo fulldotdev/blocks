@@ -22,7 +22,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.5.9",
     "astro": "^4.11.5",
-    "fulldev-ui": "^0.3.10",
+    "fulldev-ui": "^0.3.11",
     "typescript": "^5.5.3"
   },
   "dependencies": {
