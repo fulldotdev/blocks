@@ -7,8 +7,8 @@ import Layout from './Layout.astro'
 import NavLayout from './NavLayout.astro'
 
 interface Props extends ComponentProps<typeof Layout> {
-  product?: any
-  blocks?: any
+  product?: ComponentProps<typeof Product>
+  blocks?: any[]
 }
 
 const { product, blocks, ...rest } = Astro.props
@@ -19,7 +19,7 @@ const { product, blocks, ...rest } = Astro.props
   <Prose>
     <slot name="content" />
   </Prose>
-  <Blocks {...blocks} />
+  <Blocks {blocks} />
   <slot />
 </NavLayout>
 

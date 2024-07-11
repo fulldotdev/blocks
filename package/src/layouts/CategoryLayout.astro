@@ -2,27 +2,27 @@
 import type { ComponentProps } from 'astro/types'
 import { Grid, Prose } from 'fulldev-ui'
 import Blocks from '../components/Blocks.astro'
-import Intro from '../components/blocks/Intro.astro'
+import Hero from '../components/blocks/Hero.astro'
 import Layout from './Layout.astro'
 import NavLayout from './NavLayout.astro'
 
 interface Props extends ComponentProps<typeof Layout> {
-  intro?: any
-  blocks?: any
+  hero?: ComponentProps<typeof Hero>
+  blocks?: any[]
 }
 
-const { intro, product, blocks, ...rest } = Astro.props
+const { hero, blocks, ...rest } = Astro.props
 ---
 
 <NavLayout {...rest}>
-  <Intro {...intro} />
+  <Hero {...hero} />
   <Grid>
     <!-- products go here -->
   </Grid>
   <Prose>
     <slot name="content" />
   </Prose>
-  <Blocks {...blocks} />
+  <Blocks {blocks} />
   <slot />
 </NavLayout>
 
