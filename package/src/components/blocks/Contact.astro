@@ -1,0 +1,82 @@
+---
+import type { ComponentProps } from 'astro/types'
+import {
+  Button,
+  Column,
+  Form,
+  Heading,
+  Input,
+  Row,
+  Section,
+  Tagline,
+  Text,
+  Textarea,
+} from 'fulldev-ui'
+
+interface Props extends ComponentProps<typeof Section> {
+  heading?: string
+  text?: string
+  tagline?: string
+  googleMaps?: string
+  buttons?: ComponentProps<typeof Button>[]
+}
+
+const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
+---
+
+<Section {...rest}>
+  <Column>
+    <Tagline html={tagline} />
+    <Heading
+      level={1}
+      html={heading}
+    />
+    <Text html={text} />
+    <Row>
+      {buttons?.map((button) => <Button {...button} />)}
+    </Row>
+  </Column>
+
+  <Form>
+    <Input
+      label="Name"
+      id="Name"
+      name="Name"
+      type="text"
+      required
+    />
+    <Input
+      label="Email"
+      id="Email"
+      name="Email"
+      type="email"
+      required
+    />
+    <Input
+      label="Phone"
+      id="Phone"
+      name="Phone"
+      type="tel"
+      required
+    />
+    <Textarea
+      label="Message"
+      id="Message"
+      name="Message"
+    />
+    <Button
+      color={'brand'}
+      text="Send message"
+    />
+  </Form>
+
+  <iframe
+    src={googleMaps}
+    width="100%"
+    height="450"
+    style="border:0; margin-top: var(--space-6);"
+    allowfullscreen="false"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+</Section>
