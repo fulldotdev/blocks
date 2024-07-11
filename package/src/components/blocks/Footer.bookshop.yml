@@ -1,5 +1,6 @@
 spec:
   structures:
+    - footers
   label: Footer
 
 blueprint:
