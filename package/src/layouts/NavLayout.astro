@@ -1,28 +1,25 @@
 ---
 import type { ComponentProps } from 'astro/types'
-import { getEntry } from 'astro:content'
 import { Main } from 'fulldev-ui'
 import Footer from '../components/blocks/Footer.astro'
 import Header from '../components/blocks/Header.astro'
 import Layout from './Layout.astro'
 
 interface Props extends ComponentProps<typeof Layout> {
-  hero?: any
+  header?: ComponentProps<typeof Header>
   blocks?: any
+  footer?: ComponentProps<typeof Footer>
 }
 
-const { hero, blocks, ...rest } = Astro.props
-
-const header = await getEntry('globals', 'header')
-const footer = await getEntry('globals', 'footer')
+const { hero, header, footer, ...rest } = Astro.props
 ---
 
 <Layout {...rest}>
-  <Header {...header.data} />
+  <Header {...header} />
   <Main>
     <slot />
   </Main>
-  <Footer {...footer.data} />
+  <Footer {...footer} />
 </Layout>
 
 <style is:global lang="scss"></style>

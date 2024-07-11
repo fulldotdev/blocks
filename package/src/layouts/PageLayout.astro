@@ -1,21 +1,18 @@
 ---
 import type { ComponentProps } from 'astro/types'
-import { getEntry } from 'astro:content'
 import { Prose } from 'fulldev-ui'
 import Blocks from '../components/Blocks.astro'
+import Cta from '../components/blocks/Cta.astro'
 import Hero from '../components/blocks/Hero.astro'
-import Newsletter from '../components/blocks/Newsletter.astro'
-import Layout from './Layout.astro'
 import NavLayout from './NavLayout.astro'
 
-interface Props extends ComponentProps<typeof Layout> {
-  hero?: any
-  blocks?: any
+interface Props extends ComponentProps<typeof NavLayout> {
+  hero?: ComponentProps<typeof Hero>
+  blocks?: any[]
+  cta?: ComponentProps<typeof Cta>
 }
 
-const { hero, blocks, ...rest } = Astro.props
-
-const cta = await getEntry('globals', 'cta')
+const { hero, blocks, cta, ...rest } = Astro.props
 ---
 
 <NavLayout {...rest}>
@@ -25,7 +22,7 @@ const cta = await getEntry('globals', 'cta')
   </Prose>
   <Blocks {blocks} />
   <slot />
-  <Newsletter {...cta.data} />
+  <Cta {...cta} />
 </NavLayout>
 
 <style is:global lang="scss"></style>

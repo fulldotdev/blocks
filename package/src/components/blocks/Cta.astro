@@ -1,29 +1,69 @@
 ---
 import type { ComponentProps } from 'astro/types'
-import { Button, Heading, Image, Row, Section, Text } from 'fulldev-ui'
+import {
+  Button,
+  Column,
+  Form,
+  Heading,
+  Input,
+  Section,
+  Text,
+  Wrap,
+} from 'fulldev-ui'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  paragraph?: string
-  text?: string
-  image?: string
-  buttons?: ComponentProps<typeof Button>[]
-}
+type Props = ComponentProps<typeof Section> &
+  Pick<ComponentProps<typeof Heading>, 'level'> & {
+    heading?: string
+    text?: string
+    image?: string
+    buttons?: ComponentProps<typeof Button>[]
+    structure?: 'column' | 'spread'
+    input?: {
+      placeholder?: string
+      button?: string
+    }
+  }
 
-const { heading, text, buttons, image, ...rest } = Astro.props
+const {
+  structure = 'column',
+  size = 'lg',
+  align = 'center',
+  level = 2,
+  heading,
+  text,
+  buttons,
+  input,
+  ...rest
+} = Astro.props
 ---
 
 <Section
-  align="center"
-  frame="panel"
-  variant="subtle"
-  size="lg"
+  {align}
+  {size}
+  {structure}
   {...rest}
 >
-  <Heading html={heading} />
-  <Text html={text} />
-  <Row>
+  <Column align={structure === 'column' ? align : 'start'}>
+    <Heading
+      {level}
+      html={heading}
+    />
+    <Text html={text} />
+  </Column>
+  <Wrap>
     {buttons?.map((button, i) => <Button {...button} />)}
-  </Row>
-  <Image src={image} />
+  </Wrap>
+  <Form
+    structure="row"
+    style={{ maxWidth: '420px' }}
+  >
+    <Input
+      placeholder={input?.placeholder}
+      name={input?.placeholder}
+    />
+    <Button
+      type="submit"
+      text={input?.button}
+    />
+  </Form>
 </Section>
