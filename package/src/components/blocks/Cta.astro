@@ -27,6 +27,7 @@ type Props = ComponentProps<typeof Section> &
 const {
   structure = 'column',
   size = 'lg',
+  variant = 'subtle',
   align = 'center',
   level = 2,
   heading,
@@ -40,6 +41,7 @@ const {
 
 <Section
   {align}
+  {variant}
   {size}
   {structure}
   {...rest}
