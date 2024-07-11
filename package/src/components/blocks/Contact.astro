@@ -20,9 +20,28 @@ interface Props extends ComponentProps<typeof Section> {
   tagline?: string
   googleMaps?: string
   buttons?: ComponentProps<typeof Button>[]
+  channels?: {
+    icon?: string
+    title?: string
+    text?: string
+    href?: string
+  }[]
+  socials?: {
+    icon: string
+    href: string
+  }[]
 }
 
-const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
+const {
+  heading,
+  text,
+  tagline,
+  googleMaps,
+  buttons,
+  channels,
+  socials,
+  ...rest
+} = Astro.props
 ---
 
 <Section
@@ -38,6 +57,37 @@ const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
     <Text html={text} />
     <Row>
       {buttons?.map((button) => <Button {...button} />)}
+    </Row>
+
+    <Column>
+      {
+        channels?.map((channel) => (
+          <Row>
+            <Button
+              href={channel.href}
+              icon={channel.icon}
+            />
+            <Column compact>
+              <Text
+                text={channel.title}
+                contrast
+              />
+              <Text text={channel.text} />
+            </Column>
+          </Row>
+        ))
+      }
+    </Column>
+
+    <Row>
+      {
+        socials?.map((social) => (
+          <Button
+            href={social.href}
+            icon={social.icon}
+          />
+        ))
+      }
     </Row>
 
     <Form>
@@ -67,10 +117,7 @@ const { heading, text, tagline, googleMaps, buttons, ...rest } = Astro.props
         id="Message"
         name="Message"
       />
-      <Button
-        color={'brand'}
-        text="Send message"
-      />
+      <Button text="Send message" />
     </Form>
   </Column>
 

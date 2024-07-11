@@ -23,7 +23,7 @@
     "./[...page].astro": "./src/pages/[...page].astro"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.5.9",
+    "@astrojs/check": "^0.5.10",
     "astro": "^4.11.5",
     "fulldev-ui": "^0.3.11",
     "typescript": "^5.5.3"

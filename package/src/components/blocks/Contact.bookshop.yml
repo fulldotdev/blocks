@@ -9,13 +9,26 @@ blueprint:
   buttons:
     - text:
       href:
-  googleMaps:
 
 preview:
   heading: Contact Us!
   text: Do you have a question or need help with your order? We are here to help you. Please fill out the form below and we will get back to you as soon as possible.
   buttons:
     - text: Call us
-  googleMaps: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d153418.09629548417!2d6.020838694531251!3d53.07143939999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c837e785f59d93%3A0x9aff835c2b07f2ce!2sDatona!5e0!3m2!1sen!2snl!4v1720604743484!5m2!1sen!2snl
-
+  channels:
+    - icon: phone
+      title: Phone
+      text: +31 123456789
+      href: tel:+31 123456789
+    - icon: mail
+      title: Email
+      text: example@example.com
+      href: mailto:example@example.com
+  socials:
+    - icon: brand-facebook
+      href: https://www.facebook.com/
+    - icon: brand-instagram
+      href: https://www.instagram.com/
+    - icon: brand-x
+      href: https://x.com/
 _inputs:
