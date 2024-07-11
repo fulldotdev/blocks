@@ -18,5 +18,8 @@ preview:
       href: '#'
     - text: Lorem ipsum
       href: '#'
+  input:
+    placeholder: Email
+    button: Meld je aan
 
 _inputs:
