@@ -145,7 +145,94 @@ declare module 'astro:content' {
 	};
 
 	type DataEntryMap = {
-		"globals": {
+		"blocks": {
+"Banner": {
+	id: "Banner";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Categories": {
+	id: "Categories";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Contact": {
+	id: "Contact";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Content": {
+	id: "Content";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Cta": {
+	id: "Cta";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Employees": {
+	id: "Employees";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Features": {
+	id: "Features";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Footer": {
+	id: "Footer";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Header": {
+	id: "Header";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Hero": {
+	id: "Hero";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Logos": {
+	id: "Logos";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Posts": {
+	id: "Posts";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Prices": {
+	id: "Prices";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Product": {
+	id: "Product";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Products": {
+	id: "Products";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Reviews": {
+	id: "Reviews";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"Stats": {
+	id: "Stats";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+};
+"globals": {
 "cta": {
 	id: "cta";
   collection: "globals";

@@ -1,0 +1,12 @@
+logo: /logo-placeholder.svg
+heading: Header
+links:
+  - text: Link
+    href: /
+  - text: Blocks
+    href: /blocks
+buttons:
+  - text: Button
+    href: /
+  - text: Blocks
+    href: /blocks

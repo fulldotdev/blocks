@@ -1,22 +1,23 @@
 ---
 import { Code } from 'astro:components'
+import { getCollection } from 'astro:content'
 import { Button, Header } from 'fulldev-ui'
 import Layout from './Layout.astro'
 
-const bookshops = await Astro.glob('../components/blocks/**/*.yml')
+const bookshops = await getCollection('blocks')
 
 const { preview } = Astro.props
 ---
 
 <Layout>
-  <Header structure="wrap">
+  <Header structure="wrap as">
     {
-      bookshops.map((block) => (
+      bookshops.map((block: any) => (
         <>
           <Button
             variant="link"
-            href={`/blocks/${block.spec.label}/`}
-            text={block.spec.label}
+            href={`/blocks/${block.id}/`}
+            text={block.id}
           />
         </>
       ))

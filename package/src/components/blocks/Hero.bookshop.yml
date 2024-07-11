@@ -1,7 +1,7 @@
 spec:
   structures:
     - blocks
-  label: Hero
+  label: Hero Secondary
 
 blueprint:
   heading:
@@ -10,20 +10,6 @@ blueprint:
     - text:
       href:
   image:
-  structure:
-  align:
-  frame:
-  variant:
-  position:
-
-preview:
-  heading: Lorem ipsum dolor sit
-  text: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  buttons:
-    - text: Lorem ipsum
-      href: '#'
-    - text: Lorem ipsum
-      href: '#'
-  image: /placeholder.webp
-
-_inputs:
+  align: center
+  frame: viewport
+  position: background

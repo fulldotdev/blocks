@@ -1,26 +1,28 @@
 ---
+import { getCollection } from 'astro:content'
 import BlocksLayout from '../../layouts/BlocksLayout.astro'
 
 export async function getStaticPaths() {
-  const bookshops: any = await Astro.glob('../../components/blocks/**/*.yml')
+  const bookshops = await getCollection('blocks')
+  console.log(bookshops)
   return bookshops.map((bookshop: any) => ({
     params: {
-      block: bookshop.default.spec.label,
+      block: bookshop.id,
     },
-    props: bookshop.default,
+    props: bookshop,
   }))
 }
 
-const { spec, preview } = Astro.props as any
+const { id, data } = Astro.props as any
 
 const blocks: any = await Astro.glob('../../components/blocks/**/*.astro')
 const Block = blocks.find((block: any) => {
   const fileName = block.default.moduleId?.split('/').pop()
   const componentName = fileName?.split('.')[0]
-  return componentName === spec.label
+  return componentName === id
 })?.default
 ---
 
-<BlocksLayout {preview}>
-  <Block {...preview} />
+<BlocksLayout {data}>
+  <Block {...data} />
 </BlocksLayout>

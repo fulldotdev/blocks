@@ -1,0 +1,33 @@
+heading: Best selling
+text: Our best selection of products.
+products:
+  - heading: Product
+    description: The best product in the world
+    price: $100
+    image: /placeholder.webp
+    href: '#'
+  - heading: Product
+    description: The best product in the world
+    price: $100
+    image: /placeholder.webp
+    href: '#'
+  - heading: Product
+    description: The best product in the world
+    price: $100
+    image: /placeholder.webp
+    href: '#'
+  - heading: Product
+    description: The best product in the world
+    price: $100
+    image: /placeholder.webp
+    href: '#'
+  - heading: Product
+    description: The best product in the world
+    price: $100
+    image: /placeholder.webp
+    href: '#'
+  - heading: Product
+    description: The best product in the world
+    price: $100
+    image: /placeholder.webp
+    href: '#'

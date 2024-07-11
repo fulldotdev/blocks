@@ -17,4 +17,8 @@ export const collections = {
     type: 'data',
     schema: z.any(),
   },
+  blocks: {
+    type: 'data',
+    schema: z.any(),
+  },
 }

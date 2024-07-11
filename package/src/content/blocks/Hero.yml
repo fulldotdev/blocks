@@ -1,0 +1,10 @@
+heading: Lorem ipsum dolor sit
+text: Lorem ipsum dolor sit amet
+buttons:
+  - text: Lorem ipsum
+    href: '#'
+  - text: Lorem ipsum
+    href: '#'
+image: /placeholder.webp
+structure: column
+align: center
