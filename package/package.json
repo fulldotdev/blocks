@@ -26,6 +26,7 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
+    "@rollup/plugin-yaml": "^4.1.2",
     "vite-plugin-virtual": "^0.3.0"
   }
 }

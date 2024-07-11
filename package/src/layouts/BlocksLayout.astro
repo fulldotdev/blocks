@@ -1,8 +1,11 @@
 ---
+import { Code } from 'astro:components'
 import { Button, Header } from 'fulldev-ui'
 import Layout from './Layout.astro'
 
 const bookshops = await Astro.glob('../components/blocks/**/*.yml')
+
+const { preview } = Astro.props
 ---
 
 <Layout>
@@ -12,12 +15,16 @@ const bookshops = await Astro.glob('../components/blocks/**/*.yml')
         <>
           <Button
             variant="link"
-            href={`/blocks/${block.spec.label}/`}
+            href={`/${block.spec.label}/`}
             text={block.spec.label}
           />
         </>
       ))
     }
   </Header>
+  <Code
+    lang={'json'}
+    code={JSON.stringify(preview, null, 2) ?? ''}
+  />
   <slot />
 </Layout>

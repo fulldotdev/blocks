@@ -10,6 +10,11 @@ blueprint:
     - text:
       href:
   image:
+  structure:
+  align:
+  frame:
+  variant:
+  position:
 
 preview:
   heading: Lorem ipsum dolor sit

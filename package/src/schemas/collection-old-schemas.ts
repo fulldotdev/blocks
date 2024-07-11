@@ -12,7 +12,7 @@ export const pathSchema = <C extends keyof AnyEntryMap>(collection: C) =>
   z
     .string()
     .transform((value) => {
-      const fullpath = value.split(`${collection}/`).pop()
+      const fullpath = value?.split(`${collection}/`).pop()
       const slug = fullpath?.split('.').shift()
       return slug
     })
