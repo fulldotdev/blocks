@@ -10,10 +10,6 @@ const userBlocks: any = []
 
 const components = [...userBlocks, ...packageBlocks]
 
-console.log({
-  components,
-})
-
 const { _block, ...rest } = Astro.props
 
 const Component = components.find((component) => {

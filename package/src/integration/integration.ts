@@ -10,21 +10,19 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
         injectScript,
         injectRoute,
       }) => {
-        // injectRoute({
-        //   // Use Astro’s pattern syntax for dynamic routes.
-        //   pattern: '/[...page].astro',
-        //   // Use relative path syntax for a local route.
-        //   entrypoint: '../pages/[...page].astro',
-        // })
-        console.log('ready to inject')
-        injectRoute({
-          pattern: '/404',
-          entrypoint: 'fulldev-blocks/404.astro',
-        })
-        injectRoute({
-          pattern: '/[...page]',
-          entrypoint: 'fulldev-blocks/[...page].astro',
-        })
+        const pages = import.meta.glob('/src/pages/**/*.astro')
+
+        !pages['/src/pages/404.astro'] &&
+          injectRoute({
+            pattern: '/404',
+            entrypoint: 'fulldev-blocks/404.astro',
+          })
+
+        !pages['/src/pages/[...page].astro'] &&
+          injectRoute({
+            pattern: '/[...page]',
+            entrypoint: 'fulldev-blocks/[...page].astro',
+          })
       },
     },
   }
