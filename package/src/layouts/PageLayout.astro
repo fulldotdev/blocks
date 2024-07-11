@@ -4,28 +4,24 @@ import { Prose } from 'fulldev-ui'
 import Blocks from '../components/Blocks.astro'
 import Cta from '../components/blocks/Cta.astro'
 import Hero from '../components/blocks/Hero.astro'
-import Intro from '../components/blocks/Intro.astro'
-import Newsletter from '../components/blocks/Newsletter.astro'
 import NavLayout from './NavLayout.astro'
 
 interface Props extends ComponentProps<typeof NavLayout> {
-  hero?: ComponentProps<typeof Hero> | ComponentProps<typeof Intro>
+  hero?: ComponentProps<typeof Hero>
   blocks?: any[]
-  cta?: ComponentProps<typeof Cta> | ComponentProps<typeof Newsletter>
+  cta?: ComponentProps<typeof Cta>
 }
 
-const { hero, intro, blocks, cta, newsletter, ...rest } = Astro.props
+const { hero, blocks, cta, ...rest } = Astro.props
 ---
 
 <NavLayout {...rest}>
   <Hero {...hero} />
-  <Intro {...intro} />
   <Prose>
     <slot name="content" />
   </Prose>
   <Blocks {blocks} />
   <slot />
-  <Newsletter {...newsletter} />
   <Cta {...cta} />
 </NavLayout>
 
