@@ -1,6 +1,6 @@
 ---
 interface Props {
-  _block?: string
+  _bookshop_name?: string
   [key: string | number | symbol]: any
 }
 
@@ -11,12 +11,12 @@ const userBlocks: any = []
 
 const components = [...userBlocks, ...packageBlocks]
 
-const { _block, ...rest } = Astro.props
+const { _bookshop_name, ...rest } = Astro.props
 
 const Component = components.find((component) => {
   const fileName = component.default.moduleId?.split('/').pop()
   const componentName = fileName?.split('.')[0]
-  return componentName === _block
+  return componentName === _bookshop_name
 })?.default
 ---
 
