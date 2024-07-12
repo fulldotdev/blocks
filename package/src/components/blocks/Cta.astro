@@ -1,28 +1,20 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import {
+  Badge,
   Button,
   Column,
   Form,
   Heading,
   Input,
   Section,
+  Tagline,
   Text,
   Wrap,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-type Props = ComponentProps<typeof Section> &
-  Pick<ComponentProps<typeof Heading>, 'level'> & {
-    heading?: string
-    text?: string
-    image?: string
-    buttons?: ComponentProps<typeof Button>[]
-    structure?: 'column' | 'spread'
-    input?: {
-      placeholder?: string
-      button?: string
-    }
-  }
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const {
   structure = 'column',
@@ -30,6 +22,8 @@ const {
   variant = 'subtle',
   align = 'center',
   level = 2,
+  badge,
+  tagline,
   heading,
   text,
   buttons,
@@ -44,10 +38,12 @@ const {
   {variant}
   {size}
   {structure}
-  {...rest}
   {frame}
+  {...rest}
 >
   <Column align={structure === 'column' ? align : 'start'}>
+    <Badge html={badge} />
+    <Tagline html={tagline} />
     <Heading
       {level}
       html={heading}
@@ -67,7 +63,7 @@ const {
     />
     <Button
       type="submit"
-      text={input?.button}
+      text={input?.submit}
     />
   </Form>
 </Section>

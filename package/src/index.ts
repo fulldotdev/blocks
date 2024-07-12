@@ -1,11 +1,14 @@
-export * from './schemas/collection-old-schemas'
+// Schemas
+export * from './schemas/block'
+export * from './schemas/page'
+export * from './schemas/utils'
 
 // Blocks
 export { default as Banner } from './components/blocks/Banner.astro'
 export { default as Categories } from './components/blocks/Categories.astro'
+export { default as Employees } from './components/blocks/Colleagues.astro'
 export { default as Content } from './components/blocks/Content.astro'
 export { default as Cta } from './components/blocks/Cta.astro'
-export { default as Employees } from './components/blocks/Employees.astro'
 export { default as Features } from './components/blocks/Features.astro'
 export { default as Footer } from './components/blocks/Footer.astro'
 export { default as Header } from './components/blocks/Header.astro'

@@ -1,12 +1,9 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import { Heading, Logo, Section, Text, Wrap } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  text?: string
-  logos?: string[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const { logos, heading, text, ...rest } = Astro.props
 ---
@@ -15,8 +12,14 @@ const { logos, heading, text, ...rest } = Astro.props
   align="center"
   {...rest}
 >
-  <Heading html={heading} />
-  <Text html={text} />
+  <Heading
+    size="xs"
+    html={heading}
+  />
+  <Text
+    size="sm"
+    html={text}
+  />
   <Wrap
     align="center"
     style={{ justifyContent: 'center' }}

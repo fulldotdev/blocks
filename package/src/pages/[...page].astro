@@ -1,10 +1,10 @@
 ---
-import { getCollection, getEntry } from 'astro:content'
+import { getCollection, getEntries, getEntry } from 'astro:content'
 import { PageLayout } from 'fulldev-blocks'
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages')
-  return pages.map((page: any) => ({
+  return pages.map((page) => ({
     params: {
       page: page.slug === 'index' ? undefined : page.slug,
     },
@@ -14,9 +14,12 @@ export async function getStaticPaths() {
 
 const { data, render } = Astro.props
 const { Content } = await render()
-const footer = (await getEntry('globals', 'footer'))?.data
-const header = (await getEntry('globals', 'header'))?.data
-const cta = (await getEntry('globals', 'cta'))?.data
+
+const footer = (await getEntry('blocks', 'Footer'))?.data
+const header = (await getEntry('blocks', 'Header'))?.data
+const cta = (await getEntry('blocks', 'Cta'))?.data
+
+data.pages = await getEntries(data.pages)
 ---
 
 <PageLayout

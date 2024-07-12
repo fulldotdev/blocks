@@ -1,6 +1,6 @@
 ---
 import type { ComponentProps } from 'astro/types'
-import { Prose } from 'fulldev-ui'
+import { Prose, Section } from 'fulldev-ui'
 import Blocks from '../components/Blocks.astro'
 import Cta from '../components/blocks/Cta.astro'
 import Hero from '../components/blocks/Hero.astro'
@@ -17,9 +17,11 @@ const { hero, blocks, cta, ...rest } = Astro.props
 
 <NavLayout {...rest}>
   <Hero {...hero} />
-  <Prose>
-    <slot name="content" />
-  </Prose>
+  <Section style={{ '--screen': '768px' }}>
+    <Prose>
+      <slot name="content" />
+    </Prose>
+  </Section>
   <Blocks {blocks} />
   <slot />
   <Cta {...cta} />

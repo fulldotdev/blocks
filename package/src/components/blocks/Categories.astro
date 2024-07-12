@@ -1,5 +1,5 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import { getEntries } from 'astro:content'
 import {
   Button,
@@ -13,18 +13,13 @@ import {
   Text,
   Wrap,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  paragraph?: string
-  text?: string
-  buttons?: ComponentProps<typeof Button>[]
-  categories?: any
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, categories, buttons, ...rest } = Astro.props
+const { heading, text, pages, buttons, ...rest } = Astro.props
 
-const entries = await getEntries(categories)
+const entries = await getEntries(pages)
 ---
 
 <Section {...rest}>
@@ -39,20 +34,20 @@ const entries = await getEntries(categories)
   </Spread>
   <Grid>
     {
-      entries?.map(({ data, slug }) => (
+      entries?.map(({ slug, data: { heading, image, text } }) => (
         <Card
-          href={`/categorieen/${slug}/`}
+          href={`/${slug}/`}
           frame="panel"
         >
           <Image
-            src={data.image}
+            src={image}
             position="inset"
           />
           <Heading
-            html={data.title || data.heading}
+            html={heading}
             level={3}
           />
-          <Text html={data.description || data.text} />
+          <Text html={text} />
         </Card>
       ))
     }

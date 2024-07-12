@@ -6,6 +6,7 @@ interface Props {
 
 const packageBlocks = await Astro.glob('./blocks/**/*.astro')
 // const userBlocks = (await Astro.glob('/src/components/blocks/**/*.astro')) ?? []
+// const userBlocks = import.meta.glob('/src/components/blocks/**/*.astro') ?? []
 const userBlocks: any = []
 
 const components = [...userBlocks, ...packageBlocks]

@@ -1,49 +1,31 @@
 ---
-import type { ComponentProps } from 'astro/types'
-import {
-  Card,
-  Heading,
-  Masonry,
-  Paragraph,
-  Rating,
-  Section,
-  Text,
-} from 'fulldev-ui'
+import type { HTMLTag } from 'astro/types'
+import { getEntries } from 'astro:content'
+import { Card, Grid, Heading, Rating, Section, Text } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props {
-  heading?: ComponentProps<typeof Heading>['html']
-  text?: ComponentProps<typeof Paragraph>['html']
-  cards?: {
-    href?: string
-    rating?: number
-    heading?: string
-    paragraph?: string
-  }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, cards } = Astro.props
+const { heading, text, pages } = Astro.props
 
-const randomReviews = cards?.sort(() => Math.random() - 0.5).slice(0, 5)
+const entries = await getEntries(pages)
 ---
 
-<Section>
+<Section size="md">
   <Heading html={heading} />
   <Text html={text} />
-  <Masonry>
+  <Grid>
     {
-      randomReviews?.map(({ href, rating, heading, paragraph }) => (
-        <Card
-          {href}
-          variant="outline"
-        >
+      entries?.map(({ slug, data: { rating, heading, text } }) => (
+        <Card variant="outline">
           <Rating value={rating} />
           <Heading
             level={3}
             html={heading}
           />
-          <Paragraph html={paragraph} />
+          <Text html={text} />
         </Card>
       ))
     }
-  </Masonry>
+  </Grid>
 </Section>

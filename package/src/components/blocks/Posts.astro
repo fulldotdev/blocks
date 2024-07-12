@@ -1,36 +1,14 @@
 ---
-import type { ComponentProps } from 'astro/types'
-import {
-  Avatar,
-  Card,
-  Column,
-  Heading,
-  Image,
-  Row,
-  Section,
-  Tagline,
-  Text,
-} from 'fulldev-ui'
+import type { HTMLTag } from 'astro/types'
+import { getEntries } from 'astro:content'
+import { Card, Heading, Image, Row, Section, Text } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  paragraph?: string
-  text?: string
-  posts?: {
-    image?: string
-    name?: string
-    text?: string
-    href?: string
-    date?: string
-    author?: {
-      name?: string
-      tagline?: string
-      image?: string
-    }
-  }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, posts, ...rest } = Astro.props
+const { heading, text, pages, ...rest } = Astro.props
+
+const entries = await getEntries(pages)
 ---
 
 <Section {...rest}>
@@ -38,23 +16,22 @@ const { heading, text, posts, ...rest } = Astro.props
   <Text html={text} />
   <Row align="center">
     {
-      posts?.map(({ image, href, name, text, date, author }) => (
+      entries?.map(({ slug, data: { image, heading, text, author } }) => (
         <Card
-          {href}
+          href={slug}
           variant="outline"
         >
           <Image
             src={image}
             position="inset"
           />
-          <Tagline html={date} />
           <Heading
-            html={name}
+            html={heading}
             level={3}
           />
           <Text html={text} />
 
-          <Row>
+          {/* <Row>
             <Avatar
               src={author?.image}
               width={60}
@@ -67,7 +44,7 @@ const { heading, text, posts, ...rest } = Astro.props
               />
               <Text html={author?.tagline} />
             </Column>
-          </Row>
+          </Row> */}
         </Card>
       ))
     }

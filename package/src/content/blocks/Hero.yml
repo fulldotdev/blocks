@@ -8,3 +8,4 @@ buttons:
 image: /placeholder.webp
 structure: column
 align: center
+size: sm

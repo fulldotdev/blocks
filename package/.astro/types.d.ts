@@ -133,9 +133,51 @@ declare module 'astro:content' {
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".md"] };
+"categories/category.md": {
+	id: "categories/category.md";
+  slug: "categories/category";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
+"colleagues/colleague.md": {
+	id: "colleagues/colleague.md";
+  slug: "colleagues/colleague";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
 "index.md": {
 	id: "index.md";
   slug: "index";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
+"over-ons.md": {
+	id: "over-ons.md";
+  slug: "over-ons";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
+"posts/post.md": {
+	id: "posts/post.md";
+  slug: "posts/post";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
+"products/product.md": {
+	id: "products/product.md";
+  slug: "products/product";
+  body: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">
+} & { render(): Render[".md"] };
+"reviews/review.md": {
+	id: "reviews/review.md";
+  slug: "reviews/review";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
@@ -156,6 +198,11 @@ declare module 'astro:content' {
   collection: "blocks";
   data: InferEntrySchema<"blocks">
 };
+"Colleagues": {
+	id: "Colleagues";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
 "Contact": {
 	id: "Contact";
   collection: "blocks";
@@ -168,11 +215,6 @@ declare module 'astro:content' {
 };
 "Cta": {
 	id: "Cta";
-  collection: "blocks";
-  data: InferEntrySchema<"blocks">
-};
-"Employees": {
-	id: "Employees";
   collection: "blocks";
   data: InferEntrySchema<"blocks">
 };
@@ -230,23 +272,6 @@ declare module 'astro:content' {
 	id: "Stats";
   collection: "blocks";
   data: InferEntrySchema<"blocks">
-};
-};
-"globals": {
-"cta": {
-	id: "cta";
-  collection: "globals";
-  data: InferEntrySchema<"globals">
-};
-"footer": {
-	id: "footer";
-  collection: "globals";
-  data: InferEntrySchema<"globals">
-};
-"header": {
-	id: "header";
-  collection: "globals";
-  data: InferEntrySchema<"globals">
 };
 };
 

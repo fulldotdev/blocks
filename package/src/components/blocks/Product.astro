@@ -1,5 +1,5 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import {
   Button,
   Column,
@@ -12,20 +12,9 @@ import {
   Spread,
   Text,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  price?: string
-  rating?: number
-  image?: string
-  subheading?: string
-  description?: string
-  list?: string[]
-  buttons?: {
-    text?: string
-    href?: string
-  }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const {
   heading,
@@ -48,7 +37,7 @@ const {
   <Column>
     <Spread>
       <Heading html={heading} />
-      <Heading html={price} />
+      <Heading html={price?.toString()} />
     </Spread>
     <Rating value={rating} />
     {

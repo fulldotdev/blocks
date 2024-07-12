@@ -1,14 +1,11 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import { Column, Heading, Row, Section, Text } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  text?: string
-  stats?: { heading: string; text: string }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, stats, ...rest } = Astro.props
+const { heading, text, cards, ...rest } = Astro.props
 ---
 
 <Section
@@ -20,13 +17,13 @@ const { heading, text, stats, ...rest } = Astro.props
   <Text html={text} />
   <Row>
     {
-      stats?.map((stat) => (
+      cards?.map(({ heading, text }) => (
         <Column align="center">
           <Heading
             level={3}
-            html={stat.heading}
+            html={heading}
           />
-          <Text html={stat.text} />
+          <Text html={text} />
         </Column>
       ))
     }

@@ -1,5 +1,5 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import {
   Button,
   Column,
@@ -13,24 +13,27 @@ import {
   Text,
   Textarea,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof Section> {
-  heading?: string
-  text?: string
-  tagline?: string
-  googleMaps?: string
-  buttons?: ComponentProps<typeof Button>[]
-  channels?: {
-    icon?: string
-    title?: string
-    text?: string
-    href?: string
-  }[]
-  socials?: {
-    icon: string
-    href: string
-  }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
+
+// interface Props extends ComponentProps<typeof Section> {
+//   heading?: string
+//   text?: string
+//   tagline?: string
+//   googleMaps?: string
+//   buttons?: ComponentProps<typeof Button>[]
+//   channels?: {
+//     icon?: string
+//     title?: string
+//     text?: string
+//     href?: string
+//   }[]
+//   socials?: {
+//     icon: string
+//     href: string
+//   }[]
+// }
 
 const {
   heading,

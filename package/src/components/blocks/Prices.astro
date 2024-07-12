@@ -1,37 +1,20 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import {
   Button,
   Card,
   Grid,
   Heading,
   List,
-  ListItem,
-  Paragraph,
   Section,
   Tagline,
   Text,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props {
-  heading?: ComponentProps<typeof Heading>['html']
-  text?: ComponentProps<typeof Paragraph>['html']
-  tagline?: ComponentProps<typeof Tagline>['html']
-  plans?: {
-    heading?: string
-    text?: string
-    price?: string
-    features?: {
-      text?: string
-    }[]
-    buttons?: {
-      text?: string
-      href?: string
-    }[]
-  }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, plans, tagline } = Astro.props
+const { heading, text, cards, tagline } = Astro.props
 ---
 
 <Section align="center">
@@ -43,7 +26,7 @@ const { heading, text, plans, tagline } = Astro.props
   <Text html={text} />
   <Grid>
     {
-      plans?.map(({ heading, text, buttons, price, features }) => (
+      cards?.map(({ heading, text, buttons, price, list }) => (
         <Card variant="subtle">
           <Heading
             html={heading}
@@ -52,18 +35,12 @@ const { heading, text, plans, tagline } = Astro.props
           <Text html={text} />
           <Heading
             level={4}
-            html={price}
+            as="p"
+            html={price?.toString()}
           />
-          <List>
-            {features?.map(({ text }) => (
-              <ListItem html={text} />
-            ))}
-          </List>
-          {buttons?.map(({ href, text }) => (
-            <Button
-              href={href}
-              html={text}
-            />
+          <List items={list} />
+          {buttons?.map((button) => (
+            <Button {...button} />
           ))}
         </Card>
       ))

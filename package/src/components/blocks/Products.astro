@@ -1,51 +1,57 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import { getEntries } from 'astro:content'
 import {
+  Button,
   Card,
   Carousel,
+  Column,
   Heading,
   Image,
-  Paragraph,
   Section,
-  Tagline,
+  Spread,
   Text,
+  Wrap,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props {
-  heading?: ComponentProps<typeof Heading>['html']
-  text?: ComponentProps<typeof Paragraph>['html']
-  products?: any
-  cards?: {
-    href?: string
-    heading?: string
-    description?: string
-    price?: string
-    image?: string
-  }[]
-}
+type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, products } = Astro.props
+const { heading, text, buttons, pages } = Astro.props
 
-const entries = await getEntries(products)
+const entries = await getEntries(pages)
 ---
 
-<Section>
-  <Heading html={heading} />
-  <Text html={text} />
+<Section size="sm">
+  <Spread>
+    <Column>
+      <Heading html={heading} />
+      <Text html={text} />
+    </Column>
+    <Wrap>
+      {buttons?.map((button, i) => <Button {...button} />)}
+    </Wrap>
+  </Spread>
   <Carousel position="inset">
     {
-      entries?.map(({ data, slug }) => (
+      entries?.map(({ slug, data: { image, heading, price } }) => (
         <Card
-          href={`/producten/${slug}/`}
+          href={`/${slug}/`}
           frame="none"
         >
-          <Image src={data.image} />
-          <Heading
-            level={3}
-            html={data.title || data.heading}
-          />
-          <Tagline html={data.price} />
+          <Image src={image} />
+          <Spread>
+            <Heading
+              level={4}
+              as="h3"
+              html={heading}
+            />
+            <Heading
+              level={4}
+              as="p"
+              html={price?.toString()}
+            />
+          </Spread>
         </Card>
       ))
     }
