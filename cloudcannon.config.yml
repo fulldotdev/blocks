@@ -1,0 +1,79 @@
+paths:
+  uploads: public/assets
+  static: public
+
+collection_groups:
+  - heading: Content
+    collections:
+      - pages
+
+collections_config:
+  pages:
+    path: src/pacakge/content/pages
+    url: /[full_slug]/
+    output: true
+    icon: wysiwyg
+    name: Pagina's
+    disable_add: true
+    disable_add_folder: true
+    _enabled_editors:
+      - visual
+
+_inputs:
+  head:
+    label: SEO
+  head.title:
+    label: Pagina title
+    comment: 50 tot 60 karakters
+  head.description:
+    label: Pagina beschrijving
+    comment: 50 tot 120 karakters
+  head.image:
+    label: Pagina afbeelding
+    comment: Zichtbaar wanneer de pagina wordt gedeeld op social media
+  src:
+    type: image
+    label: Afbeelding
+    options:
+      expandable: false
+      mime_type: image/webp
+      correct_orientation: false
+      prevent_resize_existing_files: true
+      resize_style: crop
+  href:
+    type: url
+    label: Link
+  rating:
+    label: Rating
+    type: range
+    options:
+      min: 0
+      max: 5
+      step: 0.1
+  images:
+    type: array
+  images[*]:
+    type: image
+  draft:
+    label: Concept
+    type: switch
+  variant:
+    hidden: true
+  price:
+    type: number
+  paragraph:
+    type: textarea
+
+_editables:
+  content:
+    bold: true
+    format: p h1 h2 h3 h4 h5 h6
+    italic: true
+    underline: true
+    link: true
+    bulletedlist: true
+    numberedlist: true
+    image: true
+    table: true
+    undo: true
+    redo: true
