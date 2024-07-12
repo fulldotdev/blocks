@@ -1,6 +1,7 @@
-import { reference, z } from 'astro:content'
+import { z } from 'astro:content'
 import { base } from './base'
 import { block } from './block'
+import { pagesPath } from './utils'
 
 export const head = z
   .object({
@@ -27,7 +28,7 @@ export const page = base.extend({
   blocks: block.array().default([]),
   cta: block.optional(),
   footer: block.optional(),
-  pages: reference('pages').array().default([]),
+  pages: pagesPath.array().default([]),
 })
 
 export type Page = z.infer<typeof page>

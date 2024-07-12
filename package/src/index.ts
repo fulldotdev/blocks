@@ -1,5 +1,7 @@
 // Schemas
+export * from './schemas/base'
 export * from './schemas/block'
+export * from './schemas/card'
 export * from './schemas/page'
 export * from './schemas/utils'
 
