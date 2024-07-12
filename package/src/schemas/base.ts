@@ -42,7 +42,7 @@ export const base = z
       .partial()
       .passthrough(),
     logos: z.string().array(),
-    logo: z.string().array(),
+    logo: z.string(),
   })
   .partial()
   .passthrough()

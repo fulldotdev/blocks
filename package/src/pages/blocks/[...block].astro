@@ -4,7 +4,6 @@ import BlocksLayout from '../../layouts/BlocksLayout.astro'
 
 export async function getStaticPaths() {
   const bookshops = await getCollection('blocks')
-  console.log(bookshops)
   return bookshops.map((bookshop: any) => ({
     params: {
       block: bookshop.id,

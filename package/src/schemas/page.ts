@@ -19,7 +19,8 @@ export const page = base.extend({
       image: z.string(),
     })
     .partial()
-    .passthrough(),
+    .passthrough()
+    .optional(),
   header: block.optional(),
   banner: block.optional(),
   hero: block.optional(),

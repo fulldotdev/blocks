@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "astro dev",
     "test": "astro check",
-    "check": "astro check"
+    "check": "astro check",
+    "build": "astro build"
   },
   "type": "module",
   "exports": {
