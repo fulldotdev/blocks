@@ -9,7 +9,7 @@ collection_groups:
 
 collections_config:
   pages:
-    path: src/pacakge/content/pages
+    path: src/package/content/pages
     url: /[full_slug]/
     output: true
     icon: wysiwyg
