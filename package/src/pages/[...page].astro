@@ -19,7 +19,8 @@ const footer = (await getEntry('blocks', 'Footer'))?.data
 const header = (await getEntry('blocks', 'Header'))?.data
 const cta = (await getEntry('blocks', 'Cta'))?.data
 
-data.pages = await getEntries(data.pages)
+// Temp fix due to bug when not always present
+data.pages = await getEntries(data.pages.filter(Boolean))
 ---
 
 <PageLayout
