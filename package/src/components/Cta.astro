@@ -1,0 +1,69 @@
+---
+import type { HTMLTag } from 'astro/types'
+import {
+  Badge,
+  Button,
+  Column,
+  Form,
+  Heading,
+  Input,
+  Section,
+  Tagline,
+  Text,
+  Wrap,
+} from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
+
+type Props<As extends HTMLTag = 'section'> = Block<As>
+
+const {
+  structure = 'column',
+  size = 'lg',
+  variant = 'subtle',
+  align = 'center',
+  level = 2,
+  badge,
+  tagline,
+  heading,
+  text,
+  buttons,
+  frame = 'panel',
+  input,
+  ...rest
+} = Astro.props
+---
+
+<Section
+  {align}
+  {variant}
+  {size}
+  {structure}
+  {frame}
+  {...rest}
+>
+  <Column align={structure === 'column' ? align : 'start'}>
+    <Badge html={badge} />
+    <Tagline html={tagline} />
+    <Heading
+      {level}
+      html={heading}
+    />
+    <Text html={text} />
+  </Column>
+  <Wrap>
+    {buttons?.map((button, i) => <Button {...button} />)}
+  </Wrap>
+  <Form
+    structure="row"
+    style={{ maxWidth: '420px' }}
+  >
+    <Input
+      placeholder={input?.placeholder}
+      name={input?.placeholder}
+    />
+    <Button
+      type="submit"
+      text={input?.submit}
+    />
+  </Form>
+</Section>
