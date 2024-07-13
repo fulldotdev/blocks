@@ -6,9 +6,9 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, pages, ...rest } = Astro.props
+const { heading, text, posts, ...rest } = Astro.props
 
-const entries = await getEntries(pages)
+const entries = posts && (await getEntries(posts))
 ---
 
 <Section {...rest}>
@@ -16,9 +16,9 @@ const entries = await getEntries(pages)
   <Text html={text} />
   <Row align="center">
     {
-      entries?.map(({ slug, data: { image, heading, text, author } }) => (
+      entries?.map(({ slug, data: { title, description, image } }) => (
         <Card
-          href={slug}
+          href={`/blog/${slug}/`}
           variant="outline"
         >
           <Image
@@ -26,10 +26,10 @@ const entries = await getEntries(pages)
             position="inset"
           />
           <Heading
-            html={heading}
+            html={title}
             level={3}
           />
-          <Text html={text} />
+          <Text html={description} />
 
           {/* <Row>
             <Avatar

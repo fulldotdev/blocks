@@ -1,5 +1,5 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import {
   Button,
   Header as FullHeader,
@@ -8,14 +8,9 @@ import {
   Logo,
   Row,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof FullHeader> {
-  logo?: string
-  heading?: string
-  href?: string
-  links?: ComponentProps<typeof Link>[]
-  buttons?: ComponentProps<typeof Button>[]
-}
+type Props<As extends HTMLTag = 'header'> = Block<As>
 
 const { logo, heading, links, buttons, href, ...rest } = Astro.props
 ---

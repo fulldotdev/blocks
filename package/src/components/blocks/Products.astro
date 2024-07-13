@@ -17,9 +17,9 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, buttons, pages } = Astro.props
+const { heading, text, buttons, products } = Astro.props
 
-const entries = await getEntries(pages)
+const entries = products && (await getEntries(products))
 ---
 
 <Section size="sm">
@@ -34,17 +34,17 @@ const entries = await getEntries(pages)
   </Spread>
   <Carousel position="inset">
     {
-      entries?.map(({ slug, data: { image, heading, price } }) => (
+      entries?.map(({ slug, data: { title, image, images, price } }) => (
         <Card
-          href={`/${slug}/`}
+          href={`/producten/${slug}/`}
           frame="none"
         >
-          <Image src={image} />
+          <Image src={image || images?.[0]} />
           <Spread>
             <Heading
               level={4}
               as="h3"
-              html={heading}
+              html={title}
             />
             <Heading
               level={4}

@@ -8,7 +8,7 @@ type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const { heading, text, pages } = Astro.props
 
-const entries = await getEntries(pages)
+const entries = pages && (await getEntries(pages))
 ---
 
 <Section size="md">

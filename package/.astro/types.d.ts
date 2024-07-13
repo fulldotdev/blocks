@@ -125,7 +125,16 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"pages": {
+		"categories": {
+"category.md": {
+	id: "category.md";
+  slug: "category";
+  body: string;
+  collection: "categories";
+  data: InferEntrySchema<"categories">
+} & { render(): Render[".md"] };
+};
+"pages": {
 "404.md": {
 	id: "404.md";
   slug: "404";
@@ -133,16 +142,9 @@ declare module 'astro:content' {
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".md"] };
-"categories/category.md": {
-	id: "categories/category.md";
-  slug: "categories/category";
-  body: string;
-  collection: "pages";
-  data: InferEntrySchema<"pages">
-} & { render(): Render[".md"] };
-"colleagues/colleague.md": {
-	id: "colleagues/colleague.md";
-  slug: "colleagues/colleague";
+"categories.md": {
+	id: "categories.md";
+  slug: "categories";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
@@ -154,33 +156,37 @@ declare module 'astro:content' {
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".md"] };
-"over-ons.md": {
-	id: "over-ons.md";
-  slug: "over-ons";
+"posts.md": {
+	id: "posts.md";
+  slug: "posts";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".md"] };
-"posts/post.md": {
-	id: "posts/post.md";
-  slug: "posts/post";
+"products.md": {
+	id: "products.md";
+  slug: "products";
   body: string;
   collection: "pages";
   data: InferEntrySchema<"pages">
 } & { render(): Render[".md"] };
-"products/product.md": {
-	id: "products/product.md";
-  slug: "products/product";
+};
+"posts": {
+"post.md": {
+	id: "post.md";
+  slug: "post";
   body: string;
-  collection: "pages";
-  data: InferEntrySchema<"pages">
+  collection: "posts";
+  data: InferEntrySchema<"posts">
 } & { render(): Render[".md"] };
-"reviews/review.md": {
-	id: "reviews/review.md";
-  slug: "reviews/review";
+};
+"products": {
+"product.md": {
+	id: "product.md";
+  slug: "product";
   body: string;
-  collection: "pages";
-  data: InferEntrySchema<"pages">
+  collection: "products";
+  data: InferEntrySchema<"products">
 } & { render(): Render[".md"] };
 };
 
@@ -274,6 +280,11 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blocks">
 };
 };
+"cards": Record<string, {
+  id: string;
+  collection: "cards";
+  data: InferEntrySchema<"cards">;
+}>;
 
 	};
 

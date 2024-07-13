@@ -21,7 +21,13 @@
     ".": "./src/index.ts",
     "./integration": "./src/integration/integration.ts",
     "./404.astro": "./src/pages/404.astro",
-    "./[...page].astro": "./src/pages/[...page].astro"
+    "./[...page].astro": "./src/pages/[...page].astro",
+    "./[categories]/[...category].astro": "./src/pages/[categories]/[...category].astro",
+    "./[categories]/index.astro": "./src/pages/[categories]/index.astro",
+    "./[posts]/[...post].astro": "./src/pages/[posts]/[...post].astro",
+    "./[posts]/index.astro": "./src/pages/[posts]/index.astro",
+    "./[products]/[...product].astro": "./src/pages/[products]/[...product].astro",
+    "./[products]/index.astro": "./src/pages/[posts]/index.astro"
   },
   "devDependencies": {
     "@astrojs/check": "^0.5.10",

@@ -17,9 +17,9 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { heading, text, pages, buttons, ...rest } = Astro.props
+const { heading, text, categories, buttons, ...rest } = Astro.props
 
-const entries = await getEntries(pages)
+const entries = categories && (await getEntries(categories))
 ---
 
 <Section {...rest}>
@@ -34,9 +34,9 @@ const entries = await getEntries(pages)
   </Spread>
   <Grid>
     {
-      entries?.map(({ slug, data: { heading, image, text } }) => (
+      entries?.map(({ slug, data: { title, description, image } }) => (
         <Card
-          href={`/${slug}/`}
+          href={`/categorieen/${slug}/`}
           frame="panel"
         >
           <Image
@@ -44,10 +44,10 @@ const entries = await getEntries(pages)
             position="inset"
           />
           <Heading
-            html={heading}
+            html={title}
             level={3}
           />
-          <Text html={text} />
+          <Text html={description} />
         </Card>
       ))
     }

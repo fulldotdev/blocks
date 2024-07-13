@@ -1,17 +1,32 @@
 ---
-import type { ComponentProps } from 'astro/types'
-import { Layout as FullLayout } from 'fulldev-ui'
+import { getEntry } from 'astro:content'
+import { Layout as FullLayout, Main } from 'fulldev-ui'
+import Banner from '../components/blocks/Banner.astro'
+import Cta from '../components/blocks/Cta.astro'
+import Footer from '../components/blocks/Footer.astro'
+import Header from '../components/blocks/Header.astro'
+import { type Page } from '../schemas/page'
 
-interface Props extends ComponentProps<typeof FullLayout> {}
+type Props = Page
 
-const { ...rest } = Astro.props
+const {
+  header = (await getEntry('blocks', 'header'))?.data,
+  banner = (await getEntry('blocks', 'banner'))?.data,
+  cta = (await getEntry('blocks', 'cta'))?.data,
+  footer = (await getEntry('blocks', 'footer'))?.data,
+  ...rest
+} = Astro.props
 ---
 
 <FullLayout
   lang="nl"
   {...rest}
 >
-  <slot />
+  <Header {...header} />
+  <Banner {...header} />
+  <Main>
+    <slot />
+    <Cta {...cta} />
+  </Main>
+  <Footer {...footer} />
 </FullLayout>
-
-<style is:global lang="scss"></style>

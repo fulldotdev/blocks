@@ -1,17 +1,24 @@
 ---
 import { getEntry } from 'astro:content'
-import { PageLayout } from 'fulldev-blocks'
+import { Layout } from 'fulldev-blocks'
+import { Prose, Section } from 'fulldev-ui'
+import Blocks from '../components/Blocks.astro'
+import Hero from '../components/blocks/Hero.astro'
 
 const { data, render } = await getEntry('pages', '404')
 const { Content } = await render()
-const footer = (await getEntry('globals', 'footer'))?.data
-const header = (await getEntry('globals', 'header'))?.data
 ---
 
-<PageLayout
-  {header}
-  {footer}
-  {...data}
->
-  <Content slot="content" />
-</PageLayout>
+<Layout {...data}>
+  <Hero
+    {...data}
+    {...data.hero}
+  />
+  <Section style={{ '--screen': '768px' }}>
+    <Prose>
+      <Content />
+    </Prose>
+  </Section>
+  <Blocks blocks={data.blocks} />
+  <slot />
+</Layout>

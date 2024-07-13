@@ -23,6 +23,42 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
             pattern: '/[...page]',
             entrypoint: 'fulldev-blocks/[...page].astro',
           })
+
+        !pages['/src/pages/[categories]/[...category].astro'] &&
+          injectRoute({
+            pattern: '/[categories]/[...category]',
+            entrypoint: 'fulldev-blocks/[categories]/[...category].astro',
+          })
+
+        !pages['/src/pages/[categories]/index.astro'] &&
+          injectRoute({
+            pattern: '/[categories]',
+            entrypoint: 'fulldev-blocks/[categories]/index.astro',
+          })
+
+        !pages['/src/pages/[posts]/[...post].astro'] &&
+          injectRoute({
+            pattern: '/[posts]/[...post]',
+            entrypoint: 'fulldev-blocks/[posts]/[...post].astro',
+          })
+
+        !pages['/src/pages/[posts]/index.astro'] &&
+          injectRoute({
+            pattern: '/[posts]',
+            entrypoint: 'fulldev-blocks/[posts]/index.astro',
+          })
+
+        !pages['/src/pages/[products]/[...product].astro'] &&
+          injectRoute({
+            pattern: '/[products]/[...product]',
+            entrypoint: 'fulldev-blocks/[products]/[...product].astro',
+          })
+
+        !pages['/src/pages/[products]/index.astro'] &&
+          injectRoute({
+            pattern: '/[products]',
+            entrypoint: 'fulldev-blocks/[products]/index.astro',
+          })
       },
     },
   }

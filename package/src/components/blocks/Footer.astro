@@ -1,5 +1,5 @@
 ---
-import type { ComponentProps } from 'astro/types'
+import type { HTMLTag } from 'astro/types'
 import {
   Column,
   Footer as FullFooter,
@@ -9,20 +9,9 @@ import {
   Split,
   Text,
 } from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
 
-interface Props extends ComponentProps<typeof FullFooter> {
-  logo?: string
-  heading?: string
-  href?: string
-  text?: string
-  categories?: {
-    category: string
-    links: {
-      text: string
-      href: string
-    }[]
-  }[]
-}
+type Props<As extends HTMLTag = 'footer'> = Block<As>
 
 const { logo, heading, categories, href, text, ...rest } = Astro.props
 ---
