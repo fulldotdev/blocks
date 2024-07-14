@@ -7,14 +7,16 @@ import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
   const page = await getEntry('pages', 'blog')
-  return [
-    {
-      params: {
-        posts: 'blog',
-      },
-      props: page,
-    },
-  ]
+  return page
+    ? [
+        {
+          params: {
+            posts: 'blog',
+          },
+          props: page,
+        },
+      ]
+    : []
 }
 
 const { data, render } = Astro.props

@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 }
 
 const { data, render } = Astro.props
-const { Content } = render && (await render())
+const { Content } = await render()
 ---
 
 <Layout {...data}>

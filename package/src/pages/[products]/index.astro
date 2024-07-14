@@ -8,18 +8,20 @@ import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
   const page = await getEntry('pages', 'producten')
-  return [
-    {
-      params: {
-        products: 'producten',
-      },
-      props: page,
-    },
-  ]
+  return page
+    ? [
+        {
+          params: {
+            products: 'producten',
+          },
+          props: page,
+        },
+      ]
+    : []
 }
 
 const { data, render } = Astro.props
-const { Content } = render && (await render())
+const { Content } = await render()
 
 const products = await getCollection('products')
 ---
