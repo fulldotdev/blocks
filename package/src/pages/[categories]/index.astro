@@ -7,7 +7,7 @@ import Intro from '../../components/blocks/Intro.astro'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
-  const page = await getEntry('pages', 'categories')
+  const page = await getEntry('pages', 'categorieen')
   return [
     {
       params: {
