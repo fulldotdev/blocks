@@ -1,4 +1,6 @@
 ---
+import { getEntries } from 'astro:content'
+
 interface Props {
   _bookshop_name?: string
   [key: string | number | symbol]: any
@@ -18,6 +20,12 @@ const Component = components.find((component) => {
   const componentName = fileName?.split('.')[0]
   return componentName === _bookshop_name
 })?.default
+
+rest.pages = rest.pages && (await getEntries(rest.pages))
+rest.cards = rest.cards && (await getEntries(rest.cards))
+rest.posts = rest.posts && (await getEntries(rest.posts))
+rest.products = rest.products && (await getEntries(rest.products))
+rest.categories = rest.categories && (await getEntries(rest.categories))
 ---
 
 {Component && <Component {...rest} />}

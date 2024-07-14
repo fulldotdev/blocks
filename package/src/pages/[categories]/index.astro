@@ -1,7 +1,8 @@
 ---
-import { getEntry } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
 import { Prose, Section } from 'fulldev-ui'
 import Blocks from '../../components/Blocks.astro'
+import Categories from '../../components/blocks/Categories.astro'
 import Intro from '../../components/blocks/Intro.astro'
 import Layout from '../../layouts/Layout.astro'
 
@@ -19,6 +20,8 @@ export async function getStaticPaths() {
 
 const { data, render } = Astro.props
 const { Content } = await render()
+
+const categories = await getCollection('categories')
 ---
 
 <Layout {...data}>
@@ -29,6 +32,7 @@ const { Content } = await render()
     {...data.hero}
     {...data}
   />
+  <Categories categories={categories} />
   <Section>
     <Prose>
       <Content />

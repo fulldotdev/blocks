@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content'
 import { Prose, Section } from 'fulldev-ui'
 import Blocks from '../../components/Blocks.astro'
+import Categories from '../../components/blocks/Categories.astro'
 import Intro from '../../components/blocks/Intro.astro'
+import Products from '../../components/blocks/Products.astro'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
@@ -16,8 +18,17 @@ export async function getStaticPaths() {
   }))
 }
 
-const { data, render } = Astro.props
+const { slug, data, render } = Astro.props
 const { Content } = await render()
+
+const products = await getCollection('products', (product) =>
+  product.data.categories?.some((category) => category.slug.includes(slug))
+)
+
+const categories = await getCollection(
+  'categories',
+  (category) => category.slug !== slug
+)
 ---
 
 <Layout {...data}>
@@ -26,6 +37,15 @@ const { Content } = await render()
     text={data.description}
     {...data}
     {...data.hero}
+  />
+  <Products
+    structure="grid"
+    products={products}
+  />
+  <Categories
+    heading="Meer categorieën"
+    structure="carousel"
+    categories={categories}
   />
   <Section>
     <Prose>

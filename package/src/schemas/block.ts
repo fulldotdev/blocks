@@ -8,6 +8,7 @@ import { pathSchema } from './utils'
 export const block = base
   .extend({
     cards: card.array(),
+    columns: card.array(),
     pages: pathSchema('pages').array(),
     categories: pathSchema('categories').array(),
     products: pathSchema('products').array(),
@@ -16,7 +17,7 @@ export const block = base
   .partial()
   .passthrough()
 
-export type Block<As extends HTMLTag> = z.infer<typeof block> &
+export type Block<As extends HTMLTag> = z.infer<typeof base> &
   ComponentProps<typeof Section<As>> &
   Pick<ComponentProps<typeof Heading>, 'level'> &
   Pick<ComponentProps<typeof Image>, 'position'>

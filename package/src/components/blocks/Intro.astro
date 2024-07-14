@@ -1,16 +1,6 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import {
-  Badge,
-  Box,
-  Button,
-  Heading,
-  Image,
-  Section,
-  Tagline,
-  Text,
-  Wrap,
-} from 'fulldev-ui'
+import { Badge, Heading, Section, Tagline, Text } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
@@ -33,29 +23,24 @@ const {
 ---
 
 <Section
+  class="intro"
   structure={structure === 'split' ? 'split' : 'column'}
   {size}
   {align}
   {variant}
   {...rest}
 >
-  <Box
-    structure={structure === 'spread' ? 'spread' : 'column'}
-    align={structure === 'split' ? 'start' : align}
-  >
-    <Badge html={badge} />
-    <Tagline html={tagline} />
-    <Heading
-      {level}
-      html={heading}
-    />
-    <Text html={text} />
-    <Wrap>
-      {buttons?.map((button) => <Button {...button} />)}
-    </Wrap>
-  </Box>
-  <Image
-    {position}
-    src={image}
+  <Badge html={badge} />
+  <Tagline html={tagline} />
+  <Heading
+    {level}
+    html={heading}
   />
+  <Text html={text} />
 </Section>
+
+<style is:global>
+  .intro {
+    border-bottom: 1px solid var(--border);
+  }
+</style>

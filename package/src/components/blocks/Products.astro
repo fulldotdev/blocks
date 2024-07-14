@@ -1,10 +1,10 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import { getEntries } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import {
+  Box,
   Button,
   Card,
-  Carousel,
   Column,
   Heading,
   Image,
@@ -15,14 +15,22 @@ import {
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 
-type Props<As extends HTMLTag = 'section'> = Block<As>
+type Props<As extends HTMLTag = 'section'> = Block<As> & {
+  products: CollectionEntry<'products'>[]
+}
 
-const { heading, text, buttons, products } = Astro.props
-
-const entries = products && (await getEntries(products))
+const {
+  structure = 'carousel',
+  size = 'sm',
+  heading,
+  text,
+  buttons,
+  products,
+  ...rest
+} = Astro.props
 ---
 
-<Section size="sm">
+<Section {...rest}>
   <Spread>
     <Column>
       <Heading html={heading} />
@@ -32,9 +40,12 @@ const entries = products && (await getEntries(products))
       {buttons?.map((button, i) => <Button {...button} />)}
     </Wrap>
   </Spread>
-  <Carousel position="inset">
+  <Box
+    {structure}
+    position={structure === 'carousel' ? 'inset' : undefined}
+  >
     {
-      entries?.map(({ slug, data: { title, image, images, price } }) => (
+      products?.map(({ slug, data: { title, image, images, price } }) => (
         <Card
           href={`/producten/${slug}/`}
           frame="none"
@@ -55,5 +66,5 @@ const entries = products && (await getEntries(products))
         </Card>
       ))
     }
-  </Carousel>
+  </Box>
 </Section>

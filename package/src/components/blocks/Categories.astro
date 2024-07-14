@@ -1,11 +1,11 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import { getEntries } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import {
+  Box,
   Button,
   Card,
   Column,
-  Grid,
   Heading,
   Image,
   Section,
@@ -15,11 +15,18 @@ import {
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 
-type Props<As extends HTMLTag = 'section'> = Block<As>
+type Props<As extends HTMLTag = 'section'> = Block<As> & {
+  categories?: CollectionEntry<'categories'>[]
+}
 
-const { heading, text, categories, buttons, ...rest } = Astro.props
-
-const entries = categories && (await getEntries(categories))
+const {
+  structure = 'grid',
+  heading,
+  text,
+  categories,
+  buttons,
+  ...rest
+} = Astro.props
 ---
 
 <Section {...rest}>
@@ -32,9 +39,9 @@ const entries = categories && (await getEntries(categories))
       {buttons?.map((button, i) => <Button {...button} />)}
     </Wrap>
   </Spread>
-  <Grid>
+  <Box {structure}>
     {
-      entries?.map(({ slug, data: { title, description, image } }) => (
+      categories?.map(({ slug, data: { title, description, image } }) => (
         <Card
           href={`/categorieen/${slug}/`}
           frame="panel"
@@ -51,5 +58,5 @@ const entries = categories && (await getEntries(categories))
         </Card>
       ))
     }
-  </Grid>
+  </Box>
 </Section>

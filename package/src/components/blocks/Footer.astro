@@ -13,11 +13,14 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'footer'> = Block<As>
 
-const { logo, heading, categories, href, text, ...rest } = Astro.props
+const { logo, heading, columns, href, text, ...rest } = Astro.props
 ---
 
 <FullFooter
   structure="split"
+  style={{
+    marginTop: 'auto',
+  }}
   size="sm"
 >
   <Column>
@@ -37,13 +40,13 @@ const { logo, heading, categories, href, text, ...rest } = Astro.props
   </Column>
   <Split align="start">
     {
-      categories?.map((category) => (
+      columns?.map(({ heading, links }) => (
         <Column>
           <Heading
-            text={category.category}
+            text={heading}
             level={3}
           />
-          {category.links.map((link) => (
+          {links?.map((link) => (
             <Link
               href={link.href}
               text={link.text}
