@@ -20,6 +20,10 @@ export const collections = {
     type: 'content',
     schema: page,
   }),
+  reviews: defineCollection({
+    type: 'data',
+    schema: card,
+  }),
   cards: defineCollection({
     type: 'data',
     schema: card,

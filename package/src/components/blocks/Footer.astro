@@ -1,11 +1,13 @@
 ---
 import type { HTMLTag } from 'astro/types'
 import {
+  Button,
   Column,
   Footer as FullFooter,
   Heading,
   Link,
   Logo,
+  Row,
   Split,
   Text,
 } from 'fulldev-ui'
@@ -13,7 +15,17 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'footer'> = Block<As>
 
-const { logo, heading, columns, href, text, ...rest } = Astro.props
+const {
+  logo,
+  heading,
+  columns,
+  href,
+  text,
+  channels,
+  socials,
+  hours,
+  ...rest
+} = Astro.props
 ---
 
 <FullFooter
@@ -23,21 +35,86 @@ const { logo, heading, columns, href, text, ...rest } = Astro.props
   }}
   size="sm"
 >
-  <Column>
-    <Column
-      style={{ textDecoration: 'none' }}
-      as="a"
-      href="/"
-    >
-      <Logo src={logo} />
-      <Heading
-        as="p"
-        level={2}
-        text={heading}
-      />
+  <Split align="start">
+    <Column>
+      <Column
+        style={{ textDecoration: 'none' }}
+        as="a"
+        href="/"
+      >
+        <Logo src={logo} />
+        <Heading
+          as="p"
+          level={2}
+          text={heading}
+        />
+      </Column>
+      <Text text={text} />
     </Column>
-    <Text text={text} />
-  </Column>
+    <Column compact>
+      <Row>
+        <Button
+          icon="phone"
+          href={`tel:${channels?.phone}`}
+        />
+        <Column compact>
+          <Text
+            text={'Telefoon'}
+            contrast
+          />
+          <Text
+            style={{ marginTop: 'var(--space-1)' }}
+            text={channels?.phone}
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Button
+          icon="mail"
+          href={`tel:${channels?.email}`}
+        />
+        <Column compact>
+          <Text
+            text={'Email'}
+            contrast
+          />
+          <Text
+            style={{ marginTop: 'var(--space-1)' }}
+            text={channels?.email}
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Button
+          icon="pin"
+          href={`tel:${channels?.address}`}
+        />
+        <Column compact>
+          <Text
+            text={'Adres'}
+            contrast
+          />
+          <Text
+            style={{ marginTop: 'var(--space-1)' }}
+            text={channels?.address}
+          />
+        </Column>
+      </Row>
+    </Column>
+
+    <Column>
+      <Heading
+        text={heading}
+        level={3}
+      />
+      {
+        Object.entries(hours || {}).map(([day, time]) => (
+          <Text text={`${day}: ${time}`} />
+        ))
+      }
+    </Column>
+  </Split>
+
   <Split align="start">
     {
       columns?.map(({ heading, links }) => (

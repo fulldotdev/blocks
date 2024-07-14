@@ -44,6 +44,33 @@ export const base = z
       .passthrough(),
     logos: z.string().array(),
     logo: z.string(),
+    channels: z
+      .object({
+        phone: z.string(),
+        email: z.string(),
+        address: z.string(),
+      })
+      .partial()
+      .passthrough(),
+    socials: z
+      .object({
+        facebook: z.string(),
+        instagram: z.string(),
+      })
+      .partial()
+      .passthrough(),
+    hours: z
+      .object({
+        monday: z.string(),
+        tuesday: z.string(),
+        wednesday: z.string(),
+        thursday: z.string(),
+        friday: z.string(),
+        saturday: z.string(),
+        sunday: z.string(),
+      })
+      .partial()
+      .passthrough(),
   })
   .partial()
   .passthrough()

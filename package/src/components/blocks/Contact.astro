@@ -17,24 +17,6 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
 
-// interface Props extends ComponentProps<typeof Section> {
-//   heading?: string
-//   text?: string
-//   tagline?: string
-//   googleMaps?: string
-//   buttons?: ComponentProps<typeof Button>[]
-//   channels?: {
-//     icon?: string
-//     title?: string
-//     text?: string
-//     href?: string
-//   }[]
-//   socials?: {
-//     icon: string
-//     href: string
-//   }[]
-// }
-
 const {
   heading,
   text,
@@ -61,36 +43,72 @@ const {
     <Row>
       {buttons?.map((button) => <Button {...button} />)}
     </Row>
-
-    <Column>
-      {
-        channels?.map((channel) => (
-          <Row>
-            <Button
-              href={channel.href}
-              icon={channel.icon}
-            />
-            <Column compact>
-              <Text
-                text={channel.title}
-                contrast
-              />
-              <Text text={channel.text} />
-            </Column>
-          </Row>
-        ))
-      }
+    <Column compact>
+      <Row>
+        <Button
+          size="lg"
+          icon="phone"
+          href={`tel:${channels?.phone}`}
+        />
+        <Column compact>
+          <Text
+            text={'Telefoon'}
+            contrast
+          />
+          <Text
+            style={{ marginTop: 'var(--space-1)' }}
+            text={channels?.phone}
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Button
+          size="lg"
+          icon="mail"
+          href={`tel:${channels?.email}`}
+        />
+        <Column compact>
+          <Text
+            text={'Email'}
+            contrast
+          />
+          <Text
+            style={{ marginTop: 'var(--space-1)' }}
+            text={channels?.email}
+          />
+        </Column>
+      </Row>
+      <Row>
+        <Button
+          size="lg"
+          icon="pin"
+          href={`tel:${channels?.address}`}
+        />
+        <Column compact>
+          <Text
+            text={'Adres'}
+            contrast
+          />
+          <Text
+            style={{ marginTop: 'var(--space-1)' }}
+            text={channels?.address}
+          />
+        </Column>
+      </Row>
     </Column>
 
-    <Row>
-      {
-        socials?.map((social) => (
-          <Button
-            href={social.href}
-            icon={social.icon}
-          />
-        ))
-      }
+    <Row
+      compact
+      size="sm"
+    >
+      <Button
+        href={socials?.facebook}
+        icon="brand-facebook"
+      />
+      <Button
+        href={socials?.instagram}
+        icon="brand-instagram"
+      />
     </Row>
 
     <Form>

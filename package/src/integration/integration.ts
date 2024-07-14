@@ -18,6 +18,12 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
             entrypoint: 'fulldev-blocks/404.astro',
           })
 
+        !pages['/src/pages/contact.astro'] &&
+          injectRoute({
+            pattern: '/contact',
+            entrypoint: 'fulldev-blocks/contact.astro',
+          })
+
         !pages['/src/pages/[...page].astro'] &&
           injectRoute({
             pattern: '/[...page]',

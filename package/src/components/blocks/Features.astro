@@ -33,7 +33,7 @@ const { tagline, heading, text, buttons, image, cards, ...rest } = Astro.props
   </Spread>
   <Split>
     {
-      cards?.map(({ icon, heading, text }) => (
+      cards?.filter(Boolean).map(({ icon, heading, text }) => (
         <Card frame="none">
           <Icon name={icon} />
           <Heading

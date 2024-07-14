@@ -16,17 +16,26 @@ const {
   footer = (await getEntry('blocks', 'footer'))?.data,
   ...rest
 } = Astro.props
+
+const settings = (await getEntry('blocks', 'settings'))?.data
 ---
 
 <FullLayout
   lang="nl"
   {...rest}
 >
-  <Header {...header} />
+  <Header
+    {...settings}
+    {...header}
+  />
   <Banner {...header} />
   <Main>
     <slot />
     <Cta {...cta} />
   </Main>
-  <Footer {...footer} />
+  <Footer
+    text={settings.description}
+    {...settings}
+    {...footer}
+  />
 </FullLayout>

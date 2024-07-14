@@ -5,7 +5,7 @@ plans:
   - heading: Free
     text: A free plan to help you get started
     price: $0
-    features:
+    list:
       - text: 1 GB of space
       - text: Support at $0
       - text: 1 email
@@ -16,7 +16,7 @@ plans:
   - heading: Premium
     text: Suitable for small to medium businesses with a larger team
     price: $29
-    features:
+    list:
       - text: 10 GB of space
       - text: Support at $29
       - text: 10 email
@@ -27,7 +27,7 @@ plans:
   - heading: Enterprise
     text: Our best plan for large companies with larger teams
     price: $99
-    features:
+    list:
       - text: 100 GB of space
       - text: Support at $99
       - text: 100 email

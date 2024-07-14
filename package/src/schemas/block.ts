@@ -13,6 +13,7 @@ export const block = base
     categories: pathSchema('categories').array(),
     products: pathSchema('products').array(),
     posts: pathSchema('posts').array(),
+    reviews: pathSchema('reviews').array(),
   })
   .partial()
   .passthrough()
