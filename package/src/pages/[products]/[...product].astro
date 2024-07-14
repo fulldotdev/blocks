@@ -1,20 +1,19 @@
 ---
-import { getEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import { Prose, Section } from 'fulldev-ui'
 import Blocks from '../../components/Blocks.astro'
 import Hero from '../../components/blocks/Hero.astro'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
-  const page = await getEntry('pages', 'products')
-  return [
-    {
-      params: {
-        products: 'producten',
-      },
-      props: page,
+  const pages = await getCollection('products')
+  return pages.map((page) => ({
+    params: {
+      products: 'producten',
+      product: page.slug,
     },
-  ]
+    props: page,
+  }))
 }
 
 const { data, render } = Astro.props

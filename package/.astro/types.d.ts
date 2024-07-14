@@ -194,11 +194,6 @@ declare module 'astro:content' {
 
 	type DataEntryMap = {
 		"blocks": {
-"Banner": {
-	id: "Banner";
-  collection: "blocks";
-  data: InferEntrySchema<"blocks">
-};
 "Categories": {
 	id: "Categories";
   collection: "blocks";
@@ -219,23 +214,8 @@ declare module 'astro:content' {
   collection: "blocks";
   data: InferEntrySchema<"blocks">
 };
-"Cta": {
-	id: "Cta";
-  collection: "blocks";
-  data: InferEntrySchema<"blocks">
-};
 "Features": {
 	id: "Features";
-  collection: "blocks";
-  data: InferEntrySchema<"blocks">
-};
-"Footer": {
-	id: "Footer";
-  collection: "blocks";
-  data: InferEntrySchema<"blocks">
-};
-"Header": {
-	id: "Header";
   collection: "blocks";
   data: InferEntrySchema<"blocks">
 };
@@ -276,6 +256,21 @@ declare module 'astro:content' {
 };
 "Stats": {
 	id: "Stats";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"cta": {
+	id: "cta";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"footer": {
+	id: "footer";
+  collection: "blocks";
+  data: InferEntrySchema<"blocks">
+};
+"header": {
+	id: "header";
   collection: "blocks";
   data: InferEntrySchema<"blocks">
 };

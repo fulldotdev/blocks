@@ -27,7 +27,7 @@
     "./[posts]/[...post].astro": "./src/pages/[posts]/[...post].astro",
     "./[posts]/index.astro": "./src/pages/[posts]/index.astro",
     "./[products]/[...product].astro": "./src/pages/[products]/[...product].astro",
-    "./[products]/index.astro": "./src/pages/[posts]/index.astro"
+    "./[products]/index.astro": "./src/pages/[products]/index.astro"
   },
   "devDependencies": {
     "@astrojs/check": "^0.5.10",

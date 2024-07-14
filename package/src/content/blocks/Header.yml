@@ -2,10 +2,12 @@ logo: /logo-placeholder.svg
 links:
   - text: Home
     href: /
-  - text: Aanbod
-    href: '#'
   - text: Blog
-    href: '#'
+    href: /blog
+  - text: Producten
+    href: /producten
+  - text: Categorieen
+    href: /categorieen
   - text: Over ons
     href: /over-ons
 buttons:

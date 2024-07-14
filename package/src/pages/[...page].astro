@@ -21,6 +21,8 @@ const { Content } = await render()
 
 <Layout {...data}>
   <Hero
+    heading={data.title}
+    text={data.description}
     {...data}
     {...data.hero}
   />

@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content'
 import { Prose, Section } from 'fulldev-ui'
 import Blocks from '../../components/Blocks.astro'
-import Hero from '../../components/blocks/Hero.astro'
+import Intro from '../../components/blocks/Intro.astro'
 import Layout from '../../layouts/Layout.astro'
 
 export async function getStaticPaths() {
@@ -22,7 +22,12 @@ const { Content } = await render()
 ---
 
 <Layout {...data}>
-  <Hero {...data} />
+  <Intro
+    heading={data.title}
+    text={data.description}
+    {...data}
+    {...data.hero}
+  />
   <Section>
     <Prose>
       <Content />
