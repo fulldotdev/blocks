@@ -5,11 +5,10 @@ import {
   Column,
   Heading,
   Image,
+  Input,
   List,
-  ListItem,
-  Rating,
+  Row,
   Section,
-  Spread,
   Text,
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
@@ -18,11 +17,14 @@ type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const {
   heading,
+  title,
   list,
   price,
   image,
+  images,
   rating,
   buttons,
+  text,
   subheading,
   description,
   ...rest
@@ -33,30 +35,33 @@ const {
   structure="split"
   {...rest}
 >
-  <Image src={image} />
+  <Image src={image || images?.[0]} />
   <Column>
-    <Spread>
-      <Heading html={heading} />
-      <Heading html={price?.toString()} />
-    </Spread>
-    <Rating value={rating} />
-    {
-      buttons?.map(({ href, text }) => (
-        <Button
-          href={href}
-          html={text}
-        />
-      ))
-    }
-    <Column>
-      <Text
-        html={subheading}
-        contrast={true}
+    <Heading
+      level={1}
+      html={heading || title}
+    />
+    <Text html={text || description} />
+    <List
+      items={[
+        'Lorem ipsum dolor sit amet',
+        'Lorem ipsum dolor sit amet',
+        'Lorem ipsum dolor sit amet',
+      ]}
+    />
+    <Heading
+      as="p"
+      level={3}
+      html={price?.toString()}
+    />
+    <Row>
+      <Input
+        value={1}
+        name={'quantity'}
+        style={{ width: 'var(--space-6)' }}
+        type="number"
       />
-      <Text html={description} />
-      <List>
-        {list?.map((listitem) => <ListItem html={listitem} />)}
-      </List>
-    </Column>
+      <Button html={'In winkelwagen'} />
+    </Row>
   </Column>
 </Section>
