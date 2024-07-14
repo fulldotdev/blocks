@@ -20,15 +20,15 @@ collections_config:
       - visual
 
 _inputs:
-  head:
+  meta:
     label: SEO
-  head.title:
+  meta.title:
     label: Pagina title
     comment: 50 tot 60 karakters
-  head.description:
+  meta.description:
     label: Pagina beschrijving
     comment: 50 tot 120 karakters
-  head.image:
+  meta.image:
     label: Pagina afbeelding
     comment: Zichtbaar wanneer de pagina wordt gedeeld op social media
   src:

@@ -1,6 +1,5 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import { getEntry } from 'astro:content'
 import {
   Badge,
   Button,
@@ -32,8 +31,6 @@ const {
   input,
   ...rest
 } = Astro.props
-
-const globalCta = await getEntry('blocks', 'Cta')
 ---
 
 <Section

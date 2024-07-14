@@ -24,9 +24,9 @@ export const collections = {
     type: 'data',
     schema: card,
   }),
-  cards: defineCollection({
+  globals: defineCollection({
     type: 'data',
-    schema: card,
+    schema: block,
   }),
   blocks: defineCollection({
     type: 'data',

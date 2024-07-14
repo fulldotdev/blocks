@@ -10,14 +10,14 @@ import { type Page } from '../schemas/page'
 type Props = Page
 
 const {
-  header = (await getEntry('blocks', 'header'))?.data,
-  banner = (await getEntry('blocks', 'banner'))?.data,
-  cta = (await getEntry('blocks', 'cta'))?.data,
-  footer = (await getEntry('blocks', 'footer'))?.data,
+  header = (await getEntry('globals', 'header'))?.data,
+  banner = (await getEntry('globals', 'banner'))?.data,
+  cta = (await getEntry('globals', 'cta'))?.data,
+  footer = (await getEntry('globals', 'footer'))?.data,
   ...rest
 } = Astro.props
 
-const settings = (await getEntry('blocks', 'settings'))?.data
+const settings = (await getEntry('globals', 'settings'))?.data
 ---
 
 <FullLayout

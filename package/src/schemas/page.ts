@@ -5,7 +5,7 @@ import { pathSchema } from './utils'
 
 export const page = base
   .extend({
-    head: z
+    meta: z
       .object({
         title: z.string(),
         description: z.string(),

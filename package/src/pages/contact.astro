@@ -8,7 +8,7 @@ import { default as ContactBlock } from '../components/blocks/Contact.astro'
 const { data, render } = await getEntry('pages', 'contact')
 const { Content } = await render()
 
-const settings = (await getEntry('blocks', 'settings'))?.data
+const settings = (await getEntry('globals', 'settings'))?.data
 ---
 
 <Layout {...data}>
