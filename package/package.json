@@ -1,6 +1,6 @@
 {
   "name": "fulldev-blocks",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "A block library compatible with fulldev-ui",
   "homepage": "https://github.com/fulldotdev/blocks",
   "author": "Fulldev <contact@full.dev> (https://full.dev)",
@@ -38,6 +38,9 @@
   },
   "dependencies": {
     "@rollup/plugin-yaml": "^4.1.2",
+    "deepmerge": "^4.3.1",
+    "fs-extra": "^11.2.0",
+    "js-yaml": "^4.1.0",
     "vite-plugin-virtual": "^0.3.0"
   }
 }
