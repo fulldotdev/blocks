@@ -1,4 +1,7 @@
 import type { AstroIntegration } from 'astro'
+import merge from 'deepmerge'
+// @ts-ignore
+import fs from 'fs'
 
 export default function fulldevBlocksIntegration(): AstroIntegration {
   return {
@@ -11,7 +14,6 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
         injectRoute,
       }) => {
         const pages = import.meta.glob('/src/pages/**/*.astro')
-
         !pages['/src/pages/404.astro'] &&
           injectRoute({
             pattern: '/404',
@@ -65,6 +67,24 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
             pattern: '/[products]',
             entrypoint: 'fulldev-blocks/[products]/index.astro',
           })
+      },
+      'astro:server:setup': async ({}) => {
+        const cloudcannonLib = import.meta.glob('../../cloudcannon.config.ts')[
+          '../../cloudcannon.config.ts'
+        ] as any
+        const cloudcannonUser = import.meta.glob('/cloudcannon.config.ts')[
+          '/cloudcannon.config.ts'
+        ] as any
+
+        const merged = merge(
+          cloudcannonLib ? (await cloudcannonLib()).default : {},
+          cloudcannonUser ? (await cloudcannonUser()).default : {}
+        )
+
+        fs.writeFileSync(
+          './.cloudcannon/cloudcannon.config.json',
+          JSON.stringify(merged)
+        )
       },
     },
   }
