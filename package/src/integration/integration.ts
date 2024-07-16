@@ -1,4 +1,16 @@
 import type { AstroIntegration } from 'astro'
+import { generateRadixColors } from '../colors/generateRadixColors'
+
+const config: {
+  colors: Parameters<typeof generateRadixColors>[0]
+} = {
+  colors: {
+    appearance: 'light',
+    accent: '#000',
+    gray: '#000',
+    background: '#fff',
+  },
+}
 
 export default function fulldevBlocksIntegration(): AstroIntegration {
   return {

@@ -37,7 +37,10 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
     "@rollup/plugin-yaml": "^4.1.2",
+    "bezier-easing": "^2.1.0",
+    "colorjs.io": "^0.5.2",
     "vite-plugin-virtual": "^0.3.0"
   }
 }
