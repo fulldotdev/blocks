@@ -1,0 +1,13 @@
+spec:
+  label: Statistieken
+  description: Een opsomming van statistieken
+  icon: query_stats
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  stats:
+    - heading:
+      text:

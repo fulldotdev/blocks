@@ -1,0 +1,19 @@
+spec:
+  label: Hero
+  description: Grote eerste sectie op de pagina
+  icon: view_stream
+  structures:
+    - blocks
+
+blueprint:
+  heading: Hello world
+  text:
+  buttons:
+    - text:
+      href:
+  image:
+  structure:
+  align:
+  frame:
+  variant:
+  position:

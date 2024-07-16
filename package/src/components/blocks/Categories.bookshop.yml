@@ -1,0 +1,15 @@
+spec:
+  label: Categories
+  description: Een overzicht van product categorieën
+  icon: category
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  categories:
+    - heading:
+      text:
+      href:
+      image:

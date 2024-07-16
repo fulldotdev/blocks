@@ -1,0 +1,11 @@
+spec:
+  label: Banner
+  description: Een balk aan de bovenkant van de pagina
+  icon: horizontal_rule
+  structures:
+    - banners
+
+blueprint:
+  text:
+  href:
+  icon: arrow-right

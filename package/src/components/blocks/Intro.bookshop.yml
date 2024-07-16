@@ -1,0 +1,13 @@
+spec:
+  label: Intro
+  description: Kleine eerste sectie op de pagina
+  icon: view_stream
+  structures:
+    - blocks
+
+blueprint:
+  heading: Hello world
+  text:
+  buttons:
+    - text:
+      href:

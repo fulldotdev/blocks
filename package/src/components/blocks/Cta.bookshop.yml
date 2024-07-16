@@ -1,0 +1,16 @@
+spec:
+  label: Call to Action
+  description: Korte tekst met knoppen
+  icon: radio_button_checked
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  buttons:
+    - text:
+      href:
+  input:
+    placeholder:
+    button:

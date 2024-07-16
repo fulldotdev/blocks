@@ -1,0 +1,17 @@
+spec:
+  label: Voordelen
+  description: Een opsomming van voordelen
+  icon: playlist_add_check
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  buttons:
+    - text:
+      href:
+  cards:
+    - icon:
+      heading:
+      text:

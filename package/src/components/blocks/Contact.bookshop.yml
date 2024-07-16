@@ -1,0 +1,13 @@
+spec:
+  label: Contact
+  description: Contact formulier en gegevens
+  icon: phone
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  buttons:
+    - text:
+      href:

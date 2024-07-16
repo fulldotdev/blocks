@@ -1,0 +1,15 @@
+spec:
+  label: Producten
+  description: Een overzicht van producten
+  icon: view_carousel
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  products:
+    - heading:
+      description:
+      price:
+      image:

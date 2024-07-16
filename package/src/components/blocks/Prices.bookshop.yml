@@ -1,0 +1,20 @@
+spec:
+  label: Prijzen
+  description: Een overzicht van prijzen
+  icon: view_carousel
+  structures:
+    - blocks
+
+blueprint:
+  tagline:
+  heading:
+  text:
+  plans:
+    - heading:
+      text:
+      price:
+      features:
+        - text:
+      buttons:
+        - text:
+          href:

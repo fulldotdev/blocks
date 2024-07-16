@@ -1,0 +1,15 @@
+spec:
+  label: Collega's
+  description: Een overzicht van collega's
+  icon: recent_actors
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  text:
+  employees:
+    - name:
+      tagline:
+      text:
+      image:

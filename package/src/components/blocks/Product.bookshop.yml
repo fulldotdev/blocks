@@ -1,0 +1,18 @@
+spec:
+  label: Product
+  description: Een sectie met 1 product
+  icon: shopping_cart
+  structures:
+    - blocks
+
+blueprint:
+  heading:
+  price:
+  rating:
+  image:
+  buttons:
+    - text:
+      href:
+  paragraphs:
+    - title:
+      text:
