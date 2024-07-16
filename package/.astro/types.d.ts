@@ -196,6 +196,15 @@ declare module 'astro:content' {
   data: InferEntrySchema<"products">
 } & { render(): Render[".md"] };
 };
+"reviews": {
+"review.md": {
+	id: "review.md";
+  slug: "review";
+  body: string;
+  collection: "reviews";
+  data: InferEntrySchema<"reviews">
+} & { render(): Render[".md"] };
+};
 
 	};
 
@@ -204,94 +213,111 @@ declare module 'astro:content' {
 "Categories": {
 	id: "Categories";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Colleagues": {
 	id: "Colleagues";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Contact": {
 	id: "Contact";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Content": {
 	id: "Content";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Features": {
 	id: "Features";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Hero": {
 	id: "Hero";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Logos": {
 	id: "Logos";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Posts": {
 	id: "Posts";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Prices": {
 	id: "Prices";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Product": {
 	id: "Product";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Products": {
 	id: "Products";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Reviews": {
 	id: "Reviews";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "Stats": {
 	id: "Stats";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "cta": {
 	id: "cta";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "footer": {
 	id: "footer";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "header": {
 	id: "header";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 "settings": {
 	id: "settings";
   collection: "blocks";
-  data: InferEntrySchema<"blocks">
+  data: any
 };
 };
-"cards": Record<string, {
-  id: string;
-  collection: "cards";
-  data: InferEntrySchema<"cards">;
-}>;
+"globals": {
+"cta": {
+	id: "cta";
+  collection: "globals";
+  data: InferEntrySchema<"globals">
+};
+"footer": {
+	id: "footer";
+  collection: "globals";
+  data: InferEntrySchema<"globals">
+};
+"header": {
+	id: "header";
+  collection: "globals";
+  data: InferEntrySchema<"globals">
+};
+"settings": {
+	id: "settings";
+  collection: "globals";
+  data: InferEntrySchema<"globals">
+};
+};
 
 	};
 
