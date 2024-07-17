@@ -15,35 +15,35 @@ collections_config:
       - content
     schemas:
       '404':
-        path: src/schemas/404.md
+        path: .cloudcannon/schemas/404.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       default:
-        path: src/schemas/page.md
+        path: .cloudcannon/schemas/page.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       page:
-        path: src/schemas/page.md
+        path: .cloudcannon/schemas/page.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       contact:
-        path: src/schemas/contact.md
+        path: .cloudcannon/schemas/contact.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       post:
-        path: src/schemas/post.md
+        path: .cloudcannon/schemas/post.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       policy:
-        path: src/schemas/policy.md
+        path: .cloudcannon/schemas/policy.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       overview:
-        path: src/schemas/overview.md
+        path: .cloudcannon/schemas/overview.md
         hide_extra_inputs: true
         remove_empty_inputs: true
       entry:
-        path: src/schemas/entry.md
+        path: .cloudcannon/schemas/entry.md
         hide_extra_inputs: true
         remove_empty_inputs: true
   products:
@@ -57,7 +57,7 @@ collections_config:
       - visual
     schemas:
       default:
-        path: src/schemas/product.md
+        path: .cloudcannon/schemas/product.md
         hide_extra_inputs: true
         remove_empty_inputs: true
   categories:
@@ -71,7 +71,7 @@ collections_config:
       - visual
     schemas:
       default:
-        path: src/schemas/category.md
+        path: .cloudcannon/schemas/category.md
         hide_extra_inputs: true
         remove_empty_inputs: true
   reviews:
@@ -84,7 +84,7 @@ collections_config:
     disable_add_folder: true
     schemas:
       default:
-        path: src/schemas/review.md
+        path: .cloudcannon/schemas/review.md
         hide_extra_inputs: true
         remove_empty_inputs: true
   globals:

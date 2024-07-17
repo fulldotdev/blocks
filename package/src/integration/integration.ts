@@ -160,6 +160,28 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
         })
 
         // ----------------------
+        // Process cloudcannon schema files
+        // ----------------------
+        const libSchemas = import.meta.glob('../schemas/cloudcannon/**/*.md', {
+          as: 'raw',
+          eager: true,
+        })
+        const userSchemas = import.meta.glob('/src/schemas/**/*.md', {
+          as: 'raw',
+          eager: true,
+        })
+
+        Object.entries(libSchemas).forEach(([key, value]) => {
+          const filename = key.replace('../schemas/cloudcannon/', '')
+          fs.writeFileSync(`./.cloudcannon/schemas/${filename}`, value)
+        })
+
+        Object.entries(userSchemas).forEach(([key, value]) => {
+          const filename = key.replace('/src/schemas/', '')
+          fs.writeFileSync(`./.cloudcannon/schemas/${filename}`, value)
+        })
+
+        // ----------------------
         // Process bookshop previews
         // ----------------------
 
