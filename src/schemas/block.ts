@@ -12,6 +12,7 @@ export const block = base
     pages: pathSchema('pages').array(),
     categories: pathSchema('categories').array(),
     products: pathSchema('products').array(),
+    product: pathSchema('products'),
     posts: pathSchema('posts').array(),
     reviews: pathSchema('reviews').array(),
   })

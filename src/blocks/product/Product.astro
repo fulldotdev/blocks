@@ -28,6 +28,7 @@ const {
   subheading,
   button,
   description,
+  form,
   ...rest
 } = Astro.props
 ---
@@ -64,7 +65,7 @@ const {
       />
       <Button
         color="brand"
-        html={'In winkelwagen'}
+        html={form?.submit}
       />
     </Row>
     <Button

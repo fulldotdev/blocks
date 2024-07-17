@@ -1,5 +1,5 @@
 ---
-import { getEntries } from 'astro:content'
+import { getEntries, getEntry } from 'astro:content'
 import { mapKeys } from 'radash'
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   [key: string | number | symbol]: any
 }
 
-const { _bookshop_name, ...rest } = Astro.props
+let { _bookshop_name, product, ...rest } = Astro.props
 
 const packageBlocks = import.meta.glob('../blocks/**/*.astro')
 const userBlocks = import.meta.glob('/src/blocks/**/*.astro')
@@ -24,6 +24,8 @@ const found = components[_bookshop_name as any] as any
 const functioncomp = await found()
 const Component = functioncomp.default
 
+const productData = product && (await getEntry(product))?.data
+
 rest.pages = rest.pages && (await getEntries(rest.pages))
 rest.posts = rest.posts && (await getEntries(rest.posts))
 rest.products = rest.products && (await getEntries(rest.products))
@@ -31,4 +33,11 @@ rest.categories = rest.categories && (await getEntries(rest.categories))
 rest.reviews = rest.reviews && (await getEntries(rest.reviews))
 ---
 
-{Component && <Component {...rest} />}
+{
+  Component && (
+    <Component
+      {...productData}
+      {...rest}
+    />
+  )
+}
