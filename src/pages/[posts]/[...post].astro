@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content'
+import { Prose, Section } from 'fulldev-ui'
+import Intro from '../../blocks/intro/Intro.astro'
+import Blocks from '../../components/Blocks.astro'
+import Layout from '../../layouts/Layout.astro'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('posts')
+  return pages.map((page) => ({
+    params: {
+      posts: 'blog',
+      post: page.slug,
+    },
+    props: page,
+  }))
+}
+
+const { data, render } = Astro.props
+const { Content } = await render()
+---
+
+<Layout {...data}>
+  <Intro
+    heading={data.title}
+    text={data.description}
+    {...data}
+    {...data.hero}
+  />
+  <Section>
+    <Prose>
+      <Content />
+    </Prose>
+  </Section>
+  <Blocks blocks={data.blocks} />
+  <slot />
+</Layout>

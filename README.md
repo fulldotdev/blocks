@@ -1,3 +1,3 @@
 # Fulldev Blocks
 
-This repo is highly experimental ⚠️
+This package is highly experimental ⚠️

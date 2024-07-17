@@ -1,0 +1,73 @@
+---
+import { getCollection, getEntry } from 'astro:content'
+import { Card, Grid, Heading, Image, Prose, Section, Spread } from 'fulldev-ui'
+import Intro from '../../blocks/intro/Intro.astro'
+import Products from '../../blocks/products/Products.astro'
+import Blocks from '../../components/Blocks.astro'
+import Layout from '../../layouts/Layout.astro'
+
+export async function getStaticPaths() {
+  const page = await getEntry('pages', 'producten')
+  return page
+    ? [
+        {
+          params: {
+            products: 'producten',
+          },
+          props: page,
+        },
+      ]
+    : []
+}
+
+const { data, render } = Astro.props
+const { Content } = await render()
+
+const products = await getCollection('products')
+---
+
+<Layout {...data}>
+  <Intro
+    heading={data.title}
+    text={data.description}
+    {...data}
+    {...data.hero}
+  />
+  <Products
+    structure="grid"
+    products={products}
+  />
+  <!-- <Section>
+    <Grid>
+      {
+        products?.map(({ slug, data: { title, image, images, price } }) => (
+          <Card
+            href={`/producten/${slug}/`}
+            frame="none"
+          >
+            <Image src={image || images?.[0]} />
+            <Spread>
+              <Heading
+                level={4}
+                as="h3"
+                html={title}
+              />
+              <Heading
+                level={4}
+                as="p"
+                html={price?.toString()}
+              />
+            </Spread>
+          </Card>
+        ))
+      }
+    </Grid>
+  </Section> -->
+  <Section>
+    <Prose>
+      <Content />
+    </Prose>
+  </Section>
+  <Blocks blocks={data.blocks} />
+  <slot />
+</Layout>

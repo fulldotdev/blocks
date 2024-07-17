@@ -1,0 +1,24 @@
+---
+import { getEntry } from 'astro:content'
+import { Layout } from 'fulldev-blocks'
+import { Prose, Section } from 'fulldev-ui'
+import Hero from '../blocks/hero/Hero.astro'
+import Blocks from '../components/Blocks.astro'
+
+const { data, render } = await getEntry('pages', '404')
+const { Content } = await render()
+---
+
+<Layout {...data}>
+  <Hero
+    {...data}
+    {...data.hero}
+  />
+  <Section style={{ '--screen': '768px' }}>
+    <Prose>
+      <Content />
+    </Prose>
+  </Section>
+  <Blocks blocks={data.blocks} />
+  <slot />
+</Layout>

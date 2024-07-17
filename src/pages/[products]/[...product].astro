@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content'
+import { Heading, Prose, Section } from 'fulldev-ui'
+import Product from '../../blocks/product/Product.astro'
+import Products from '../../blocks/products/Products.astro'
+import Blocks from '../../components/Blocks.astro'
+import Layout from '../../layouts/Layout.astro'
+
+export async function getStaticPaths() {
+  const pages = await getCollection('products')
+  return pages.map((page) => ({
+    params: {
+      products: 'producten',
+      product: page.slug,
+    },
+    props: page,
+  }))
+}
+
+const { data, render } = Astro.props
+const { Content } = await render()
+
+const products = await getCollection('products', (product) =>
+  product.data.categories?.some((c) => data.categories?.includes(c))
+)
+---
+
+<Layout {...data}>
+  <Product {...data} />
+  <Section>
+    <Prose>
+      <Heading>Product omschrijving</Heading>
+      <Content />
+    </Prose>
+  </Section>
+  <Products
+    heading="Vergelijkbare producten"
+    {products}
+  />
+  <Blocks blocks={data.blocks} />
+  <slot />
+</Layout>

@@ -1,0 +1,41 @@
+---
+import { getEntry } from 'astro:content'
+import { Layout as FullLayout, Main } from 'fulldev-ui'
+import Banner from '../blocks/banner/Banner.astro'
+import Cta from '../blocks/cta/Cta.astro'
+import Footer from '../blocks/footer/Footer.astro'
+import Header from '../blocks/header/Header.astro'
+import { type Page } from '../schemas/page'
+
+type Props = Page
+
+const {
+  header = (await getEntry('globals', 'header'))?.data,
+  banner = (await getEntry('globals', 'banner'))?.data,
+  cta = (await getEntry('globals', 'cta'))?.data,
+  footer = (await getEntry('globals', 'footer'))?.data,
+  ...rest
+} = Astro.props
+
+const settings = (await getEntry('globals', 'settings'))?.data
+---
+
+<FullLayout
+  lang="nl"
+  {...rest}
+>
+  <Header
+    {...settings}
+    {...header}
+  />
+  <Banner {...header} />
+  <Main>
+    <slot />
+    <Cta {...cta} />
+  </Main>
+  <Footer
+    text={settings.description}
+    {...settings}
+    {...footer}
+  />
+</FullLayout>
