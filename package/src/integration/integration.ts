@@ -185,13 +185,15 @@ export default function fulldevBlocksIntegration(): AstroIntegration {
         Object.entries(libPreviews).forEach(([key, value]) => {
           const filename = key.replace('../components/blocks/', '')
           const absolutePath = getAbsolutePath(key)
-          fs.copyFileSync(absolutePath, `./.cloudcannon/components/${filename}`)
+          const fileContent = fs.readFileSync(absolutePath)
+          fs.writeFileSync(`./.cloudcannon/components/${filename}`, fileContent)
         })
 
         Object.entries(userPreviews).forEach(([key, value]) => {
           const filename = key.replace('/src/components/', '')
           const absolutePath = getAbsolutePath(key)
-          fs.copyFileSync(absolutePath, `./.cloudcannon/components/${filename}`)
+          const fileContent = fs.readFileSync(absolutePath)
+          fs.writeFileSync(`./.cloudcannon/components/${filename}`, fileContent)
         })
       },
     },
