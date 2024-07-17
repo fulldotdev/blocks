@@ -1,6 +1,6 @@
 {
   "name": "fulldev-blocks",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "A block library compatible with fulldev-ui",
   "homepage": "https://github.com/fulldotdev/blocks",
   "author": "Fulldev <contact@full.dev> (https://full.dev)",
@@ -34,13 +34,13 @@
     "@astrojs/check": "^0.5.10",
     "astro": "^4.11.5",
     "fulldev-ui": "^0.3.12",
-    "typescript": "^5.5.3",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
-    "prettier-plugin-svelte": "^3.2.3",
     "prettier-plugin-astro-organize-imports": "^0.4.7",
     "prettier-plugin-css-order": "^2.1.2",
-    "prettier-plugin-organize-imports": "^3.2.4"
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "prettier-plugin-svelte": "^3.2.3",
+    "typescript": "^5.5.3"
   },
   "dependencies": {
     "@rollup/plugin-yaml": "^4.1.2",
