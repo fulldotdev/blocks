@@ -1,6 +1,6 @@
 {
   "name": "fulldev-blocks",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "A block library compatible with fulldev-ui",
   "homepage": "https://github.com/fulldotdev/blocks",
   "author": "Fulldev <contact@full.dev> (https://full.dev)",
