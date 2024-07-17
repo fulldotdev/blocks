@@ -4,5 +4,7 @@ meta:
   description:
   image:
 
-intro:
+hero:
+
+blocks:
 ---

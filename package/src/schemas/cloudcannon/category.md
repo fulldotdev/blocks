@@ -2,6 +2,7 @@
 meta:
   title:
   description:
+  image:
 
 title:
 description:
