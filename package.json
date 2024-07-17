@@ -47,6 +47,7 @@
     "deepmerge": "^4.3.1",
     "fs-extra": "^11.2.0",
     "js-yaml": "^4.1.0",
+    "radash": "^12.1.0",
     "vite-plugin-virtual": "^0.3.0"
   }
 }

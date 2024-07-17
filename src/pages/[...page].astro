@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import { Prose, Section } from 'fulldev-ui'
-import Hero from '../blocks/hero/Hero.astro'
+import Block from '../components/Block.astro'
 import Blocks from '../components/Blocks.astro'
 import Layout from '../layouts/Layout.astro'
 
@@ -20,7 +20,8 @@ const { Content } = await render()
 ---
 
 <Layout {...data}>
-  <Hero
+  <Block
+    _bookshop_name="Hero"
     heading={data.title}
     text={data.description}
     {...data}

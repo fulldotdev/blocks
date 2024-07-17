@@ -1,8 +1,8 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
 import { Card, Grid, Heading, Image, Prose, Section, Spread } from 'fulldev-ui'
-import Intro from '../../blocks/intro/Intro.astro'
 import Products from '../../blocks/products/Products.astro'
+import Block from '../../components/Block.astro'
 import Blocks from '../../components/Blocks.astro'
 import Layout from '../../layouts/Layout.astro'
 
@@ -27,7 +27,8 @@ const products = await getCollection('products')
 ---
 
 <Layout {...data}>
-  <Intro
+  <Block
+    _bookshop_name="Intro"
     heading={data.title}
     text={data.description}
     {...data}
