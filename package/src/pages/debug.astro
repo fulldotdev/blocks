@@ -1,7 +1,7 @@
 ---
 import { getEntry } from 'astro:content'
-import { generateRadixColors } from '../colors/generateRadixColors'
 import Hero from '../components/blocks/Hero.astro'
+import { generateRadixColors } from '../integration/radix/generate'
 
 const { data } = await getEntry('pages', 'index')
 
@@ -11,7 +11,6 @@ const colors = generateRadixColors({
   gray: '#000',
   background: '#fff',
 })
-console.log(colors)
 ---
 
 <Hero />

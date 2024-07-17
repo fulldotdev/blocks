@@ -41,6 +41,7 @@
     "@rollup/plugin-yaml": "^4.1.2",
     "bezier-easing": "^2.1.0",
     "colorjs.io": "^0.5.2",
+    "deepmerge": "^4.3.1",
     "vite-plugin-virtual": "^0.3.0"
   }
 }

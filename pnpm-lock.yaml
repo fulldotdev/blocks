@@ -41,6 +41,9 @@ importers:
       colorjs.io:
         specifier: ^0.5.2
         version: 0.5.2
+      deepmerge:
+        specifier: ^4.3.1
+        version: 4.3.1
       vite-plugin-virtual:
         specifier: ^0.3.0
         version: 0.3.0(vite@5.3.3)
@@ -1667,6 +1670,11 @@ packages:
     dependencies:
       character-entities: 2.0.2
     dev: true
+
+  /deepmerge@4.3.1:
+    resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
+    engines: {node: '>=0.10.0'}
+    dev: false
 
   /dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}

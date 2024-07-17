@@ -1,9 +1,12 @@
 import type { AstroIntegration } from 'astro'
-import { generateRadixColors } from '../colors/generateRadixColors'
+import merge from 'deepmerge'
+import { generateRadixColors } from './radix/generate'
 
-const config: {
+interface Config {
   colors: Parameters<typeof generateRadixColors>[0]
-} = {
+}
+
+const defaultConfig: Config = {
   colors: {
     appearance: 'light',
     accent: '#000',
@@ -12,7 +15,10 @@ const config: {
   },
 }
 
-export default function fulldevBlocksIntegration(): AstroIntegration {
+export default function fulldevBlocksIntegration(
+  userConfig: Partial<Config> = {}
+): AstroIntegration {
+  const config = merge(defaultConfig, userConfig)
   return {
     name: '/integration',
     hooks: {
