@@ -9,11 +9,23 @@ import path from 'path'
 // @ts-ignore
 import { fileURLToPath } from 'url'
 
-export default function fulldevBlocksIntegration(): AstroIntegration {
+interface Config {
+  css?: string
+}
+
+export default function fulldevBlocksIntegration(
+  userConfig: Config
+): AstroIntegration {
   return {
     name: '/integration',
     hooks: {
-      'astro:config:setup': async ({ injectRoute }) => {
+      'astro:config:setup': async ({ injectRoute, injectScript }) => {
+        // ----------------------
+        // Inject css
+        // ----------------------
+        userConfig?.css &&
+          injectScript('page-ssr', `import "${userConfig?.css}";`)
+
         // ----------------------
         // Inject pages
         // ----------------------

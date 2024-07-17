@@ -35,7 +35,10 @@ const { tagline, heading, text, buttons, image, cards, ...rest } = Astro.props
     {
       cards?.filter(Boolean).map(({ icon, heading, text }) => (
         <Card frame="none">
-          <Icon name={icon} />
+          <Icon
+            color="brand"
+            name={icon}
+          />
           <Heading
             level={3}
             html={heading}

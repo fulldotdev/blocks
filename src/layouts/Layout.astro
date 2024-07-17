@@ -25,7 +25,7 @@ const settings = (await getEntry('globals', 'settings'))?.data
   {...rest}
 >
   <Header
-    {...settings}
+    {...header && settings}
     {...header}
   />
   <Banner {...header} />
@@ -34,8 +34,8 @@ const settings = (await getEntry('globals', 'settings'))?.data
     <Cta {...cta} />
   </Main>
   <Footer
-    text={settings.description}
-    {...settings}
+    text={footer && settings.description}
+    {...footer && settings}
     {...footer}
   />
 </FullLayout>

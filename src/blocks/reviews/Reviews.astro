@@ -20,8 +20,11 @@ const entries = reviews && (await getEntries(reviews))
   <Grid>
     {
       reviews?.map(({ slug, data: { rating, title, description } }) => (
-        <Card variant="outline">
-          <Rating value={rating} />
+        <Card variant="base">
+          <Rating
+            color="brand"
+            value={rating}
+          />
           <Heading
             level={3}
             html={title}

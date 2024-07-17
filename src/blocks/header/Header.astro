@@ -15,7 +15,10 @@ type Props<As extends HTMLTag = 'header'> = Block<As>
 const { logo, heading, links, buttons, href, ...rest } = Astro.props
 ---
 
-<FullHeader structure="spread">
+<FullHeader
+  structure="spread"
+  {...rest}
+>
   <Row
     style={{ textDecoration: 'none' }}
     as="a"

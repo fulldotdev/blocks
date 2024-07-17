@@ -25,13 +25,15 @@ const {
   buttons,
   channels,
   socials,
+  position,
+  image,
   ...rest
 } = Astro.props
 ---
 
 <Section
-  {...rest}
   structure="split"
+  {...rest}
 >
   <Column>
     <Tagline html={tagline} />
@@ -44,9 +46,10 @@ const {
       {buttons?.map((button) => <Button {...button} />)}
     </Row>
     <Column compact>
-      <Row>
+      <Row style={{ marginTop: 'var(--space-2)' }}>
         <Button
-          size="lg"
+          color="brand"
+          variant="soft"
           icon="phone"
           href={`tel:${channels?.phone}`}
         />
@@ -56,14 +59,15 @@ const {
             contrast
           />
           <Text
-            style={{ marginTop: 'var(--space-1)' }}
+            style={{ marginTop: '0' }}
             text={channels?.phone}
           />
         </Column>
       </Row>
-      <Row>
+      <Row style={{ marginTop: 'var(--space-2)' }}>
         <Button
-          size="lg"
+          color="brand"
+          variant="soft"
           icon="mail"
           href={`tel:${channels?.email}`}
         />
@@ -73,14 +77,15 @@ const {
             contrast
           />
           <Text
-            style={{ marginTop: 'var(--space-1)' }}
+            style={{ marginTop: '0' }}
             text={channels?.email}
           />
         </Column>
       </Row>
-      <Row>
+      <Row style={{ marginTop: 'var(--space-2)' }}>
         <Button
-          size="lg"
+          color="brand"
+          variant="soft"
           icon="pin"
           href={`tel:${channels?.address}`}
         />
@@ -90,26 +95,30 @@ const {
             contrast
           />
           <Text
-            style={{ marginTop: 'var(--space-1)' }}
+            style={{ marginTop: '0' }}
             text={channels?.address}
           />
         </Column>
       </Row>
     </Column>
 
-    <Row
-      compact
-      size="sm"
-    >
-      <Button
-        href={socials?.facebook}
-        icon="brand-facebook"
-      />
-      <Button
-        href={socials?.instagram}
-        icon="brand-instagram"
-      />
-    </Row>
+    {
+      socials && (
+        <Row
+          compact
+          size="sm"
+        >
+          <Button
+            href={socials?.facebook}
+            icon="brand-facebook"
+          />
+          <Button
+            href={socials?.instagram}
+            icon="brand-instagram"
+          />
+        </Row>
+      )
+    }
 
     <Form>
       <Input
@@ -138,7 +147,10 @@ const {
         id="Message"
         name="Message"
       />
-      <Button text="Send message" />
+      <Button
+        color="brand"
+        text="Send message"
+      />
     </Form>
   </Column>
 
@@ -151,5 +163,8 @@ const {
     loading="lazy"
     referrerpolicy="no-referrer-when-downgrade"
   ></iframe> -->
-  <Image src={'/placeholder.webp'} />
+  <Image
+    {position}
+    src={image}
+  />
 </Section>

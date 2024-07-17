@@ -26,6 +26,7 @@ const {
   buttons,
   text,
   subheading,
+  button,
   description,
   ...rest
 } = Astro.props
@@ -61,7 +62,14 @@ const {
         style={{ width: 'var(--space-6)' }}
         type="number"
       />
-      <Button html={'In winkelwagen'} />
+      <Button
+        color="brand"
+        html={'In winkelwagen'}
+      />
     </Row>
+    <Button
+      variant="soft"
+      {...button}
+    />
   </Column>
 </Section>
