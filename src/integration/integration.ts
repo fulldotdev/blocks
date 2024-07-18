@@ -11,14 +11,36 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { generateRadixColors } from './generate-colors'
 
+type Color = {
+  background: Parameters<typeof generateRadixColors>[0]['background']
+  base: Parameters<typeof generateRadixColors>[0]['gray']
+  brand: Parameters<typeof generateRadixColors>[0]['accent']
+}
+
 interface Config {
+  colors: {
+    theme: 'light' | 'dark'
+    light?: Color
+    dark?: Color
+  }
   css?: string
-  colors?: Parameters<typeof generateRadixColors>[0]
+}
+
+const defaultConfig: Config = {
+  colors: {
+    theme: 'light',
+    light: {
+      background: '#fff',
+      base: '#000',
+      brand: '#000',
+    },
+  },
 }
 
 export default function fulldevBlocksIntegration(
-  userConfig: Config
+  userConfig: Partial<Config> = {}
 ): AstroIntegration {
+  const config = merge(defaultConfig, userConfig)
   return {
     name: '/integration',
     hooks: {
@@ -30,31 +52,56 @@ export default function fulldevBlocksIntegration(
         // ----------------------
         // Inject css
         // ----------------------
-        userConfig?.css &&
-          injectScript('page-ssr', `import "${userConfig?.css}";`)
+        config?.css && injectScript('page-ssr', `import "${config?.css}";`)
 
-        if (userConfig?.colors) {
-          const generated = generateRadixColors(userConfig?.colors)
-          const base = generated.grayScale
+        const generateCss = (
+          defaultTheme: 'light' | 'dark',
+          theme: 'light' | 'dark',
+          color: Color
+        ) => {
+          const { background, base, brand } = color
+          const generated = generateRadixColors({
+            background,
+            appearance: theme,
+            gray: base,
+            accent: brand,
+          })
+
+          const baseString = generated.grayScale
             .map((color, i) => `--base-${i + 1}: ${color};`)
             .join('\n')
-          const brand = generated.accentScale.map(
-            (color, i) => `--brand-${i + 1}: ${color};`
-          )
+          const brandString = generated.accentScale
+            .map((color, i) => `--brand-${i + 1}: ${color};`)
+            .join('\n')
           const accentContrast = `--accent-contrast: ${generated.accentContrast};`
-          const css = `:root {\n${base}\n${brand.join('\n')}\n${accentContrast}
+          const css = `${defaultTheme == theme ? ':root, ' : ''} .theme-${theme}  {
+  ${baseString}
+  ${brandString}
+  ${accentContrast}
 }`
-
-          updateConfig({
-            vite: {
-              plugins: [
-                virtual({
-                  'virtual:colors.css': css,
-                }) as any,
-              ],
-            },
-          })
+          return css
         }
+
+        const lightCss =
+          (config.colors.light &&
+            generateCss(config.colors.theme, 'light', config.colors.light)) ||
+          ''
+        const darkCss =
+          (config.colors.dark &&
+            generateCss(config.colors.theme, 'dark', config.colors.dark)) ||
+          ''
+
+        const css = lightCss + '\n' + darkCss
+
+        updateConfig({
+          vite: {
+            plugins: [
+              virtual({
+                'virtual:colors.css': css,
+              }) as any,
+            ],
+          },
+        })
 
         injectScript('page-ssr', `import "virtual:colors.css";`)
 

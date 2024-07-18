@@ -126,6 +126,12 @@ _inputs:
   href:
     type: url
     label: Link
+  options:
+    type: array
+    label: Opties
+  variations:
+    type: array
+    label: Variaties
   meta.title:
     type: auto
     label: Titel
