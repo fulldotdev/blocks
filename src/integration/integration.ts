@@ -9,7 +9,7 @@ import fs from 'fs'
 import path from 'path'
 // @ts-ignore
 import { fileURLToPath } from 'url'
-import { generateRadixColors } from './radix/generate'
+import { generateRadixColors } from './generate-colors'
 
 interface Config {
   css?: string
