@@ -1,5 +1,6 @@
 import type { AstroIntegration } from 'astro'
 import merge from 'deepmerge'
+import virtual from 'vite-plugin-virtual'
 // @ts-ignore
 import yaml from 'js-yaml'
 // @ts-ignore
@@ -8,9 +9,11 @@ import fs from 'fs'
 import path from 'path'
 // @ts-ignore
 import { fileURLToPath } from 'url'
+import { generateRadixColors } from './radix/generate'
 
 interface Config {
   css?: string
+  colors?: Parameters<typeof generateRadixColors>[0]
 }
 
 export default function fulldevBlocksIntegration(
@@ -19,12 +22,41 @@ export default function fulldevBlocksIntegration(
   return {
     name: '/integration',
     hooks: {
-      'astro:config:setup': async ({ injectRoute, injectScript }) => {
+      'astro:config:setup': async ({
+        injectRoute,
+        injectScript,
+        updateConfig,
+      }) => {
         // ----------------------
         // Inject css
         // ----------------------
         userConfig?.css &&
           injectScript('page-ssr', `import "${userConfig?.css}";`)
+
+        if (userConfig?.colors) {
+          const generated = generateRadixColors(userConfig?.colors)
+          const base = generated.grayScale
+            .map((color, i) => `--base-${i + 1}: ${color};`)
+            .join('\n')
+          const brand = generated.accentScale.map(
+            (color, i) => `--brand-${i + 1}: ${color};`
+          )
+          const accentContrast = `--accent-contrast: ${generated.accentContrast};`
+          const css = `:root {\n${base}\n${brand.join('\n')}\n${accentContrast}
+}`
+
+          updateConfig({
+            vite: {
+              plugins: [
+                virtual({
+                  'virtual:colors.css': css,
+                }) as any,
+              ],
+            },
+          })
+        }
+
+        injectScript('page-ssr', `import "virtual:colors.css";`)
 
         // ----------------------
         // Inject pages

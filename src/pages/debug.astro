@@ -1,3 +1,13 @@
 ---
+import { getEntry } from 'astro:content'
+import { generateRadixColors } from '../colors/generateRadixColors'
 
+const { data } = await getEntry('pages', 'index')
+
+const colors = generateRadixColors({
+  appearance: 'light',
+  accent: '#000',
+  gray: '#000',
+  background: '#fff',
+})
 ---
