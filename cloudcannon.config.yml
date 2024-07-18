@@ -1,8 +1,6 @@
 paths:
   uploads: public
   static: public
-  uploads_filename:
-  collections:
 collections_config:
   pages:
     path: src/content/pages
@@ -157,7 +155,6 @@ _inputs:
       height: 1920
   images:
     type: array
-    cascade: true
   images[*]:
     type: image
     options:
@@ -180,14 +177,11 @@ _inputs:
       max: 5
       step: 0.1
     label: Rating
-    cascade: true
   draft:
     type: switch
     label: Concept
-    cascade: true
   price:
     type: number
-    cascade: true
 _structures:
   blocks:
     remove_empty_inputs: true

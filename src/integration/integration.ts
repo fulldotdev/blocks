@@ -132,6 +132,8 @@ export default function fulldevBlocksIntegration(
         const mergedYaml = yaml.dump(mergedData)
         fs.writeFileSync('./.cloudcannon/cloudcannon.config.yml', mergedYaml)
 
+        console.log([libConfig, userConfig, libData])
+
         // ----------------------
         // Process bookshop files
         // ----------------------
