@@ -10,13 +10,30 @@ import {
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 
-type Props<As extends HTMLTag = 'header'> = Block<As>
+type Props<As extends HTMLTag = 'header'> = Omit<Block<As>, 'structure'> & {
+  structure?: 'spread' | 'row' | 'column'
+  align?: 'start' | 'center' | 'end'
+  logo?: string
+  heading?: string
+  links?: any[]
+  buttons?: any[]
+}
 
-const { logo, heading, links, buttons, href, ...rest } = Astro.props
+const {
+  align = 'center',
+  structure = 'spread',
+  logo,
+  heading,
+  links,
+  buttons,
+  href,
+  ...rest
+} = Astro.props
 ---
 
 <FullHeader
-  structure="spread"
+  {align}
+  {structure}
   {...rest}
 >
   <Row

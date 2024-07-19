@@ -79,6 +79,7 @@ export default function fulldevBlocksIntegration(
   ${brandString}
   ${accentContrast}
 }`
+          console.log(css)
           return css
         }
 

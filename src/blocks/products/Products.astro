@@ -14,6 +14,7 @@ import {
   Wrap,
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
+import Prices from '../prices/Prices.astro'
 
 type Props<As extends HTMLTag = 'section'> = Block<As> & {
   products: CollectionEntry<'products'>[]
@@ -57,11 +58,7 @@ const {
               as="h3"
               html={title}
             />
-            <Heading
-              level={4}
-              as="p"
-              html={price?.toString()}
-            />
+            <Prices value={price} />
           </Spread>
         </Card>
       ))

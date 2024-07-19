@@ -7,6 +7,7 @@ import {
   Image,
   Input,
   List,
+  Price,
   Row,
   Section,
   Text,
@@ -51,11 +52,7 @@ const {
         'Lorem ipsum dolor sit amet',
       ]}
     />
-    <Heading
-      as="p"
-      level={3}
-      html={price?.toString()}
-    />
+    <Price value={price} />
     <Row>
       <Input
         value={1}

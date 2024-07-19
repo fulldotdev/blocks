@@ -2,6 +2,7 @@
 import type { HTMLTag } from 'astro/types'
 import {
   Button,
+  Channel,
   Column,
   Form,
   Heading,
@@ -46,62 +47,27 @@ const {
       {buttons?.map((button) => <Button {...button} />)}
     </Row>
     <Column compact>
-      <Row style={{ marginTop: 'var(--space-2)' }}>
-        <Button
-          color="brand"
-          variant="soft"
-          icon="phone"
-          href={`tel:${channels?.phone}`}
-        />
-        <Column compact>
-          <Text
-            text={'Telefoon'}
-            contrast
-          />
-          <Text
-            style={{ marginTop: '0' }}
-            text={channels?.phone}
-          />
-        </Column>
-      </Row>
-      <Row style={{ marginTop: 'var(--space-2)' }}>
-        <Button
-          color="brand"
-          variant="soft"
-          icon="mail"
-          href={`tel:${channels?.email}`}
-        />
-        <Column compact>
-          <Text
-            text={'Email'}
-            contrast
-          />
-          <Text
-            style={{ marginTop: '0' }}
-            text={channels?.email}
-          />
-        </Column>
-      </Row>
-      <Row style={{ marginTop: 'var(--space-2)' }}>
-        <Button
-          color="brand"
-          variant="soft"
-          icon="pin"
-          href={`tel:${channels?.address}`}
-        />
-        <Column compact>
-          <Text
-            text={'Adres'}
-            contrast
-          />
-          <Text
-            style={{ marginTop: '0' }}
-            text={channels?.address}
-          />
-        </Column>
-      </Row>
+      <Channel
+        if={channels?.phone}
+        icon="phone"
+        heading="Telefoon"
+        text={channels?.phone}
+        href={`tel:${channels?.phone}`}
+      />
+      <Channel
+        if={channels?.email}
+        icon="mail"
+        heading="Email"
+        text={channels?.email}
+        href={`mailto:${channels?.email}`}
+      />
+      <Channel
+        if={channels?.address}
+        icon="pin"
+        heading="Adres"
+        text={channels?.address}
+      />
     </Column>
-
     {
       socials && (
         <Row
@@ -109,10 +75,12 @@ const {
           size="sm"
         >
           <Button
+            if={socials?.facebook}
             href={socials?.facebook}
             icon="brand-facebook"
           />
           <Button
+            if={socials?.instagram}
             href={socials?.instagram}
             icon="brand-instagram"
           />

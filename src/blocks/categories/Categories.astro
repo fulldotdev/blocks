@@ -15,12 +15,19 @@ import {
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 
-type Props<As extends HTMLTag = 'section'> = Block<As> & {
+type Props<As extends HTMLTag = 'section'> = Omit<Block<As>, 'frame'> & {
   categories?: CollectionEntry<'categories'>[]
+  frame?: 'fill' | 'panel'
 }
 
 const {
   structure = 'grid',
+  position = 'inset',
+  variant = 'subtle',
+  frame = 'panel',
+  theme,
+  mask,
+  ratio,
   heading,
   text,
   categories,
@@ -44,13 +51,18 @@ const {
       categories?.map(({ slug, data: { title, description, image } }) => (
         <Card
           href={`/categorieen/${slug}/`}
-          frame="panel"
+          {frame}
+          {variant}
+          {ratio}
+          {theme}
         >
           <Image
             src={image}
-            position="inset"
+            {position}
+            {mask}
           />
           <Heading
+            style={{ marginTop: 'auto' }}
             html={title}
             level={3}
           />
