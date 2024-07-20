@@ -22,12 +22,12 @@ type Props<As extends HTMLTag = 'section'> = Omit<Block<As>, 'frame'> & {
 
 const {
   structure = 'grid',
-  position = 'inset',
+  position = 'background',
   variant = 'ghost',
   frame = 'panel',
+  ratio = 'landscape',
+  mask = 'lg',
   theme,
-  mask,
-  ratio,
   heading,
   text,
   pages,
@@ -49,7 +49,10 @@ const {
       {buttons?.map((button, i) => <Button {...button} />)}
     </Wrap>
   </Spread>
-  <Box structure={structure === 'split' ? 'column' : structure}>
+  <Box
+    structure={structure === 'split' ? 'column' : structure}
+    align="stretch"
+  >
     {
       pages?.map(({ slug, data: { title, description, image } }) => (
         <Card
