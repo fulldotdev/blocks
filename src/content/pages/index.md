@@ -16,7 +16,7 @@ hero:
 blocks:
   - _bookshop_name: Features
     cards:
-      - icon: rocket
+      - icon: 
         heading: Lorem ipsum dolor
         text: Lorem ipsum dolor sit amet sit conset adem pios coredur. Lorem ipsum dolor sit amet. 
       - icon: pencil

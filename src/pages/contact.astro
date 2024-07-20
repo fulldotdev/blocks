@@ -2,7 +2,7 @@
 import { getEntry } from 'astro:content'
 import { Layout } from 'fulldev-blocks'
 import { Prose, Section } from 'fulldev-ui'
-import { default as ContactBlock } from '../blocks/contact/Contact.astro'
+import Block from '../components/Block.astro'
 import Blocks from '../components/Blocks.astro'
 
 const { data, render } = await getEntry('pages', 'contact')
@@ -12,7 +12,8 @@ const settings = (await getEntry('globals', 'settings'))?.data
 ---
 
 <Layout {...data}>
-  <ContactBlock
+  <Block
+    _bookshop_name="Contact"
     heading={data.title}
     text={data.description}
     {...settings}

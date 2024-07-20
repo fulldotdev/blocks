@@ -14,7 +14,8 @@
     "dev": "astro dev",
     "test": "astro check",
     "check": "astro check",
-    "build": "astro build"
+    "build": "astro build",
+    "connect": "pnpm link --global && pnpm link --global fulldev-ui"
   },
   "type": "module",
   "exports": {
@@ -33,7 +34,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.5.10",
     "astro": "^4.11.5",
-    "fulldev-ui": "^0.3.13",
+    "fulldev-ui": "^0.3.15",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "prettier-plugin-astro-organize-imports": "^0.4.7",

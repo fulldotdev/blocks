@@ -1,6 +1,15 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import { Button, Column, Heading, Image, Row, Section, Text } from 'fulldev-ui'
+import {
+  Button,
+  Column,
+  Heading,
+  Image,
+  Row,
+  Section,
+  Tagline,
+  Text,
+} from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
@@ -8,6 +17,8 @@ type Props<As extends HTMLTag = 'section'> = Block<As>
 const {
   structure = 'split',
   align = 'center',
+  position,
+  tagline,
   heading,
   text,
   buttons,
@@ -22,11 +33,15 @@ const {
   {...rest}
 >
   <Column>
+    <Tagline html={tagline} />
     <Heading html={heading} />
     <Text html={text} />
     <Row>
       {buttons?.map((button) => <Button {...button} />)}
     </Row>
   </Column>
-  <Image src={image} />
+  <Image
+    {position}
+    src={image}
+  />
 </Section>

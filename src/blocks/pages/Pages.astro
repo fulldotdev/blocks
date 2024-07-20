@@ -1,0 +1,77 @@
+---
+import type { HTMLTag } from 'astro/types'
+import type { CollectionEntry } from 'astro:content'
+import {
+  Box,
+  Button,
+  Card,
+  Column,
+  Heading,
+  Image,
+  Section,
+  Spread,
+  Text,
+  Wrap,
+} from 'fulldev-ui'
+import type { Block } from '../../schemas/block'
+
+type Props<As extends HTMLTag = 'section'> = Omit<Block<As>, 'frame'> & {
+  pages?: CollectionEntry<'pages'>[]
+  frame?: 'fill' | 'panel'
+}
+
+const {
+  structure = 'grid',
+  position = 'inset',
+  variant = 'ghost',
+  frame = 'panel',
+  theme,
+  mask,
+  ratio,
+  heading,
+  text,
+  pages,
+  buttons,
+  ...rest
+} = Astro.props
+---
+
+<Section
+  structure={structure === 'split' ? 'split' : 'column'}
+  {...rest}
+>
+  <Spread style={{ position: 'sticky', top: 'var(--space-7)' }}>
+    <Column>
+      <Heading html={heading} />
+      <Text html={text} />
+    </Column>
+    <Wrap>
+      {buttons?.map((button, i) => <Button {...button} />)}
+    </Wrap>
+  </Spread>
+  <Box structure={structure === 'split' ? 'column' : structure}>
+    {
+      pages?.map(({ slug, data: { title, description, image } }) => (
+        <Card
+          href={`/categorieen/${slug}/`}
+          {frame}
+          {variant}
+          {ratio}
+          {theme}
+        >
+          <Image
+            src={image}
+            {position}
+            {mask}
+          />
+          <Heading
+            style={{ marginTop: 'auto' }}
+            html={title}
+            level={3}
+          />
+          <Text html={description} />
+        </Card>
+      ))
+    }
+  </Box>
+</Section>

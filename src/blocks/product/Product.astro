@@ -6,7 +6,6 @@ import {
   Heading,
   Image,
   Input,
-  List,
   Price,
   Row,
   Section,
@@ -44,13 +43,9 @@ const {
       level={1}
       html={heading || title}
     />
-    <Text html={text || description} />
-    <List
-      items={[
-        'Lorem ipsum dolor sit amet',
-        'Lorem ipsum dolor sit amet',
-        'Lorem ipsum dolor sit amet',
-      ]}
+    <Text
+      style={{ maxWidth: '420px' }}
+      html={text || description}
     />
     <Price value={price} />
     <Row>
@@ -66,6 +61,7 @@ const {
       />
     </Row>
     <Button
+      style={{ marginTop: 'var(--space-3)', width: '100%', maxWidth: '400px' }}
       variant="soft"
       {...button}
     />

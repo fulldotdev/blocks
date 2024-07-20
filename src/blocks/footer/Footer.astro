@@ -53,28 +53,32 @@ const {
       </Column>
       <Text text={text} />
     </Column>
-    <Column compact>
-      <Channel
-        if={channels?.phone}
-        icon="phone"
-        heading="Telefoon"
-        text={channels?.phone}
-        href={`tel:${channels?.phone}`}
-      />
-      <Channel
-        if={channels?.email}
-        icon="mail"
-        heading="Email"
-        text={channels?.email}
-        href={`mailto:${channels?.email}`}
-      />
-      <Channel
-        if={channels?.address}
-        icon="pin"
-        heading="Adres"
-        text={channels?.address}
-      />
-    </Column>
+    {
+      channels && (
+        <Column compact>
+          <Channel
+            if={channels?.phone}
+            icon="phone"
+            heading="Telefoon"
+            text={channels?.phone}
+            href={`tel:${channels?.phone}`}
+          />
+          <Channel
+            if={channels?.email}
+            icon="mail"
+            heading="Email"
+            text={channels?.email}
+            href={`mailto:${channels?.email}`}
+          />
+          <Channel
+            if={channels?.address}
+            icon="pin"
+            heading="Adres"
+            text={channels?.address}
+          />
+        </Column>
+      )
+    }
     <Column>
       <Heading
         text={heading}
