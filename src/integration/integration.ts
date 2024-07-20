@@ -79,7 +79,6 @@ export default function fulldevBlocksIntegration(
   ${brandString}
   ${accentContrast}
 }`
-          console.log(css)
           return css
         }
 
@@ -179,8 +178,6 @@ export default function fulldevBlocksIntegration(
         const mergedData = merge(libData, userData)
         const mergedYaml = yaml.dump(mergedData)
         fs.writeFileSync('./.cloudcannon/cloudcannon.config.yml', mergedYaml)
-
-        console.log([libConfig, userConfig, libData])
 
         // ----------------------
         // Process bookshop files
