@@ -25,7 +25,10 @@ const { Content } = await render()
 const categories = await getCollection('categories')
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'categories-page'}
+  {...data}
+>
   <Intro
     heading={data.title}
     text={data.description}

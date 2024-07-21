@@ -2,9 +2,9 @@
 import { getEntry } from 'astro:content'
 import { Layout as FullLayout, Main } from 'fulldev-ui'
 import Banner from '../blocks/banner/Banner.astro'
-import Cta from '../blocks/cta/Cta.astro'
 import Footer from '../blocks/footer/Footer.astro'
 import Header from '../blocks/header/Header.astro'
+import Block from '../components/Block.astro'
 import { type Page } from '../schemas/page'
 
 type Props = Page
@@ -21,6 +21,7 @@ const settings = (await getEntry('globals', 'settings'))?.data
 ---
 
 <FullLayout
+  class:list={'layout'}
   lang="nl"
   {...rest}
 >
@@ -31,7 +32,10 @@ const settings = (await getEntry('globals', 'settings'))?.data
   <Banner {...header} />
   <Main>
     <slot />
-    <Cta {...cta} />
+    <Block
+      _bookshop_name="Cta"
+      {...cta}
+    />
   </Main>
   <Footer
     text={footer && settings.description}

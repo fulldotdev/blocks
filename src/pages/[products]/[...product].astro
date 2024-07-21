@@ -25,7 +25,10 @@ const products = await getCollection('products', (product) =>
 )
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'product-page'}
+  {...data}
+>
   <Block
     _bookshop_name="Product"
     {...data}

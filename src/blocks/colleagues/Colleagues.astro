@@ -21,7 +21,10 @@ const { tagline, heading, text, buttons, image, pages, ...rest } = Astro.props
 const entries = await getEntries(pages)
 ---
 
-<Section {...rest}>
+<Section
+  class:list={'colleagues'}
+  {...rest}
+>
   <Heading html={heading} />
   <Text html={text} />
   <Split align="center">

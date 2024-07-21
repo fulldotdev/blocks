@@ -27,7 +27,17 @@ export const base = z
     html: z.string(),
     image: z.string(),
     images: z.string().array(),
-    rating: z.number(),
+    rating: z.number().or(
+      z
+        .object({
+          value: z.number(),
+          label: z.string(),
+          heading: z.string(),
+          avatars: z.string().array(),
+        })
+        .partial()
+        .passthrough()
+    ),
     button: button,
     buttons: button.array(),
     link: link,

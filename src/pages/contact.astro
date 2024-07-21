@@ -11,7 +11,10 @@ const { Content } = await render()
 const settings = (await getEntry('globals', 'settings'))?.data
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'contact-page'}
+  {...data}
+>
   <Block
     _bookshop_name="Contact"
     heading={data.title}

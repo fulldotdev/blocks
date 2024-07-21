@@ -57,6 +57,7 @@ blocks:
       - product
       - product
       - product
+      
   - _bookshop_name: Content
     heading: Lorem ipsum dolor sit amet
     text: Lorem ipsum dolor sit amet conset adem pios coredur. Lorem ipsum dolor sit amet conset adem pios coredur.

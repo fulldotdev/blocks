@@ -11,7 +11,10 @@ type Props<As extends HTMLTag = 'section'> = Block<As> & {
 const { heading, text, posts, ...rest } = Astro.props
 ---
 
-<Section {...rest}>
+<Section
+  class:list={'posts'}
+  {...rest}
+>
   <Heading html={heading} />
   <Text html={text} />
   <Row align="center">

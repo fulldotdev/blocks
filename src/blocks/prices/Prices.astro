@@ -17,7 +17,10 @@ type Props<As extends HTMLTag = 'section'> = Block<As>
 const { heading, text, cards, tagline } = Astro.props
 ---
 
-<Section align="center">
+<Section
+  class:list={'prices'}
+  align="center"
+>
   <Tagline html={tagline} />
   <Heading
     level={1}

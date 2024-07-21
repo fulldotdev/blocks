@@ -31,7 +31,10 @@ const {
 } = Astro.props
 ---
 
-<Section {...rest}>
+<Section
+  class:list={'products'}
+  {...rest}
+>
   <Spread>
     <Column>
       <Heading html={heading} />

@@ -20,7 +20,10 @@ type Props<As extends HTMLTag = 'section'> = Block<As>
 const { tagline, heading, text, buttons, image, cards, ...rest } = Astro.props
 ---
 
-<Section {...rest}>
+<Section
+  class:list={'features'}
+  {...rest}
+>
   <Spread>
     <Column>
       <Tagline html={tagline} />

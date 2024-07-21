@@ -6,6 +6,7 @@ import {
   Button,
   Heading,
   Image,
+  Rating,
   Section,
   Tagline,
   Text,
@@ -27,11 +28,13 @@ const {
   text,
   buttons,
   image,
+  rating,
   ...rest
 } = Astro.props
 ---
 
 <Section
+  class:list={'hero'}
   structure={structure === 'split' ? 'split' : 'column'}
   {size}
   {align}
@@ -42,6 +45,7 @@ const {
     align={structure === 'split' ? 'start' : align}
   >
     <Badge html={badge} />
+    <Rating {...rating} />
     <Tagline
       color="brand"
       html={tagline}

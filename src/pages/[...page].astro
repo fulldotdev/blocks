@@ -19,7 +19,10 @@ const { data, render } = Astro.props
 const { Content } = await render()
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'page'}
+  {...data}
+>
   <Block
     _bookshop_name="Hero"
     heading={data.title}

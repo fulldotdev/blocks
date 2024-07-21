@@ -5,6 +5,7 @@ import {
   Column,
   Heading,
   Image,
+  Rating,
   Row,
   Section,
   Tagline,
@@ -22,20 +23,29 @@ const {
   heading,
   text,
   buttons,
+  rating,
   image,
   ...rest
 } = Astro.props
 ---
 
 <Section
+  class:list={'content'}
   structure="split"
   align="center"
   {...rest}
 >
   <Column>
+    <Rating {...rating} />
     <Tagline html={tagline} />
-    <Heading html={heading} />
-    <Text html={text} />
+    <Heading
+      color="base"
+      html={heading}
+    />
+    <Text
+      color="base"
+      html={text}
+    />
     <Row>
       {buttons?.map((button) => <Button {...button} />)}
     </Row>

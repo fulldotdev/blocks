@@ -26,7 +26,10 @@ const { Content } = await render()
 const products = await getCollection('products')
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'products-page'}
+  {...data}
+>
   <Block
     _bookshop_name="Intro"
     heading={data.title}

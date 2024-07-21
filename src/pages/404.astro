@@ -9,7 +9,10 @@ const { data, render } = await getEntry('pages', '404')
 const { Content } = await render()
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'404-page'}
+  {...data}
+>
   <Hero
     {...data}
     {...data.hero}

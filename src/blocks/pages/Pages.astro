@@ -2,6 +2,7 @@
 import type { HTMLTag } from 'astro/types'
 import type { CollectionEntry } from 'astro:content'
 import {
+  Badge,
   Box,
   Button,
   Card,
@@ -22,11 +23,11 @@ type Props<As extends HTMLTag = 'section'> = Omit<Block<As>, 'frame'> & {
 
 const {
   structure = 'grid',
-  position = 'background',
   variant = 'ghost',
-  frame = 'panel',
-  ratio = 'landscape',
-  mask = 'lg',
+  frame = 'fill',
+  position,
+  mask,
+  ratio,
   theme,
   heading,
   text,
@@ -37,6 +38,7 @@ const {
 ---
 
 <Section
+  class:list={'pages'}
   structure={structure === 'split' ? 'split' : 'column'}
   {...rest}
 >
@@ -54,27 +56,37 @@ const {
     align="stretch"
   >
     {
-      pages?.map(({ slug, data: { title, description, image } }) => (
-        <Card
-          href={`/categorieen/${slug}/`}
-          {frame}
-          {variant}
-          {ratio}
-          {theme}
-        >
-          <Image
-            src={image}
-            {position}
-            {mask}
-          />
-          <Heading
-            style={{ marginTop: 'auto' }}
-            html={title}
-            level={3}
-          />
-          <Text html={description} />
-        </Card>
-      ))
+      pages?.map(
+        ({ slug, data: { title, description, image, href, badges } }) => (
+          <Card
+            href={href ?? `/${slug}/`}
+            target="_blank"
+            {frame}
+            {variant}
+            {ratio}
+            {theme}
+          >
+            <Image
+              src={image}
+              {position}
+              {mask}
+            />
+            <Wrap size="sm">
+              {badges?.map((badge) => (
+                <Badge
+                  variant="soft"
+                  text={badge}
+                />
+              ))}
+            </Wrap>
+            <Heading
+              html={title}
+              level={3}
+            />
+            <Text html={description} />
+          </Card>
+        )
+      )
     }
   </Box>
 </Section>

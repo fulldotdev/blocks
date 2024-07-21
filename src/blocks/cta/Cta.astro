@@ -7,6 +7,7 @@ import {
   Form,
   Heading,
   Input,
+  Rating,
   Section,
   Tagline,
   Text,
@@ -23,6 +24,7 @@ const {
   align = 'center',
   level = 2,
   badge,
+  rating,
   tagline,
   heading,
   text,
@@ -34,6 +36,7 @@ const {
 ---
 
 <Section
+  class:list={'cta'}
   {align}
   {variant}
   {size}
@@ -42,13 +45,18 @@ const {
   {...rest}
 >
   <Column align={structure === 'column' ? align : 'start'}>
+    <Rating {...rating} />
     <Badge html={badge} />
     <Tagline html={tagline} />
     <Heading
+      color="base"
       {level}
       html={heading}
     />
-    <Text html={text} />
+    <Text
+      color="base"
+      html={text}
+    />
   </Column>
   <Wrap>
     {buttons?.map((button, i) => <Button {...button} />)}

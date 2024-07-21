@@ -31,7 +31,10 @@ const categories = await getCollection(
 )
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'category-page'}
+  {...data}
+>
   <Intro
     heading={data.title}
     text={data.description}

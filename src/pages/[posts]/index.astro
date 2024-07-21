@@ -23,7 +23,10 @@ const { data, render } = Astro.props
 const { Content } = await render()
 ---
 
-<Layout {...data}>
+<Layout
+  class:list={'posts-page'}
+  {...data}
+>
   <Intro
     heading={data.title}
     text={data.description}
