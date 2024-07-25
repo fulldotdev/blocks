@@ -23,6 +23,7 @@ const {
   href,
   text,
   channels,
+  company,
   socials,
   hours,
   ...rest
@@ -76,15 +77,22 @@ const {
             icon="pin"
             heading="Adres"
             text={channels?.address}
+            target="_blank"
+            href={`https://maps.google.com/?q=${company} ${channels?.address}`}
           />
         </Column>
       )
     }
     <Column>
-      <Heading
-        text={heading}
-        level={3}
-      />
+      {
+        hours && (
+          <Heading
+            text={'Openingstijden'}
+            level={3}
+          />
+        )
+      }
+
       {
         Object.entries(hours || {}).map(([day, time]) => (
           <Text text={`${day}: ${time}`} />

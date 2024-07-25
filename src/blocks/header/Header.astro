@@ -2,6 +2,7 @@
 import type { HTMLTag } from 'astro/types'
 import {
   Button,
+  Column,
   Header as FullHeader,
   Heading,
   Link,
@@ -50,7 +51,84 @@ const {
     />
   </Row>
   <Row>
-    {links?.map((link, i) => <Link {...link} />)}
+    {
+      links?.map((link, i) => (
+        <Link
+          class={'header-link'}
+          {...link}
+        />
+      ))
+    }
     {buttons?.map((button, i) => <Button {...button} />)}
+    <Button
+      icon="menu-2"
+      class={'hamburger'}
+      variant="outline"
+      as="label"
+      for="hamburger-toggle"
+    />
+    <input
+      id="hamburger-toggle"
+      class="hamburger-toggle"
+      name="hamburger-toggle"
+      type="checkbox"
+    />
+    <Column
+      align="center"
+      class="dropdown"
+    >
+      {links?.map((link, i) => <Link {...link} />)}
+    </Column>
   </Row>
 </FullHeader>
+
+<style>
+  .header {
+    /* .row .link {
+      display: none;
+    } */
+
+    .header-link {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
+    }
+
+    .hamburger {
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    .dropdown {
+      display: none;
+    }
+
+    .hamburger-toggle {
+      display: none;
+    }
+
+    .hamburger-toggle:checked ~ .dropdown {
+      display: flex;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      gap: var(--space-4);
+      box-shadow: 0 100px 100px rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid var(--color-6);
+      background: var(--color-1);
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-6);
+
+      @media (min-width: 768px) {
+        display: none !important;
+      }
+    }
+  }
+</style>

@@ -17,7 +17,7 @@ import {
 import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Omit<Block<As>, 'frame'> & {
-  pages?: CollectionEntry<'pages'>[]
+  cards?: CollectionEntry<'cards'>[]
   frame?: 'fill' | 'panel'
 }
 
@@ -31,12 +31,10 @@ const {
   theme,
   heading,
   text,
-  pages,
+  cards,
   buttons,
   ...rest
 } = Astro.props
-
-console.log(Astro.props)
 ---
 
 <Section
@@ -58,10 +56,10 @@ console.log(Astro.props)
     align="stretch"
   >
     {
-      pages?.map(
+      cards?.map(
         ({ slug, data: { title, description, image, href, badges } }) => (
           <Card
-            href={href ?? `/${slug}/`}
+            href={href}
             target="_blank"
             {frame}
             {variant}

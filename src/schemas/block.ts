@@ -7,12 +7,13 @@ import { pathSchema } from './utils'
 
 export const block = base
   .extend({
-    cards: card.array(),
+    cards: z.array(card.or(pathSchema('cards'))),
     columns: card.array(),
     pages: pathSchema('pages').array(),
     categories: pathSchema('categories').array(),
     products: pathSchema('products').array(),
     product: pathSchema('products'),
+    block: pathSchema('blocks'),
     posts: pathSchema('posts').array(),
     reviews: pathSchema('reviews').array(),
   })

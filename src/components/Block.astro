@@ -7,7 +7,7 @@ interface Props {
   [key: string | number | symbol]: any
 }
 
-let { _bookshop_name, product, ...rest } = Astro.props
+let { _bookshop_name, product, block, ...rest } = Astro.props
 
 const packageBlocks = import.meta.glob('../blocks/**/*.astro')
 const userBlocks = import.meta.glob('/src/blocks/**/*.astro')
@@ -25,19 +25,20 @@ const functioncomp = await found()
 const Component = functioncomp.default
 
 const productData = product && (await getEntry(product))?.data
+const blockData = block && (await getEntry(block))?.data
 
-rest.pages = rest.pages && (await getEntries(rest.pages))
-rest.posts = rest.posts && (await getEntries(rest.posts))
-rest.products = rest.products && (await getEntries(rest.products))
-rest.categories = rest.categories && (await getEntries(rest.categories))
-rest.reviews = rest.reviews && (await getEntries(rest.reviews))
+let data = {
+  ...productData,
+  ...blockData,
+  ...rest,
+}
+
+data.cards = data.cards?.[0].collection && (await getEntries(data.cards))
+data.pages = data.pages && (await getEntries(data.pages))
+data.posts = data.posts && (await getEntries(data.posts))
+data.products = data.products && (await getEntries(data.products))
+data.categories = data.categories && (await getEntries(data.categories))
+data.reviews = data.reviews && (await getEntries(data.reviews))
 ---
 
-{
-  Component && (
-    <Component
-      {...productData}
-      {...rest}
-    />
-  )
-}
+{Component && <Component {...data} />}

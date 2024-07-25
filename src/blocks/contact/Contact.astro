@@ -91,9 +91,9 @@ const {
 
     <Form>
       <Input
-        label="Name"
-        id="Name"
-        name="Name"
+        label="Naam"
+        id="Naam"
+        name="Naam"
         type="text"
         required
       />
@@ -105,20 +105,20 @@ const {
         required
       />
       <Input
-        label="Phone"
-        id="Phone"
-        name="Phone"
+        label="Telefoon"
+        id="Telefoon"
+        name="Telefoon"
         type="tel"
         required
       />
       <Textarea
-        label="Message"
-        id="Message"
-        name="Message"
+        label="Bericht"
+        id="Bericht"
+        name="Bericht"
       />
       <Button
         color="brand"
-        text="Send message"
+        text="Verstuur bericht"
       />
     </Form>
   </Column>
@@ -137,3 +137,11 @@ const {
     src={image}
   />
 </Section>
+
+<style is:global>
+  .contact {
+    .channel + .channel {
+      margin-top: var(--space-3) !important;
+    }
+  }
+</style>

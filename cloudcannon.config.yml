@@ -129,9 +129,11 @@ _inputs:
   options:
     type: array
     label: Opties
+    empty_type: 'null'
   variations:
     type: array
     label: Variaties
+    empty_type: 'null'
   meta.title:
     type: auto
     label: Titel
@@ -161,6 +163,7 @@ _inputs:
       height: 1920
   images:
     type: array
+    empty_type: 'null'
   images[*]:
     type: image
     options:
@@ -188,6 +191,9 @@ _inputs:
     label: Concept
   price:
     type: number
+    label: Prijs
+    step: 2
+    min: 0
 _structures:
   blocks:
     remove_empty_inputs: true
