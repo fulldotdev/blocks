@@ -125,7 +125,15 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"categories": {
+		"cards": Record<string, {
+  id: string;
+  slug: string;
+  body: string;
+  collection: "cards";
+  data: InferEntrySchema<"cards">;
+  render(): Render[".md"];
+}>;
+"categories": {
 "category.md": {
 	id: "category.md";
   slug: "category";
@@ -213,87 +221,87 @@ declare module 'astro:content' {
 "Categories": {
 	id: "Categories";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Colleagues": {
 	id: "Colleagues";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Contact": {
 	id: "Contact";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Content": {
 	id: "Content";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Features": {
 	id: "Features";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Hero": {
 	id: "Hero";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Logos": {
 	id: "Logos";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Posts": {
 	id: "Posts";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Prices": {
 	id: "Prices";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Product": {
 	id: "Product";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Products": {
 	id: "Products";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Reviews": {
 	id: "Reviews";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "Stats": {
 	id: "Stats";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "cta": {
 	id: "cta";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "footer": {
 	id: "footer";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "header": {
 	id: "header";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 "settings": {
 	id: "settings";
   collection: "blocks";
-  data: any
+  data: InferEntrySchema<"blocks">
 };
 };
 "globals": {
