@@ -25,8 +25,11 @@ const {
   size = 'sm',
   heading,
   text,
+  frame = 'none',
+  variant = 'ghost',
   buttons,
   products,
+  position,
   ...rest
 } = Astro.props
 ---
@@ -53,11 +56,13 @@ const {
       products?.map(({ slug, data: { title, image, images, price } }) => (
         <Card
           href={`/producten/${slug}/`}
-          frame="none"
+          {frame}
+          {variant}
         >
           <Image
             ratio={'portrait'}
             src={image || images?.[0]}
+            {position}
           />
           <Spread>
             <Heading

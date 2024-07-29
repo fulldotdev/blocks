@@ -6,6 +6,7 @@ import {
   Column,
   Form,
   Heading,
+  Image,
   Input,
   Rating,
   Section,
@@ -31,6 +32,8 @@ const {
   buttons,
   frame = 'panel',
   input,
+  position = 'background',
+  image,
   ...rest
 } = Astro.props
 ---
@@ -75,4 +78,8 @@ const {
       text={input?.submit}
     />
   </Form>
+  <Image
+    {position}
+    src={image}
+  />
 </Section>

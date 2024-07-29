@@ -34,7 +34,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.5.10",
     "astro": "^4.11.5",
-    "fulldev-ui": "^0.3.24",
+    "fulldev-ui": "^0.3.25",
     "prettier": "3.2.5",
     "prettier-plugin-astro": "0.13.0",
     "prettier-plugin-astro-organize-imports": "^0.4.7",

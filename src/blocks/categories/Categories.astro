@@ -49,7 +49,10 @@ const {
       {buttons?.map((button, i) => <Button {...button} />)}
     </Wrap>
   </Spread>
-  <Box {structure}>
+  <Box
+    {structure}
+    position={structure === 'carousel' ? 'inset' : undefined}
+  >
     {
       categories?.map(({ slug, data: { title, description, image } }) => (
         <Card
