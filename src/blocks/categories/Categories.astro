@@ -22,12 +22,12 @@ type Props<As extends HTMLTag = 'section'> = Omit<Block<As>, 'frame'> & {
 
 const {
   structure = 'grid',
-  position = 'inset',
-  variant = 'subtle',
+  position = 'background',
+  variant = 'surface',
   frame = 'panel',
-  theme,
+  ratio = 'square',
+  theme = 'dark',
   mask,
-  ratio,
   heading,
   text,
   categories,

@@ -95,14 +95,16 @@ export default function fulldevBlocksIntegration(
             'brand',
             true
           )
-          const accentContrast = `--accent-contrast: ${generated.accentContrast};`
+          const brandContrastString = `--brand-contrast: ${generated.accentContrast};`
+          const baseContrastString = `--base-contrast: ${generated.accentContrast};`
 
           const css = `${defaultTheme == theme ? ':root, ' : ''} .theme-${theme}  {
   ${baseString}
   ${baseAlphaString}
+  ${baseContrastString}
   ${brandString}
   ${brandAlphaString}
-  ${accentContrast}
+  ${brandContrastString}
   }`
           return css
         }

@@ -55,7 +55,10 @@ const {
           href={`/producten/${slug}/`}
           frame="none"
         >
-          <Image src={image || images?.[0]} />
+          <Image
+            ratio={'portrait'}
+            src={image || images?.[0]}
+          />
           <Spread>
             <Heading
               level={4}

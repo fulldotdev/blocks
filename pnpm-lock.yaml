@@ -41,8 +41,8 @@ devDependencies:
     specifier: ^4.11.5
     version: 4.11.5(typescript@5.5.3)
   fulldev-ui:
-    specifier: ^0.3.22
-    version: 0.3.22(astro@4.11.5)(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.5.3)(vite@5.3.4)
+    specifier: ^0.3.24
+    version: 0.3.24(astro@4.11.5)(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.5.3)(vite@5.3.4)
   prettier:
     specifier: 3.2.5
     version: 3.2.5
@@ -1934,8 +1934,8 @@ packages:
     requiresBuild: true
     optional: true
 
-  /fulldev-ui@0.3.22(astro@4.11.5)(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.5.3)(vite@5.3.4):
-    resolution: {integrity: sha512-VxWkj6ZVwaR+cYp4HScCkpiwEHdOmNiNXzHHwJPwIsBXZWlD7svh7F6mtpDpQo+nSkjDZ5HE+LaEF7C5Mk7rug==}
+  /fulldev-ui@0.3.24(astro@4.11.5)(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.5.3)(vite@5.3.4):
+    resolution: {integrity: sha512-IMDjFfCJ0TZT/+NFv+9h4RFcTYZlDdFegsbIAnPfSQ97JR4rSvxqHEL/K/bJkX+/0xCcOoGnB6G6BmytYrnFiA==}
     peerDependencies:
       astro: ^4.5.5
       typescript: ^5.4.3

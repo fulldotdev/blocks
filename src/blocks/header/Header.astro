@@ -12,6 +12,7 @@ import {
 import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'header'> = Omit<Block<As>, 'structure'> & {
+  variant?: 'ghost' | 'base' | 'subtle' | 'soft' | 'surface' | 'outline'
   structure?: 'spread' | 'row' | 'column'
   align?: 'start' | 'center' | 'end'
   logo?: string
@@ -21,6 +22,7 @@ type Props<As extends HTMLTag = 'header'> = Omit<Block<As>, 'structure'> & {
 }
 
 const {
+  variant = 'ghost',
   align = 'center',
   structure = 'spread',
   logo,
@@ -36,6 +38,7 @@ const {
   class:list={'header'}
   {align}
   {structure}
+  {variant}
   {...rest}
 >
   <Row
@@ -65,6 +68,7 @@ const {
       class={'hamburger'}
       variant="outline"
       as="label"
+      contrast
       for="hamburger-toggle"
     />
     <input
