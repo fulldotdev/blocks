@@ -67,18 +67,43 @@ export default function fulldevBlocksIntegration(
             accent: brand,
           })
 
-          const baseString = generated.grayScale
-            .map((color, i) => `--base-${i + 1}: ${color};`)
-            .join('\n')
-          const brandString = generated.accentScale
-            .map((color, i) => `--brand-${i + 1}: ${color};`)
-            .join('\n')
+          const scaleToString = (
+            scale: any,
+            palette: 'base' | 'brand',
+            alpha?: boolean
+          ) =>
+            scale
+              .map(
+                (color: any, i: any) =>
+                  `--${palette}-${alpha ? 'a' : ''}${i + 1}: ${color};`
+              )
+              .join('\n')
+
+          const baseString = scaleToString(generated.grayScale, 'base', false)
+          const baseAlphaString = scaleToString(
+            generated.grayScaleAlpha,
+            'base',
+            true
+          )
+          const brandString = scaleToString(
+            generated.accentScale,
+            'brand',
+            false
+          )
+          const brandAlphaString = scaleToString(
+            generated.accentScaleAlpha,
+            'brand',
+            true
+          )
           const accentContrast = `--accent-contrast: ${generated.accentContrast};`
+
           const css = `${defaultTheme == theme ? ':root, ' : ''} .theme-${theme}  {
   ${baseString}
+  ${baseAlphaString}
   ${brandString}
+  ${brandAlphaString}
   ${accentContrast}
-}`
+  }`
           return css
         }
 
