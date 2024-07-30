@@ -1,9 +1,8 @@
 ---
 import { getCollection } from 'astro:content'
-import { Prose, Section } from 'fulldev-ui'
-import Block from '../components/Block.astro'
-import Blocks from '../components/Blocks.astro'
-import Layout from '../layouts/Layout.astro'
+import PageLayout from '../layouts/PageLayout.astro'
+import PolicyLayout from '../layouts/PolicyLayout.astro'
+import PostLayout from '../layouts/PostLayout.astro'
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages')
@@ -16,28 +15,20 @@ export async function getStaticPaths() {
 }
 
 const { data, render } = Astro.props
-const { Content } = await render()
+const { Content, headings } = await render()
+
+const layouts = {
+  page: PageLayout,
+  post: PostLayout,
+  policy: PolicyLayout,
+}
+
+const Layout = layouts[data._schema] ?? PageLayout
 ---
 
 <Layout
   class:list={'page'}
-  {...data}
+  {...Astro.props}
 >
-  <Block
-    _bookshop_name="Hero"
-    heading={data.title}
-    text={data.description}
-    {...data}
-    {...data.hero}
-  />
-  <Section
-    size="lg"
-    style={{ '--screen': '768px' }}
-  >
-    <Prose id="prose">
-      <Content />
-    </Prose>
-  </Section>
-  <Blocks blocks={data.blocks} />
   <slot />
 </Layout>

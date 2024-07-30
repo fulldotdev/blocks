@@ -44,8 +44,8 @@ const {
     structure={structure === 'spread' ? 'spread' : 'column'}
     align={structure === 'split' ? 'start' : align}
   >
-    <Badge html={badge} />
     <Rating {...rating} />
+    <Badge html={badge} />
     <Tagline
       color="brand"
       html={tagline}
@@ -66,4 +66,4 @@ const {
 </Section>
 
 <slot name="script" />
-<slot name="styles" />
+<slot name="style" />

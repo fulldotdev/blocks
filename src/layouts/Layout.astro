@@ -25,11 +25,11 @@ const settings = (await getEntry('globals', 'settings'))?.data
   lang="nl"
   {...rest}
 >
+  <Banner {...header} />
   <Header
     {...header && settings}
     {...header}
   />
-  <Banner {...header} />
   <Main>
     <slot />
     <Block
@@ -38,7 +38,7 @@ const settings = (await getEntry('globals', 'settings'))?.data
     />
   </Main>
   <Footer
-    text={footer && settings.description}
+    text={footer ? settings.text : undefined}
     {...footer && settings}
     {...footer}
   />
