@@ -54,7 +54,10 @@ const {
       {level}
       html={heading}
     />
-    <Text html={text} />
+    <Text
+      contrast={position === 'background' && true}
+      html={text}
+    />
     <Wrap>
       {buttons?.map((button) => <Button {...button} />)}
     </Wrap>
