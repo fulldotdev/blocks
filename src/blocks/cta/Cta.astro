@@ -57,6 +57,7 @@ const {
       html={heading}
     />
     <Text
+      contrast={position === 'background' && true}
       color="base"
       html={text}
     />
@@ -69,6 +70,8 @@ const {
     style={{ maxWidth: '420px' }}
   >
     <Input
+      variant="surface"
+      contrast={position === 'background' && true}
       placeholder={input?.placeholder}
       name={input?.placeholder}
     />
