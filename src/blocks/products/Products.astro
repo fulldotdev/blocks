@@ -8,25 +8,25 @@ import {
   Column,
   Heading,
   Image,
+  Price,
   Section,
   Spread,
   Text,
   Wrap,
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
-import Prices from '../prices/Prices.astro'
 
 type Props<As extends HTMLTag = 'section'> = Block<As> & {
   products: CollectionEntry<'products'>[]
 }
 
 const {
+  frame = 'none',
   structure = 'carousel',
-  size = 'sm',
+  variant = 'ghost',
+  size,
   heading,
   text,
-  frame = 'none',
-  variant = 'ghost',
   buttons,
   products,
   position,
@@ -36,10 +36,11 @@ const {
 
 <Section
   class:list={'products'}
+  structure={structure === 'split' ? 'split' : 'column'}
   {size}
   {...rest}
 >
-  <Spread>
+  <Box>
     <Column>
       <Heading html={heading} />
       <Text html={text} />
@@ -47,9 +48,9 @@ const {
     <Wrap>
       {buttons?.map((button, i) => <Button {...button} />)}
     </Wrap>
-  </Spread>
+  </Box>
   <Box
-    {structure}
+    structure={structure === 'split' ? 'grid' : structure}
     position={structure === 'carousel' ? 'inset' : undefined}
   >
     {
@@ -70,7 +71,7 @@ const {
               as="h3"
               html={title}
             />
-            <Prices value={price} />
+            <Price value={price} />
           </Spread>
         </Card>
       ))
