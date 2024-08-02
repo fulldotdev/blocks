@@ -97,14 +97,18 @@ export default function fulldevBlocksIntegration(
           )
           const brandContrastString = `--brand-contrast: ${generated.accentContrast};`
           const baseContrastString = `--base-contrast: ${generated.accentContrast};`
+          const baseBackgroundString = `--base-background: ${generated.background};`
+          const brandBackgroundString = `--brand-background: ${generated.background};`
 
           const css = `${defaultTheme == theme ? ':root, ' : ''} .theme-${theme}  {
   ${baseString}
   ${baseAlphaString}
   ${baseContrastString}
+  ${baseBackgroundString}
   ${brandString}
   ${brandAlphaString}
   ${brandContrastString}
+  ${brandBackgroundString}
   }`
           return css
         }

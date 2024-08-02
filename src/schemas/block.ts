@@ -16,6 +16,8 @@ export const block = base
     block: pathSchema('blocks'),
     posts: pathSchema('posts').array(),
     reviews: pathSchema('reviews').array(),
+    review: base,
+    features: base.array(),
   })
   .partial()
   .passthrough()

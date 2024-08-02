@@ -1,0 +1,81 @@
+---
+import type { ComponentProps, HTMLTag } from 'astro/types'
+import {
+  Button,
+  Column,
+  Heading,
+  Image,
+  Input,
+  Price,
+  Row,
+  Section,
+  Text,
+} from 'fulldev-ui'
+
+type Props<As extends HTMLTag = 'section'> = ComponentProps<
+  typeof Section<As>
+> & {
+  level?: ComponentProps<typeof Heading>['level']
+  position?: ComponentProps<typeof Image>['position']
+  heading?: ComponentProps<typeof Heading>['html']
+  title?: ComponentProps<typeof Heading>['html']
+  text?: ComponentProps<typeof Text>['html']
+  description?: ComponentProps<typeof Text>['html']
+  price?: ComponentProps<typeof Price>['value']
+  image?: ComponentProps<typeof Image>['src']
+  images?: ComponentProps<typeof Image>['src'][]
+  form?: any
+  button?: any
+}
+
+const {
+  level = 1,
+  structure = 'split',
+  heading,
+  title,
+  text,
+  description,
+  price,
+  image,
+  images,
+  button,
+  form,
+  ...rest
+} = Astro.props
+---
+
+<Section
+  class:list={'product-section'}
+  {structure}
+  {...rest}
+>
+  <Image src={image || images?.[0]} />
+  <Column>
+    <Heading
+      {level}
+      html={heading || title}
+    />
+    <Text
+      style={{ maxWidth: '420px' }}
+      html={text || description}
+    />
+    <Price value={price} />
+    <Row>
+      <Input
+        value={1}
+        name={'quantity'}
+        style={{ width: 'var(--space-6)' }}
+        type="number"
+      />
+      <Button
+        color="brand"
+        html={form?.submit}
+      />
+    </Row>
+    <Button
+      style={{ marginTop: 'var(--space-3)', width: '100%', maxWidth: '400px' }}
+      variant="soft"
+      {...button}
+    />
+  </Column>
+</Section>

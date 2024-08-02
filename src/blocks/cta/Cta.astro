@@ -15,6 +15,7 @@ import {
   Wrap,
 } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
+import ReviewCard from '../reviews/ReviewCard.astro'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
 
@@ -27,6 +28,7 @@ const {
   badge,
   rating,
   tagline,
+  review,
   heading,
   text,
   buttons,
@@ -48,7 +50,8 @@ const {
   {...rest}
 >
   <Column align={structure === 'column' ? align : 'start'}>
-    <Rating {...rating} />
+    <Rating value={rating} />
+    <ReviewCard {...review} />
     <Badge html={badge} />
     <Tagline html={tagline} />
     <Heading

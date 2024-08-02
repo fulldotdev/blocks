@@ -1,20 +1,36 @@
 ---
-import type { HTMLTag } from 'astro/types'
+import type { ComponentProps, HTMLTag } from 'astro/types'
 import {
   Badge,
   Box,
   Button,
+  Column,
   Heading,
   Image,
+  Label,
   Rating,
   Section,
-  Tagline,
   Text,
   Wrap,
 } from 'fulldev-ui'
-import type { Block } from '../../schemas/block'
+import ReviewCard from '../reviews/ReviewCard.astro'
 
-type Props<As extends HTMLTag = 'section'> = Block<As>
+type Props<As extends HTMLTag = 'section'> = ComponentProps<
+  typeof Section<As>
+> & {
+  level?: ComponentProps<typeof Heading>['level']
+  position?: ComponentProps<typeof Image>['position']
+  heading?: ComponentProps<typeof Heading>['html']
+  title?: ComponentProps<typeof Heading>['html']
+  text?: ComponentProps<typeof Text>['html']
+  description?: ComponentProps<typeof Text>['html']
+  badge?: ComponentProps<typeof Badge>['html']
+  label?: ComponentProps<typeof Label>['html']
+  image?: ComponentProps<typeof Image>['src']
+  rating?: ComponentProps<typeof Rating>['value']
+  review?: ComponentProps<typeof ReviewCard>
+  buttons?: ComponentProps<typeof Button>[]
+}
 
 const {
   structure = 'column',
@@ -22,11 +38,12 @@ const {
   level = 1,
   align,
   position,
+  label,
   heading,
   badge,
-  tagline,
   text,
   buttons,
+  review,
   image,
   rating,
   ...rest
@@ -44,20 +61,26 @@ const {
     structure={structure === 'spread' ? 'spread' : 'column'}
     align={structure === 'split' ? 'start' : align}
   >
-    <Rating {...rating} />
-    <Badge html={badge} />
-    <Tagline
-      color="brand"
-      html={tagline}
-    />
-    <Heading
-      {level}
-      html={heading}
-    />
-    <Text
-      contrast={position === 'background' && true}
-      html={text}
-    />
+    <Column align={structure === 'column' ? align : 'start'}>
+      <Rating value={rating} />
+      <ReviewCard
+        frame="none"
+        {...review}
+      />
+      <Badge html={badge} />
+      <Label
+        color="brand"
+        html={label}
+      />
+      <Heading
+        {level}
+        html={heading}
+      />
+      <Text
+        contrast={position === 'background' && true}
+        html={text}
+      />
+    </Column>
     <Wrap>
       {buttons?.map((button) => <Button {...button} />)}
     </Wrap>
