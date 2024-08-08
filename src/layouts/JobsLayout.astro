@@ -1,15 +1,19 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { getCollection } from 'astro:content'
 import { Prose, Section } from 'fulldev-ui'
+import JobDeck from '../blocks/jobs/JobDeck.astro'
 import Block from '../components/Block.astro'
 import Blocks from '../components/Blocks.astro'
-import Layout from '../layouts/Layout.astro'
+import Layout from './Layout.astro'
 
 type Props = CollectionEntry<'pages'>
 
-const { data, ...rest } = Astro.props
+const { data, slug, ...rest } = Astro.props
 
-console.log('HEROOO', data.hero)
+const childPages = (
+  await getCollection('pages', (page) => page.slug.startsWith(slug))
+).map((page) => ({ href: `/${page.slug}/`, ...page.data }))
 ---
 
 <Layout
@@ -24,6 +28,7 @@ console.log('HEROOO', data.hero)
     {...data}
     {...data.hero}
   />
+  <JobDeck cards={childPages} />
   <Section
     size="lg"
     style={{ '--screen': '768px' }}

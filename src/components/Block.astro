@@ -21,8 +21,8 @@ const components = {
 }
 
 const found = components[_bookshop_name as any] as any
-const functioncomp = await found()
-const Component = functioncomp.default
+const functioncomp = found && (await found())
+const Component = functioncomp?.default
 
 const productData = product && (await getEntry(product))?.data
 const blockData = block && (await getEntry(block))?.data

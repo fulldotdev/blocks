@@ -1,27 +1,14 @@
 ---
-import { getEntry } from 'astro:content'
 import { Layout } from 'fulldev-blocks'
-import { Prose, Section } from 'fulldev-ui'
 import Hero from '../blocks/hero/Hero.astro'
-import Blocks from '../components/Blocks.astro'
-
-const { data, render } = await getEntry('pages', '404')
-const { Content } = await render()
 ---
 
-<Layout
-  class:list={'404-page'}
-  {...data}
->
+<Layout class:list={'404-page'}>
   <Hero
-    {...data}
-    {...data.hero}
+    align="center"
+    size="lg"
+    heading="Pagina niet gevonden"
+    text="Deze pagina bestaat niet of is verplaatst."
+    buttons={[{ text: 'Naar home', href: '/', contrast: true }]}
   />
-  <Section style={{ '--screen': '768px' }}>
-    <Prose>
-      <Content />
-    </Prose>
-  </Section>
-  <Blocks blocks={data.blocks} />
-  <slot />
 </Layout>

@@ -32,6 +32,7 @@ const {
   heading,
   text,
   buttons,
+  button,
   frame = 'panel',
   input,
   position = 'background',
@@ -66,6 +67,7 @@ const {
     />
   </Column>
   <Wrap>
+    <Button {...button} />
     {buttons?.map((button, i) => <Button {...button} />)}
   </Wrap>
   <Form

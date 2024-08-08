@@ -1,8 +1,8 @@
 ---
-import { getCollection } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
+import deepmerge from 'deepmerge'
+import { mapKeys } from 'radash'
 import PageLayout from '../layouts/PageLayout.astro'
-import PolicyLayout from '../layouts/PolicyLayout.astro'
-import PostLayout from '../layouts/PostLayout.astro'
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages')
@@ -14,21 +14,27 @@ export async function getStaticPaths() {
   }))
 }
 
-const { data, render } = Astro.props
-const { Content, headings } = await render()
+const { data, ...rest } = Astro.props
+const settings = await getEntry('settings', 'base')
 
-const layouts = {
-  page: PageLayout,
-  post: PostLayout,
-  policy: PolicyLayout,
+const packageLayouts = import.meta.glob('../layouts/**/*.astro')
+const userLayouts = import.meta.glob('/src/layouts/**/*.astro')
+
+const mapBlockKeys = (blocks: any) =>
+  mapKeys(blocks, (key: any) => key.split('/').pop().split('.').shift())
+
+const components = {
+  ...mapBlockKeys(packageLayouts),
+  ...mapBlockKeys(userLayouts),
 }
 
-const Layout = layouts[data._schema] ?? PageLayout
+const found = components[data.layout as any] as any
+const functioncomp = found && (await found())
+const Layout = functioncomp?.default ?? PageLayout
 ---
 
 <Layout
   class:list={'page'}
-  {...Astro.props}
->
-  <slot />
-</Layout>
+  data={deepmerge(settings.data ?? {}, data ?? {})}
+  {...rest}
+/>

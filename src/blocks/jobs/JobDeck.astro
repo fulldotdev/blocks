@@ -13,10 +13,11 @@ import {
   Text,
   Wrap,
 } from 'fulldev-ui'
-import ReviewCard from '../reviews/ReviewCard.astro'
+import { default as MasterCard } from '../experimental/MasterCard.astro'
 
-type Props<As extends HTMLTag = 'section'> = ComponentProps<
-  typeof Section<As>
+type Props<As extends HTMLTag = 'section'> = Omit<
+  ComponentProps<typeof Section<As>>,
+  'structure'
 > & {
   level?: ComponentProps<typeof Heading>['level']
   position?: ComponentProps<typeof Image>['position']
@@ -28,37 +29,38 @@ type Props<As extends HTMLTag = 'section'> = ComponentProps<
   label?: ComponentProps<typeof Label>['html']
   image?: ComponentProps<typeof Image>['src']
   rating?: ComponentProps<typeof Rating>['value']
-  review?: ComponentProps<typeof ReviewCard>
   buttons?: ComponentProps<typeof Button>[]
-  html?: ComponentProps<typeof Text>['html']
-  button?: any
+  structure?: ComponentProps<typeof Box>['structure']
+  cards?: any
+  pages?: any
+  name?: any
+  records?: any
 }
 
 const {
-  structure = 'column',
-  size = 'xl',
-  level = 1,
+  level,
+  structure,
   align,
   position,
   label,
   heading,
   badge,
   text,
-  html,
-  description,
   buttons,
-  review,
   image,
   rating,
-  button,
+  cards,
+  pages,
+  records,
+  title,
+  name,
   ...rest
 } = Astro.props
 ---
 
 <Section
-  class:list={'hero'}
+  class:list={'master-section'}
   structure={structure === 'split' ? 'split' : 'column'}
-  {size}
   {align}
   {...rest}
 >
@@ -68,30 +70,40 @@ const {
   >
     <Column align={structure === 'column' ? align : 'start'}>
       <Rating value={rating} />
-      <ReviewCard
-        frame="none"
-        {...review}
-      />
       <Badge html={badge} />
       <Label
         color="brand"
         html={label}
       />
       <Heading
-        color="base"
         {level}
-        html={heading}
+        html={heading || title || name}
       />
       <Text
-        color="base"
         contrast={position === 'background' && true}
-        html={html || text || description}
+        html={text}
       />
     </Column>
     <Wrap>
-      <Button {...button} />
       {buttons?.map((button) => <Button {...button} />)}
     </Wrap>
+  </Box>
+  <Box
+    structure={structure === 'split' ? 'grid' : structure || 'grid'}
+    position={structure === 'carousel' ? 'inset' : undefined}
+  >
+    {
+      [...(cards ?? []), ...(records ?? []), ...(pages ?? [])]?.map(
+        (card: any) => (
+          <MasterCard
+            frame="panel"
+            position="cover"
+            ratio={'square'}
+            {...card}
+          />
+        )
+      )
+    }
   </Box>
   <Image
     {position}
@@ -101,3 +113,4 @@ const {
 
 <slot name="script" />
 <slot name="style" />
+<slot />

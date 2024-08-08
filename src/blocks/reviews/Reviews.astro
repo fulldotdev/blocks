@@ -6,9 +6,17 @@ import ReviewCard from './ReviewCard.astro'
 
 type Props<As extends HTMLTag = 'section'> = Block<As> & {
   cards?: any
+  card?: any
 }
 
-const { structure = 'masonry', heading, text, cards, ...rest } = Astro.props
+const {
+  structure = 'masonry',
+  heading,
+  text,
+  cards,
+  card,
+  ...rest
+} = Astro.props
 ---
 
 <Section
@@ -18,6 +26,13 @@ const { structure = 'masonry', heading, text, cards, ...rest } = Astro.props
   <Heading html={heading} />
   <Text html={text} />
   <Box {structure}>
-    {cards?.map((card) => <ReviewCard {...card} />)}
+    {
+      cards?.map((c) => (
+        <ReviewCard
+          {...card}
+          {...c}
+        />
+      ))
+    }
   </Box>
 </Section>

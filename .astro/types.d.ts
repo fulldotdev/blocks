@@ -326,6 +326,16 @@ declare module 'astro:content' {
   data: InferEntrySchema<"globals">
 };
 };
+"records": Record<string, {
+  id: string;
+  collection: "records";
+  data: InferEntrySchema<"records">;
+}>;
+"settings": Record<string, {
+  id: string;
+  collection: "settings";
+  data: InferEntrySchema<"settings">;
+}>;
 
 	};
 

@@ -22,6 +22,7 @@ const {
   position,
   tagline,
   rating,
+  html,
   review,
   heading,
   text,
@@ -50,7 +51,7 @@ const {
     />
     <Text
       color="base"
-      html={text}
+      html={html || text}
     />
     <Row>
       {buttons?.map((button) => <Button {...button} />)}

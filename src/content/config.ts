@@ -40,4 +40,8 @@ export const collections = {
     type: 'data',
     schema: block,
   }),
+  settings: defineCollection({
+    type: 'data',
+    schema: page,
+  }),
 }

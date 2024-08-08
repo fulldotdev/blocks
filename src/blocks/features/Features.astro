@@ -34,10 +34,13 @@ const { tagline, heading, text, buttons, image, cards, ...rest } = Astro.props
       {buttons?.map((button) => <Button {...button} />)}
     </Row>
   </Spread>
-  <Split>
+  <Split align="start">
     {
-      cards?.map(({ icon, heading, text }) => (
-        <Card frame="none">
+      cards?.map(({ icon, heading, text, html, button }) => (
+        <Card
+          frame="none"
+          align="start"
+        >
           <Icon
             color="brand"
             name={icon}
@@ -46,7 +49,8 @@ const { tagline, heading, text, buttons, image, cards, ...rest } = Astro.props
             level={3}
             html={heading}
           />
-          <Text html={text} />
+          <Text html={html || text} />
+          <Button {...button} />
         </Card>
       ))
     }

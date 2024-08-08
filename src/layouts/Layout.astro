@@ -1,45 +1,39 @@
 ---
-import { getEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
 import { Layout as FullLayout, Main } from 'fulldev-ui'
 import Banner from '../blocks/banner/Banner.astro'
 import Footer from '../blocks/footer/Footer.astro'
 import Header from '../blocks/header/Header.astro'
 import Block from '../components/Block.astro'
-import { type Page } from '../schemas/page'
 
-type Props = Page
+type Props = CollectionEntry<'pages'>
 
-const {
-  header = (await getEntry('globals', 'header'))?.data,
-  banner = (await getEntry('globals', 'banner'))?.data,
-  cta = (await getEntry('globals', 'cta'))?.data,
-  footer = (await getEntry('globals', 'footer'))?.data,
-  ...rest
-} = Astro.props
-
-const settings = (await getEntry('globals', 'settings'))?.data
+const { data, ...rest } = Astro.props
 ---
 
 <FullLayout
   class:list={'layout'}
   lang="nl"
+  {...data}
   {...rest}
 >
-  <Banner {...header} />
-  <Header
-    {...header && settings}
+  <!-- <Banner
+    {...settings?.banner}
     {...header}
+  /> -->
+  <Header
+    logo={data?.header ? data?.logo : undefined}
+    {...data?.header}
   />
   <Main>
     <slot />
     <Block
       _bookshop_name="Cta"
-      {...cta}
+      {...data?.cta}
     />
   </Main>
   <Footer
-    text={footer ? settings.text : undefined}
-    {...footer && settings}
-    {...footer}
+    logo={data?.footer ? data?.logo : undefined}
+    {...data?.footer}
   />
 </FullLayout>
