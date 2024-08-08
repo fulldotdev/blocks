@@ -28,7 +28,7 @@ const components = {
   ...mapBlockKeys(userLayouts),
 }
 
-const found = components[data.layout as any] as any
+const found = components[data._layout as any] as any
 const functioncomp = found && (await found())
 const Layout = functioncomp?.default ?? PageLayout
 ---
