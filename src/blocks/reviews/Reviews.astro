@@ -1,15 +1,14 @@
 ---
 import type { HTMLTag } from 'astro/types'
-import type { CollectionEntry } from 'astro:content'
 import { Box, Heading, Section, Text } from 'fulldev-ui'
 import type { Block } from '../../schemas/block'
 import ReviewCard from './ReviewCard.astro'
 
 type Props<As extends HTMLTag = 'section'> = Block<As> & {
-  reviews?: CollectionEntry<'reviews'>[]
+  cards?: any
 }
 
-const { structure = 'masonry', heading, text, reviews, ...rest } = Astro.props
+const { structure = 'masonry', heading, text, cards, ...rest } = Astro.props
 ---
 
 <Section
@@ -19,6 +18,6 @@ const { structure = 'masonry', heading, text, reviews, ...rest } = Astro.props
   <Heading html={heading} />
   <Text html={text} />
   <Box {structure}>
-    {reviews?.map(({ data }) => <ReviewCard {...data} />)}
+    {cards?.map((card) => <ReviewCard {...card} />)}
   </Box>
 </Section>

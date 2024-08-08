@@ -17,8 +17,7 @@ import type { Block } from '../../schemas/block'
 
 type Props<As extends HTMLTag = 'section'> = Block<As>
 
-const { tagline, heading, text, buttons, image, features, ...rest } =
-  Astro.props
+const { tagline, heading, text, buttons, image, cards, ...rest } = Astro.props
 ---
 
 <Section
@@ -37,7 +36,7 @@ const { tagline, heading, text, buttons, image, features, ...rest } =
   </Spread>
   <Split>
     {
-      features?.map(({ icon, heading, text }) => (
+      cards?.map(({ icon, heading, text }) => (
         <Card frame="none">
           <Icon
             color="brand"

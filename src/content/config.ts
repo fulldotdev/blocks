@@ -36,4 +36,8 @@ export const collections = {
     type: 'data',
     schema: block,
   }),
+  records: defineCollection({
+    type: 'data',
+    schema: block,
+  }),
 }

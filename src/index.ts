@@ -24,8 +24,12 @@ export { default as Reviews } from './blocks/reviews/Reviews.astro'
 export { default as Stats } from './blocks/stats/Stats.astro'
 
 // Components
-export { default as Blocks } from './components/Blocks.astro'
 export { default as Block } from './components/Block.astro'
+export { default as Blocks } from './components/Blocks.astro'
 
 // Layouts
 export { default as Layout } from './layouts/Layout.astro'
+
+// experimental
+export { default as MasterCard } from './blocks/experimental/MasterCard.astro'
+export { default as MasterSection } from './blocks/experimental/MasterSection.astro'

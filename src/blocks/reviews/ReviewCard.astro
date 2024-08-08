@@ -51,17 +51,13 @@ const {
 >
   <Row>
     {
-      avatars?.map((a) => (
+      [avatar, ...(avatars ?? [])]?.map((avatar) => (
         <Avatar
           radius="full"
-          src={a}
+          src={avatar}
         />
       ))
     }
-    <Avatar
-      radius="full"
-      src={avatar}
-    />
     <Column>
       <Rating
         color="brand"
@@ -71,7 +67,6 @@ const {
         color="base"
         html={label}
       />
-      <Label html={heading} />
     </Column>
   </Row>
   <Heading
