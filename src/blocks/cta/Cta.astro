@@ -1,5 +1,4 @@
 ---
-import type { HTMLTag } from 'astro/types'
 import {
   Badge,
   Button,
@@ -14,17 +13,16 @@ import {
   Text,
   Wrap,
 } from 'fulldev-ui'
-import type { Block } from '../../schemas/block'
 import ReviewCard from '../reviews/ReviewCard.astro'
-
-type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const {
   structure = 'column',
   size = 'lg',
   variant = 'subtle',
   align = 'center',
-  level = 2,
+  frame = 'panel',
+  position = 'background',
+  level,
   badge,
   rating,
   tagline,
@@ -33,9 +31,7 @@ const {
   text,
   buttons,
   button,
-  frame = 'panel',
   input,
-  position = 'background',
   image,
   ...rest
 } = Astro.props
@@ -57,8 +53,8 @@ const {
     <Tagline html={tagline} />
     <Heading
       color="base"
-      {level}
       html={heading}
+      {level}
     />
     <Text
       contrast={position === 'background' && true}
@@ -67,15 +63,14 @@ const {
     />
   </Column>
   <Wrap>
-    <Button {...button} />
-    {buttons?.map((button, i) => <Button {...button} />)}
+    {[button, ...(buttons || [])]?.map((button) => <Button {...button} />)}
   </Wrap>
   <Form
     structure="row"
     style={{ maxWidth: '420px' }}
   >
     <Input
-      variant="surface"
+      variant="outline"
       contrast={position === 'background' && true}
       placeholder={input?.placeholder}
       name={input?.placeholder}

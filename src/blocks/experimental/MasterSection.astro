@@ -1,5 +1,4 @@
 ---
-import type { ComponentProps, HTMLTag } from 'astro/types'
 import {
   Badge,
   Box,
@@ -18,28 +17,6 @@ import {
   default as ReviewCard,
 } from './MasterCard.astro'
 
-type Props<As extends HTMLTag = 'section'> = Omit<
-  ComponentProps<typeof Section<As>>,
-  'structure'
-> & {
-  level?: ComponentProps<typeof Heading>['level']
-  position?: ComponentProps<typeof Image>['position']
-  heading?: ComponentProps<typeof Heading>['html']
-  title?: ComponentProps<typeof Heading>['html']
-  text?: ComponentProps<typeof Text>['html']
-  description?: ComponentProps<typeof Text>['html']
-  badge?: ComponentProps<typeof Badge>['html']
-  label?: ComponentProps<typeof Label>['html']
-  image?: ComponentProps<typeof Image>['src']
-  rating?: ComponentProps<typeof Rating>['value']
-  review?: ComponentProps<typeof ReviewCard>
-  buttons?: ComponentProps<typeof Button>[]
-  structure?: ComponentProps<typeof Box>['structure']
-  cards?: any
-  pages?: any
-  records?: any
-}
-
 const {
   level,
   structure,
@@ -49,6 +26,7 @@ const {
   heading,
   badge,
   text,
+  button,
   buttons,
   review,
   image,
@@ -91,7 +69,7 @@ const {
       />
     </Column>
     <Wrap>
-      {buttons?.map((button) => <Button {...button} />)}
+      {[button, ...buttons]?.map((button) => <Button {...button} />)}
     </Wrap>
   </Box>
   <Box
@@ -109,7 +87,3 @@ const {
     src={image}
   />
 </Section>
-
-<slot name="script" />
-<slot name="style" />
-<slot />

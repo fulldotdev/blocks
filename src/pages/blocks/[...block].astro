@@ -1,0 +1,22 @@
+---
+import deepmerge from 'deepmerge'
+
+export async function getStaticPaths() {
+  const blocks = import.meta.glob('../blocks/**/*.astro')
+
+  console.log(blocks[0])
+
+  return blocks.map((block) => ({
+    params: {
+      block: undefined,
+    },
+    props: page,
+  }))
+}
+---
+
+<Layout
+  class:list={'page'}
+  data={deepmerge(settings.data ?? {}, data ?? {})}
+  {...rest}
+/>

@@ -13,7 +13,7 @@ import {
   Text,
   Wrap,
 } from 'fulldev-ui'
-import { default as MasterCard } from '../experimental/MasterCard.astro'
+import JobCard from './JobCard.astro'
 
 type Props<As extends HTMLTag = 'section'> = Omit<
   ComponentProps<typeof Section<As>>,
@@ -89,13 +89,14 @@ const {
     </Wrap>
   </Box>
   <Box
+    size="lg"
     structure={structure === 'split' ? 'grid' : structure || 'grid'}
     position={structure === 'carousel' ? 'inset' : undefined}
   >
     {
       [...(cards ?? []), ...(records ?? []), ...(pages ?? [])]?.map(
         (card: any) => (
-          <MasterCard
+          <JobCard
             frame="panel"
             position="cover"
             ratio={'square'}

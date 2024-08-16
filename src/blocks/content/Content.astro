@@ -1,5 +1,4 @@
 ---
-import type { HTMLTag } from 'astro/types'
 import {
   Button,
   Column,
@@ -11,10 +10,7 @@ import {
   Tagline,
   Text,
 } from 'fulldev-ui'
-import type { Block } from '../../schemas/block'
 import ReviewCard from '../reviews/ReviewCard.astro'
-
-type Props<As extends HTMLTag = 'section'> = Block<As>
 
 const {
   structure = 'split',

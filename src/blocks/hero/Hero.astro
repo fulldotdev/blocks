@@ -1,5 +1,4 @@
 ---
-import type { ComponentProps, HTMLTag } from 'astro/types'
 import {
   Badge,
   Box,
@@ -14,25 +13,6 @@ import {
   Wrap,
 } from 'fulldev-ui'
 import ReviewCard from '../reviews/ReviewCard.astro'
-
-type Props<As extends HTMLTag = 'section'> = ComponentProps<
-  typeof Section<As>
-> & {
-  level?: ComponentProps<typeof Heading>['level']
-  position?: ComponentProps<typeof Image>['position']
-  heading?: ComponentProps<typeof Heading>['html']
-  title?: ComponentProps<typeof Heading>['html']
-  text?: ComponentProps<typeof Text>['html']
-  description?: ComponentProps<typeof Text>['html']
-  badge?: ComponentProps<typeof Badge>['html']
-  label?: ComponentProps<typeof Label>['html']
-  image?: ComponentProps<typeof Image>['src']
-  rating?: ComponentProps<typeof Rating>['value']
-  review?: ComponentProps<typeof ReviewCard>
-  buttons?: ComponentProps<typeof Button>[]
-  html?: ComponentProps<typeof Text>['html']
-  button?: any
-}
 
 const {
   structure = 'column',
@@ -89,8 +69,7 @@ const {
       />
     </Column>
     <Wrap>
-      <Button {...button} />
-      {buttons?.map((button) => <Button {...button} />)}
+      {[button, ...(buttons || [])]?.map((button) => <Button {...button} />)}
     </Wrap>
   </Box>
   <Image

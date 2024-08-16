@@ -33,11 +33,14 @@ let data = {
   ...rest,
 }
 
-data.cards = data.cards?.[0].collection
-  ? (await getEntries(data.cards)).map((entry: any) => entry?.data)
-  : data.cards
+data.records = data.records
+  ? (await getEntries(data.records)).map((entry: any) => entry?.data)
+  : data.records
 data.pages = data.pages
-  ? (await getEntries(data.pages)).map((entry: any) => entry?.data)
+  ? (await getEntries(data.pages)).map((entry: any) => ({
+      href: `/${entry.slug}/`,
+      ...entry?.data,
+    }))
   : undefined
 data.posts = data.posts && (await getEntries(data.posts))
 data.products = data.products && (await getEntries(data.products))
