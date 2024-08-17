@@ -7,13 +7,13 @@ import Layout from './Layout.astro'
 
 type Props = CollectionEntry<'pages'>['data']
 
-const { data, render } = Astro.props
+const { data, render, ...rest } = Astro.props
 const { Content } = await render()
 ---
 
 <Layout
   class:list={'page'}
-  {...data}
+  {...rest}
 >
   <Block
     _bookshop_name="Hero"

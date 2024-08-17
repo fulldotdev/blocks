@@ -62,12 +62,16 @@ const {
         text={channels?.email}
         href={`mailto:${channels?.email}`}
       />
-      <Channel
-        if={channels?.address}
-        icon="pin"
-        heading="Adres"
-        text={channels?.address}
-      />
+      {
+        channels?.address && (
+          <Channel
+            if={channels?.address}
+            icon="pin"
+            heading="Adres"
+            text={channels?.address}
+          />
+        )
+      }
     </Column>
     {
       socials && (
@@ -78,10 +82,12 @@ const {
           <Button
             if={socials?.facebook}
             href={socials?.facebook}
+            variant="soft"
             icon="brand-facebook"
           />
           <Button
             if={socials?.instagram}
+            variant="soft"
             href={socials?.instagram}
             icon="brand-instagram"
           />
