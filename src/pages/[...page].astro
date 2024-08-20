@@ -15,7 +15,9 @@ export async function getStaticPaths() {
 }
 
 const { data, ...rest } = Astro.props
-const settings = await getEntry('settings', 'base')
+const baseSettings = await getEntry('settings', 'base')
+const pageSettings =
+  (data.settings && (await getEntry('settings', data.settings as any))) || {}
 
 const packageLayouts = import.meta.glob('../layouts/**/*.astro')
 const userLayouts = import.meta.glob('/src/layouts/**/*.astro')
@@ -35,6 +37,9 @@ const Layout = functioncomp?.default ?? PageLayout
 
 <Layout
   class:list={'page'}
-  data={deepmerge(settings.data ?? {}, data ?? {})}
+  data={deepmerge(
+    deepmerge(baseSettings?.data ?? {}, pageSettings?.data ?? {}),
+    data ?? {}
+  )}
   {...rest}
 />
