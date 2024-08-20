@@ -18,7 +18,7 @@ export const page = base
     header: block.or(z.literal(false)),
     banner: block.or(z.literal(false)),
     hero: block.or(z.literal(false)),
-    blocks: block.array(),
+    blocks: block.array().or(z.object({}).catchall(block)),
     cta: block.or(z.literal(false)),
     footer: block.or(z.literal(false)),
     categories: pathSchema('categories').array(),

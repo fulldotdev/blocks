@@ -8,4 +8,8 @@ interface Props {
 const { blocks } = Astro.props
 ---
 
-{blocks?.map((block: any) => <Block {...block} />)}
+{
+  Array.isArray(blocks)
+    ? blocks?.map((block: any) => <Block {...block} />)
+    : Object.values(blocks ?? {})?.map((block: any) => <Block {...block} />)
+}
