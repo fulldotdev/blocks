@@ -15,6 +15,7 @@ export const pathSchema = <C extends keyof AnyEntryMap>(collection: C) =>
     .transform((value) => {
       const fullpath = value?.split(`${collection}/`).pop()
       const slug = fullpath?.split('.').shift()
-      return slug
+      const noIndexEnding = slug?.replace('/index', '')
+      return noIndexEnding
     })
     .pipe(reference(collection))

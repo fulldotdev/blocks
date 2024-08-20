@@ -13,6 +13,7 @@ export const page = base
       })
       .partial()
       .passthrough(),
+    pages: pathSchema('pages').array(),
     title: z.string(),
     description: z.string(),
     header: block.or(z.literal(false)),

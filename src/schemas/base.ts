@@ -26,7 +26,7 @@ export const base = z
     text: z.string(),
     html: z.string(),
     image: z.string().or(z.any()),
-    images: z.string().array(),
+    images: z.any(),
     rating: z.number(),
     button: button,
     buttons: button.array(),
