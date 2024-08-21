@@ -5,7 +5,7 @@ import { pathSchema } from './utils'
 
 export const page = base
   .extend({
-    meta: z
+    seo: z
       .object({
         title: z.string(),
         description: z.string(),
@@ -13,16 +13,27 @@ export const page = base
       })
       .partial()
       .passthrough(),
+    code: z
+      .object({
+        head: z.string(),
+        body: z.string(),
+      })
+      .partial()
+      .passthrough(),
     pages: pathSchema('pages').array(),
+    settings: pathSchema('settings'),
     title: z.string(),
     description: z.string(),
     header: block.or(z.literal(false)),
-    banner: block.or(z.literal(false)),
+    headers: block.array().or(z.literal(false)),
     hero: block.or(z.literal(false)),
+    block: block.or(z.literal(false)),
     blocks: block.array().or(z.object({}).catchall(block)),
+    section: block.or(z.literal(false)),
+    sections: block.array().or(z.literal(false)),
     cta: block.or(z.literal(false)),
     footer: block.or(z.literal(false)),
-    categories: pathSchema('categories').array(),
+    footers: block.array().or(z.literal(false)),
   })
   .partial()
   .passthrough()

@@ -1,39 +1,117 @@
 ---
+import { AstroSeo } from '@astrolib/seo'
 import type { CollectionEntry } from 'astro:content'
-import { Layout as FullLayout, Main } from 'fulldev-ui'
-import Banner from '../blocks/banner/Banner.astro'
-import Footer from '../blocks/footer/Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
 import Header from '../blocks/header/Header.astro'
 import Block from '../components/Block.astro'
+import Blocks from '../components/Blocks.astro'
 
-type Props = CollectionEntry<'pages'>
+type Props = Partial<CollectionEntry<'pages'>>
 
-const { data, ...rest } = Astro.props
+const { slug, data } = Astro.props
+const {
+  logo,
+  title,
+  description,
+  image,
+  seo,
+  header,
+  headers,
+  footer,
+  footers,
+  code,
+} = data ?? {}
+
+const mergedTitle = seo?.title || title
+const mergedDescription = seo?.description || description
+const mergedImage = (seo?.image || image)?.startsWith('/')
+  ? Astro.site + (seo?.image || image)
+  : seo?.image || image
 ---
 
-<FullLayout
-  class:list={'layout'}
+<!doctype html>
+<html
   lang="nl"
-  {...data}
-  {...rest}
+  class={slug}
 >
-  <!-- <Banner
-    {...settings?.banner}
-    {...header}
-  /> -->
-  <Header
-    logo={data?.header ? data?.logo : undefined}
-    {...data?.header}
-  />
-  <Main>
-    <slot />
-    <Block
-      _bookshop_name="Cta"
-      {...data?.cta}
+  <head>
+    <meta
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+      name="viewport"
     />
-  </Main>
-  <Footer
-    logo={data?.footer ? data?.logo : undefined}
-    {...data?.footer}
-  />
-</FullLayout>
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+    <ViewTransitions />
+    <AstroSeo
+      title={mergedTitle}
+      description={mergedDescription}
+      openGraph={{
+        title: mergedTitle,
+        description: mergedDescription,
+        images: mergedImage
+          ? [
+              {
+                url: mergedImage,
+                alt: mergedTitle,
+              },
+            ]
+          : undefined,
+      }}
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      href="/favicon/site.webmanifest"
+    />
+    <link
+      rel="mask-icon"
+      href="/favicon/safari-pinned-tab.svg"
+    />
+    <link
+      rel="shortcut icon"
+      href="/favicon/favicon.ico"
+    />
+    <meta
+      name="msapplication-config"
+      content="/favicon/browserconfig.xml"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+    />
+    <slot name="head" />
+    <Fragment set:html={code?.head} />
+  </head>
+  <body>
+    <Fragment set:html={code?.bodyStart} />
+    <Header
+      {logo}
+      {...header}
+    />
+    <Blocks {...headers} />
+    <main>
+      <slot />
+    </main>
+    <Block {...footer} />
+    <Blocks {...footers} />
+    <Fragment set:html={code?.body} />
+  </body>
+</html>

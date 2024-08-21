@@ -1,9 +1,21 @@
 ---
-import { Layout } from 'fulldev-blocks'
+import { getEntry } from 'astro:content'
+import { mergeAll } from 'remeda'
 import Hero from '../blocks/hero/Hero.astro'
+import Layout from '../layouts/Layout.astro'
+
+const page = await getEntry('pages', '404')
+
+const { data, ...rest } = page ?? {}
+const baseSettings = await getEntry('settings', 'base')
+const pageSettings = data?.settings && (await getEntry(data.settings))
+const mergedData = mergeAll([baseSettings?.data, pageSettings?.data, data])
 ---
 
-<Layout class:list={'404-page'}>
+<Layout
+  data={mergedData}
+  {...rest}
+>
   <Hero
     align="center"
     size="lg"

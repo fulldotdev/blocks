@@ -1,15 +1,5 @@
 ---
 import Block from './Block.astro'
-
-interface Props {
-  blocks?: any
-}
-
-const { blocks } = Astro.props
 ---
 
-{
-  Array.isArray(blocks)
-    ? blocks?.map((block: any) => <Block {...block} />)
-    : Object.values(blocks ?? {})?.map((block: any) => <Block {...block} />)
-}
+{Object.values(Astro.props ?? {})?.map((block: any) => <Block {...block} />)}

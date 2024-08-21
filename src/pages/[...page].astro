@@ -1,7 +1,7 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
-import deepmerge from 'deepmerge'
 import { mapKeys } from 'radash'
+import { mergeAll } from 'remeda'
 import PageLayout from '../layouts/PageLayout.astro'
 
 export async function getStaticPaths() {
@@ -16,8 +16,8 @@ export async function getStaticPaths() {
 
 const { data, ...rest } = Astro.props
 const baseSettings = await getEntry('settings', 'base')
-const pageSettings =
-  (data.settings && (await getEntry('settings', data.settings as any))) || {}
+const pageSettings = data.settings && (await getEntry(data.settings))
+const mergedData = mergeAll([baseSettings?.data, pageSettings?.data, data])
 
 const packageLayouts = import.meta.glob('../layouts/**/*.astro')
 const userLayouts = import.meta.glob('/src/layouts/**/*.astro')
@@ -30,16 +30,12 @@ const components = {
   ...mapBlockKeys(userLayouts),
 }
 
-const found = components[data._layout as any] as any
+const found = components[data._layout as string] as any
 const functioncomp = found && (await found())
 const Layout = functioncomp?.default ?? PageLayout
 ---
 
 <Layout
-  class:list={'page'}
-  data={deepmerge(
-    deepmerge(baseSettings?.data ?? {}, pageSettings?.data ?? {}),
-    data ?? {}
-  )}
+  data={mergedData}
   {...rest}
 />
