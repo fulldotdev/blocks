@@ -9,7 +9,9 @@ export const block = base
   .extend({
     columns: card.array(),
     cards: z.array(card.or(pathSchema('cards'))),
+    source: z.literal('children').or(z.literal('references')),
     pages: pathSchema('pages').array(),
+    records: pathSchema('records').array(),
     page: pathSchema('pages'),
     block: pathSchema('blocks'),
     posts: pathSchema('posts').array(),

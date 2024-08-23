@@ -28,6 +28,7 @@ export { default as Stats } from './blocks/stats/Stats.astro'
 // Components
 export { default as Block } from './components/Block.astro'
 export { default as Blocks } from './components/Blocks.astro'
+export { default as Image } from './components/Image.astro'
 
 // Layouts
 export { default as Layout } from './layouts/Layout.astro'

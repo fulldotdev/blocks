@@ -1,5 +1,5 @@
 ---
-import { getEntries, getEntry } from 'astro:content'
+import { getCollection, getEntries } from 'astro:content'
 import { mapKeys } from 'radash'
 
 interface Props {
@@ -7,7 +7,7 @@ interface Props {
   [key: string | number | symbol]: any
 }
 
-let { _bookshop_name, product, block, ...rest } = Astro.props
+let { _bookshop_name, records, pages, source, ...rest } = Astro.props
 
 const packageBlocks = import.meta.glob('../blocks/**/*.astro')
 const userBlocks = import.meta.glob('/src/blocks/**/*.astro')
@@ -24,28 +24,65 @@ const found = components[_bookshop_name as any] as any
 const functioncomp = found && (await found())
 const Component = functioncomp?.default
 
-const productData = product && (await getEntry(product))?.data
-const blockData = block && (await getEntry(block))?.data
+records = records
+  ? (await getEntries(records)).map((entry: any) => entry?.data)
+  : undefined
 
-let data = {
-  ...productData,
-  ...blockData,
-  ...rest,
-}
-
-data.records = data.records
-  ? (await getEntries(data.records)).map((entry: any) => entry?.data)
-  : data.records
-data.pages = data.pages
-  ? (await getEntries(data.pages)).map((entry: any) => ({
+pages = pages
+  ? (await getEntries(pages)).map((entry: any) => ({
       href: `/${entry.slug}/`,
       ...entry?.data,
     }))
   : undefined
-data.posts = data.posts && (await getEntries(data.posts))
-data.products = data.products && (await getEntries(data.products))
-data.categories = data.categories && (await getEntries(data.categories))
-data.reviews = data.reviews && (await getEntries(data.reviews))
+
+const slug = Astro.url.pathname.replace(/^\/|\/$/g, '')
+
+const children =
+  source === 'children' && slug
+    ? [
+        ...(
+          await getCollection(
+            'pages',
+            (page) =>
+              page.slug.startsWith(slug) &&
+              page.slug !== slug &&
+              !page.slug.replace(`${slug}/`, '').includes('/')
+          )
+        ).map((page) => ({ href: `/${page.slug}/`, ...page.data })),
+        ...(
+          await getCollection(
+            'records',
+            (record) =>
+              record.id.startsWith(slug) &&
+              record.id !== slug &&
+              !record.id.replace(`${slug}/`, '').includes('/')
+          )
+        ).map((record) => record.data),
+      ]
+    : undefined
+
+const references =
+  source === 'references' && slug
+    ? (
+        await getCollection('pages', (page) =>
+          page.data?.pages?.find(
+            (page) =>
+              page.slug
+                .replace('.md', '')
+                .replace('/index', '')
+                .replace('src/content/', '') === slug
+          )
+        )
+      ).map((item) => ({ href: `/${item.slug}/`, ...item.data }))
+    : undefined
 ---
 
-{Component && <Component {...data} />}
+{
+  Component && (
+    <Component
+      cards={pages || records || children || references}
+      pages={pages || records || children || references}
+      {...rest}
+    />
+  )
+}

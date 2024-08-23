@@ -2,13 +2,12 @@
 import { AstroSeo } from '@astrolib/seo'
 import type { CollectionEntry } from 'astro:content'
 import { ViewTransitions } from 'astro:transitions'
-import Header from '../blocks/header/Header.astro'
 import Block from '../components/Block.astro'
 import Blocks from '../components/Blocks.astro'
 
-type Props = Partial<CollectionEntry<'pages'>>
+type Props = CollectionEntry<'pages'>
 
-const { slug, data } = Astro.props
+const { slug, data, render } = Astro.props
 const {
   logo,
   title,
@@ -20,12 +19,13 @@ const {
   footer,
   footers,
   code,
-} = data ?? {}
+} = data || {}
 
-const mergedTitle = seo?.title || title
+const renderTitle = render && (await render()).headings[0]?.text
+const mergedTitle = seo?.title || title || renderTitle
 const mergedDescription = seo?.description || description
 const mergedImage = (seo?.image || image)?.startsWith('/')
-  ? Astro.site + (seo?.image || image)
+  ? Astro.site ?? '' + (seo?.image || image) ?? ''
   : seo?.image || image
 ---
 
@@ -102,7 +102,8 @@ const mergedImage = (seo?.image || image)?.startsWith('/')
   </head>
   <body>
     <Fragment set:html={code?.bodyStart} />
-    <Header
+    <Block
+      _bookshop_name="Header"
       {logo}
       {...header}
     />
@@ -110,7 +111,11 @@ const mergedImage = (seo?.image || image)?.startsWith('/')
     <main>
       <slot />
     </main>
-    <Block {...footer} />
+    <Block
+      _bookshop_name="Footer"
+      {logo}
+      {...footer}
+    />
     <Blocks {...footers} />
     <Fragment set:html={code?.body} />
   </body>

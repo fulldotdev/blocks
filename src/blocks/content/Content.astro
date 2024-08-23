@@ -3,13 +3,14 @@ import {
   Button,
   Column,
   Heading,
-  Image,
+  Label,
   Rating,
   Row,
   Section,
   Tagline,
   Text,
 } from 'fulldev-ui'
+import Image from '../../components/Image.astro'
 import ReviewCard from '../reviews/ReviewCard.astro'
 
 const {
@@ -21,6 +22,9 @@ const {
   html,
   review,
   heading,
+  title,
+  label,
+  description,
   text,
   buttons,
   image,
@@ -30,8 +34,8 @@ const {
 
 <Section
   class:list={'content'}
-  structure="split"
-  align="center"
+  {structure}
+  {align}
   {...rest}
 >
   <Column>
@@ -41,13 +45,17 @@ const {
       {...review}
     />
     <Tagline html={tagline} />
+    <Label
+      color="brand"
+      html={label}
+    />
     <Heading
       color="base"
-      html={heading}
+      html={heading || title}
     />
     <Text
       color="base"
-      html={html || text}
+      html={html || text || description}
     />
     <Row>
       {buttons?.map((button) => <Button {...button} />)}

@@ -136,12 +136,6 @@ export default function fulldevBlocksIntegration(
         // Inject pages
         // ----------------------
         const pages = import.meta.glob('/src/pages/**/*.astro')
-        !pages['/src/pages/404.astro'] &&
-          injectRoute({
-            pattern: '/404',
-            entrypoint: 'fulldev-blocks/404.astro',
-          })
-
         !pages['/src/pages/[...page].astro'] &&
           injectRoute({
             pattern: '/[...page]',
