@@ -31,6 +31,7 @@ const {
   width,
   radius = 'auto',
   height,
+  class: classes,
   ...rest
 } = Astro.props
 
@@ -47,6 +48,7 @@ const imageEntry =
           {alt}
           class:list={[
             'full image',
+            classes,
             {
               [`position-${position}`]: position,
               [`frame-${frame}`]: frame,

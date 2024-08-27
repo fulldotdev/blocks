@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import { Block, Blocks, Layout } from 'fulldev-blocks'
+
+type Props = CollectionEntry<'pages'>
+
+const { logo, header, headers, footer, footers } = Astro.props.data || {}
+---
+
+<Layout {...Astro.props}>
+  <Block
+    _bookshop_name="Header"
+    {logo}
+    {...header}
+  />
+  <Blocks {...headers} />
+  <main>
+    <slot />
+  </main>
+  <Block
+    _bookshop_name="Footer"
+    {logo}
+    {...footer}
+  />
+  <Blocks {...footers} />
+</Layout>

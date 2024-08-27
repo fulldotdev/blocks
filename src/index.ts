@@ -28,10 +28,12 @@ export { default as Stats } from './blocks/stats/Stats.astro'
 // Components
 export { default as Block } from './components/Block.astro'
 export { default as Blocks } from './components/Blocks.astro'
+export { default as Gallery } from './components/Gallery.astro'
 export { default as Image } from './components/Image.astro'
 
 // Layouts
 export { default as Layout } from './layouts/Layout.astro'
+export { default as MainLayout } from './layouts/MainLayout.astro'
 
 // experimental
 export { default as MasterCard } from './blocks/experimental/MasterCard.astro'

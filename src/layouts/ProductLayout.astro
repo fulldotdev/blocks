@@ -1,9 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import { Block, Blocks, MainLayout } from 'fulldev-blocks'
 import { Prose, Section } from 'fulldev-ui'
-import Block from '../components/Block.astro'
-import Blocks from '../components/Blocks.astro'
-import Layout from './Layout.astro'
 
 type Props = CollectionEntry<'pages'>
 
@@ -12,7 +10,7 @@ const { hero, section, sections, block, blocks } = data
 const { Content } = await render()
 ---
 
-<Layout {...Astro.props}>
+<MainLayout {...Astro.props}>
   <Block
     _bookshop_name="ProductSection"
     {...data}
@@ -30,4 +28,4 @@ const { Content } = await render()
   <Blocks {...sections} />
   <Blocks {...blocks} />
   <slot />
-</Layout>
+</MainLayout>

@@ -1,5 +1,6 @@
 ---
 import type { ComponentProps, HTMLTag } from 'astro/types'
+import { Gallery } from 'fulldev-blocks'
 import {
   Button,
   Column,
@@ -50,9 +51,7 @@ const {
   {structure}
   {...rest}
 >
-  <Column>
-    {images?.map((image) => <Image src={image} />)}
-  </Column>
+  <Gallery {images} />
   <Column style={{ position: 'sticky', top: 'var(--space-7)' }}>
     <Heading
       {level}
