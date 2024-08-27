@@ -6,10 +6,6 @@
   "author": "Fulldev <contact@full.dev> (https://full.dev)",
   "repository": "github:fulldotdev/blocks",
   "bugs": "https://github.com/fulldotdev/blocks/issues",
-  "keywords": [
-    "withastro",
-    "astro"
-  ],
   "scripts": {
     "dev": "astro dev",
     "test": "astro check",

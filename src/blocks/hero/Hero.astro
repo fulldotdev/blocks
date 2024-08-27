@@ -23,6 +23,7 @@ const {
   label,
   heading,
   badge,
+  title,
   text,
   html,
   description,
@@ -60,7 +61,7 @@ const {
       <Heading
         color="base"
         {level}
-        html={heading}
+        html={heading || title}
       />
       <Text
         color="base"

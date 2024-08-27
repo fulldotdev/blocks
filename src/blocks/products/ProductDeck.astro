@@ -30,6 +30,7 @@ const {
   variant = 'ghost',
   level,
   heading,
+  pages,
   text,
   buttons,
   products,
@@ -60,9 +61,9 @@ const {
     position={structure === 'carousel' ? 'inset' : undefined}
   >
     {
-      products?.map(({ slug, data }) => (
+      pages?.map(({ href, ...data }) => (
         <ProductCard
-          href={`/producten/${slug}/`}
+          href={href}
           frame={frame === 'panel' ? frame : undefined}
           position={frame === 'panel' ? position : undefined}
           {...data}

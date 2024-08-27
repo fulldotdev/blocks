@@ -1,5 +1,5 @@
 ---
-meta:
+seo:
   title:
   description:
 

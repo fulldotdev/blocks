@@ -138,7 +138,7 @@ _inputs:
     type: auto
     label: Titel
     comment: Zichtbaar in Google
-  meta:
+  seo:
     label: SEO / Meta data
   meta.description:
     type: auto

@@ -118,5 +118,13 @@ const mergedImage = (seo?.image || image)?.startsWith('/')
     />
     <Blocks {...footers} />
     <Fragment set:html={code?.body} />
+    <style>
+      html,
+      body {
+        margin: 0;
+        background-color: var(--color-background);
+        padding: 0;
+      }
+    </style>
   </body>
 </html>

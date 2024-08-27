@@ -31,6 +31,7 @@ const {
   heading,
   text,
   categories,
+  pages,
   buttons,
   ...rest
 } = Astro.props
@@ -54,9 +55,9 @@ const {
     position={structure === 'carousel' ? 'inset' : undefined}
   >
     {
-      categories?.map(({ slug, data: { title, description, image } }) => (
+      pages?.map(({ title, description, image, href }) => (
         <Card
-          href={`/categorieen/${slug}/`}
+          href={href}
           {frame}
           {variant}
           ratio={structure === 'bento' ? undefined : ratio}
