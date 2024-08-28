@@ -63,7 +63,7 @@ const {
     />
     <Price value={price} />
     {
-      variations.map(({ name, options }: any) => (
+      variations?.map(({ name, options }: any) => (
         <Select
           style={{ maxWidth: '400px' }}
           options={options}

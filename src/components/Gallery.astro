@@ -43,7 +43,7 @@ const { images } = Astro.props
   <div class="large-container">
     <div class="large-carousel">
       {
-        images.map((image, i) => (
+        images?.map((image, i) => (
           <Image
             class="large-image"
             src={image}
@@ -52,7 +52,7 @@ const { images } = Astro.props
       }
     </div>
     {
-      images.length > 1 && (
+      images?.length > 1 && (
         <Icon
           class="icon"
           name="swipe-left"
@@ -62,7 +62,7 @@ const { images } = Astro.props
   </div>
   <div class="small-carousel">
     {
-      images.length > 1 &&
+      images?.length > 1 &&
         images.map((image: any) => (
           <Image
             class="small-image"
