@@ -85,13 +85,8 @@ const { images, direction } = Astro.props
   .gallery {
     display: flex;
     position: relative;
-    column-gap: var(--space-4);
-    row-gap: var(--space-1);
     flex-direction: column;
-
-    @media (min-width: 1024px) {
-      flex-direction: row-reverse;
-    }
+    gap: var(--space-1);
 
     .large-container {
       display: flex;
@@ -109,10 +104,6 @@ const { images, direction } = Astro.props
         animation: swipe-icon 1.6s ease-in-out infinite;
         transition: opacity 0.2s ease-in-out;
         font-size: calc(var(--text-2) * 1.7);
-
-        @media (min-width: 1024px) {
-          display: none;
-        }
       }
 
       @keyframes swipe-icon {
@@ -131,6 +122,7 @@ const { images, direction } = Astro.props
       --column-width: 100%;
       display: flex;
       position: relative;
+      flex-direction: row;
       align-items: flex-start;
       gap: var(--space-4);
 
@@ -159,17 +151,6 @@ const { images, direction } = Astro.props
 
     .small-carousel {
       --column-width: var(--space-7);
-
-      @media (min-width: 1024px) {
-        --column-width: 100%;
-
-        flex-direction: column;
-        width: 40%;
-      }
-    }
-
-    .small-image,
-    .large-image {
     }
 
     .small-image:hover {
