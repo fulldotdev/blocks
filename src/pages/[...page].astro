@@ -14,10 +14,21 @@ export async function getStaticPaths() {
   }))
 }
 
-const { data, ...rest } = Astro.props
+const { data, slug, ...rest } = Astro.props
 const baseSettings = await getEntry('settings', 'base')
+const enSettings = await getEntry('settings', 'en')
+const deSettings = await getEntry('settings', 'de')
+const frSettings = await getEntry('settings', 'fr')
+
 const pageSettings = data.settings && (await getEntry(data.settings))
-const mergedData = mergeAll([baseSettings?.data, pageSettings?.data, data])
+
+const mergedData = mergeAll([
+  baseSettings?.data,
+  slug.startsWith('en') ? enSettings?.data ?? {} : pageSettings?.data ?? {},
+  slug.startsWith('de') ? deSettings?.data ?? {} : pageSettings?.data ?? {},
+  slug.startsWith('fr') ? frSettings?.data ?? {} : pageSettings?.data ?? {},
+  data,
+])
 
 const packageLayouts = import.meta.glob('../layouts/**/*.astro')
 const userLayouts = import.meta.glob('/src/layouts/**/*.astro')
