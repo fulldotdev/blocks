@@ -21,6 +21,7 @@ export const page = base
       .partial()
       .passthrough(),
     pages: pathSchema('pages').array(),
+    i18n: pathSchema('pages'),
     records: pathSchema('records').array(),
     settings: pathSchema('settings'),
     title: z.string(),

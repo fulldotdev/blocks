@@ -1,7 +1,6 @@
 ---
 import { getCollection, getEntry } from 'astro:content'
-import { mapKeys } from 'radash'
-import { mergeAll } from 'remeda'
+import { assign, mapKeys } from 'radash'
 import PageLayout from '../layouts/PageLayout.astro'
 
 export async function getStaticPaths() {
@@ -21,14 +20,18 @@ const deSettings = await getEntry('settings', 'de')
 const frSettings = await getEntry('settings', 'fr')
 
 const pageSettings = data.settings && (await getEntry(data.settings))
+const i18nSettings = data.i18n && (await getEntry(data.i18n))
 
-const mergedData = mergeAll([
-  baseSettings?.data,
-  slug.startsWith('en') ? enSettings?.data ?? {} : pageSettings?.data ?? {},
-  slug.startsWith('de') ? deSettings?.data ?? {} : pageSettings?.data ?? {},
-  slug.startsWith('fr') ? frSettings?.data ?? {} : pageSettings?.data ?? {},
-  data,
-])
+let merged = {}
+baseSettings.data && (merged = assign(merged, baseSettings.data))
+slug.startsWith('en') && (merged = assign(merged, enSettings?.data ?? {}))
+slug.startsWith('de') && (merged = assign(merged, deSettings?.data ?? {}))
+slug.startsWith('fr') && (merged = assign(merged, frSettings?.data ?? {}))
+pageSettings?.data && (merged = assign(merged, pageSettings.data))
+i18nSettings?.data && (merged = assign(merged, i18nSettings.data))
+merged = assign(merged, data)
+
+console.log(merged)
 
 const packageLayouts = import.meta.glob('../layouts/**/*.astro')
 const userLayouts = import.meta.glob('/src/layouts/**/*.astro')
@@ -47,6 +50,6 @@ const Layout = functioncomp?.default ?? PageLayout
 ---
 
 <Layout
-  data={mergedData}
+  data={merged}
   {...rest}
 />
