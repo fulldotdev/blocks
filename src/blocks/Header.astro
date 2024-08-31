@@ -9,7 +9,7 @@ import {
   Logo,
   Row,
 } from 'fulldev-ui'
-import type { Block } from '../../schemas/block'
+import type { Block } from '../schemas/block'
 
 type Props<As extends HTMLTag = 'header'> = Omit<Block<As>, 'structure'> & {
   variant?: 'ghost' | 'base' | 'subtle' | 'soft' | 'surface' | 'outline'
