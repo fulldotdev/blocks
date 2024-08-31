@@ -4,7 +4,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "fulldev-blocks": ["src/index.ts"]
+      // "fulldev-blocks": ["src/index.ts"],
+      "fulldev-blocks": ["src/comps.ts"]
     }
   }
 }

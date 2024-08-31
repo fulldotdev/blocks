@@ -1,0 +1,12 @@
+---
+import { Image } from '../comps'
+import Layout from '../layouts/Layout.astro'
+
+console.log('myimage', Image)
+---
+
+<Layout>
+  <slot />
+  Hoiii
+  <Image src="/placeholder.webp" />
+</Layout>

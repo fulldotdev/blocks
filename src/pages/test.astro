@@ -1,22 +1,5 @@
 ---
-import Gallery from '../components/Gallery.astro'
-import Layout from '../layouts/Layout.astro'
+import { Image } from 'fulldev-blocks'
 ---
 
-<Layout>
-  <slot />
-  <Gallery
-    images={[
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-      '/placeholder.webp',
-    ]}
-  />
-</Layout>
+<Image />
