@@ -1,6 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import { Block, Blocks, MainLayout } from 'fulldev-blocks'
+import Block from 'fulldev-blocks/components/Block.astro'
+import Blocks from 'fulldev-blocks/components/Blocks.astro'
+import MainLayout from 'fulldev-blocks/layouts/MainLayout.astro'
 import { Prose, Section } from 'fulldev-ui'
 
 type Props = CollectionEntry<'pages'>

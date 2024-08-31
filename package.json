@@ -16,6 +16,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./*": "./src/*",
     "./integration": "./src/integration/integration.ts",
     "./404.astro": "./src/pages/404.astro",
     "./contact.astro": "./src/pages/contact.astro",

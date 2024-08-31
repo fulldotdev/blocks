@@ -1,6 +1,6 @@
 ---
-import { getCollection, getEntries } from 'astro:content'
-import { mapKeys } from 'radash'
+import { getCollection, getEntries, getEntry } from 'astro:content'
+import { assign, mapKeys } from 'radash'
 
 interface Props {
   _bookshop_name?: string
@@ -75,13 +75,43 @@ const references =
         )
       ).map((item) => ({ href: `/${item.slug}/`, ...item.data }))
     : undefined
+
+const mergedPages = pages
+  ? await Promise.all(
+      pages.map(async (page: any) => {
+        if (!page.i18n) return page
+        const i18n = await getEntry(page.i18n)
+        return assign(i18n.data, page)
+      })
+    )
+  : undefined
+
+const mergedChildren = children
+  ? await Promise.all(
+      children.map(async (child: any) => {
+        if (!child.i18n) return child
+        const i18n = await getEntry(child.i18n)
+        return assign(i18n.data, child)
+      })
+    )
+  : undefined
+
+const mergedReferences = references
+  ? await Promise.all(
+      references.map(async (reference: any) => {
+        if (!reference.i18n) return reference
+        const i18n = await getEntry(reference.i18n)
+        return assign(i18n.data, reference)
+      })
+    )
+  : undefined
 ---
 
 {
   Component && (
     <Component
-      cards={pages || records || children || references}
-      pages={pages || records || children || references}
+      cards={mergedPages || records || mergedChildren || mergedReferences}
+      pages={mergedPages || records || mergedChildren || mergedReferences}
       {...rest}
     />
   )

@@ -5,6 +5,8 @@ import { pathSchema } from './utils'
 
 export const page = base
   .extend({
+    i18n: pathSchema('pages'),
+    settings: pathSchema('settings'),
     seo: z
       .object({
         title: z.string(),
@@ -21,9 +23,7 @@ export const page = base
       .partial()
       .passthrough(),
     pages: pathSchema('pages').array(),
-    i18n: pathSchema('pages'),
     records: pathSchema('records').array(),
-    settings: pathSchema('settings'),
     title: z.string(),
     description: z.string(),
     header: block.or(z.literal(false)),

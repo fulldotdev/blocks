@@ -1,6 +1,6 @@
 // This file merges all local components with identical named components in the user repo
-
 import { mapKeys, mapValues } from 'radash'
+// Blocks
 import PackageBanner from './blocks/Banner.astro'
 import PackageCategories from './blocks/Categories.astro'
 import PackageEmployees from './blocks/Colleagues.astro'
@@ -25,8 +25,16 @@ import PackageBlock from './components/Block.astro'
 import PackageBlocks from './components/Blocks.astro'
 import PackageGallery from './components/Gallery.astro'
 import PackageImage from './components/Image.astro'
+
+// Layout
 import PackageLayout from './layouts/Layout.astro'
+// MainLayout
 import PackageMainLayout from './layouts/MainLayout.astro'
+// Ohter layouts
+import PackageJobsLayout from './layouts/JobsLayout.astro'
+import PackageOverviewLayout from './layouts/OverviewLayout.astro'
+import PackagePageLayout from './layouts/PageLayout.astro'
+import PackagePostLayout from './layouts/PostLayout.astro'
 
 const baseComponents = {
   Block: PackageBlock,
@@ -55,9 +63,23 @@ const baseComponents = {
   MainLayout: PackageMainLayout,
   MasterCard: PackageMasterCard,
   MasterSection: PackageMasterSection,
+  JobsLayout: PackageJobsLayout,
+  OverviewLayout: PackageOverviewLayout,
+  PageLayout: PackagePageLayout,
+  PostLayout: PackagePostLayout,
 } as const
 
-let userComponents = import.meta.glob('/src/components/**/*.astro', {
+let packageComponents = import.meta.glob('./**/*.astro', {
+  eager: true,
+})
+
+packageComponents = mapKeys(packageComponents, (key: any) =>
+  key.split('/').pop().split('.').shift()
+)
+
+packageComponents = mapValues(packageComponents, (value: any) => value.default)
+
+let userComponents = import.meta.glob('/src/**/*.astro', {
   eager: true,
 })
 
@@ -67,6 +89,12 @@ userComponents = mapKeys(userComponents, (key: any) =>
 
 userComponents = mapValues(userComponents, (value: any) => value.default)
 
+export const mergedComponents = {
+  ...baseComponents,
+  ...userComponents,
+}
+
+export default mergedComponents
 export const {
   Image,
   Block,
@@ -94,7 +122,8 @@ export const {
   MainLayout,
   MasterCard,
   MasterSection,
-} = {
-  ...baseComponents,
-  ...userComponents,
-}
+  JobsLayout,
+  OverviewLayout,
+  PageLayout,
+  PostLayout,
+} = mergedComponents

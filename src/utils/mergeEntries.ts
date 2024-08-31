@@ -13,15 +13,16 @@ export const mergeEntries = async (entry: any) => {
 
   let merged = {}
   merged = assign(merged, baseSettings?.data ?? {})
-  slug.startsWith('en') && (merged = assign(merged, enSettings?.data ?? {}))
-  slug.startsWith('de') && (merged = assign(merged, deSettings?.data ?? {}))
-  slug.startsWith('fr') && (merged = assign(merged, frSettings?.data ?? {}))
+  slug?.startsWith('en') && (merged = assign(merged, enSettings?.data ?? {}))
+  slug?.startsWith('de') && (merged = assign(merged, deSettings?.data ?? {}))
+  slug?.startsWith('fr') && (merged = assign(merged, frSettings?.data ?? {}))
   merged = assign(merged, i18nSettings?.data ?? {})
   merged = assign(merged, pageSettings?.data ?? {})
   merged = assign(merged, data)
 
-  return {
+  const newEntry = {
     ...entry,
     data: merged,
   }
+  return newEntry
 }
