@@ -1,5 +1,0 @@
----
-rating:
-title:
-description:
----

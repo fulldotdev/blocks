@@ -21,8 +21,6 @@ const merged = (await mergeEntries({ data, slug })) as any
 const packageLayouts = import.meta.glob('../layouts/**/*.astro')
 const userLayouts = import.meta.glob('/src/layouts/**/*.astro')
 
-console.log(packageLayouts)
-
 const mapBlockKeys = (blocks: any) =>
   mapKeys(blocks, (key: any) => key.split('/').pop().split('.').shift())
 

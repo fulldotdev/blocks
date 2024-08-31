@@ -1,5 +1,7 @@
+// This file merges all local components with identical named components in the user repo
+
 import { mapKeys, mapValues } from 'radash'
-import PackageBanner from './blocks/banner/Banner.astro'
+import PackageBanner from './blocks/Banner.astro'
 import PackageCategories from './blocks/Categories.astro'
 import PackageEmployees from './blocks/Colleagues.astro'
 import PackageContact from './blocks/Contact.astro'
