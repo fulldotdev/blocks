@@ -6,37 +6,37 @@ const { images, direction } = Astro.props
 ---
 
 <script>
-  const carousel = document.querySelector(
-    '.gallery .large-carousel'
-  ) as HTMLElement
-  const icon = document.querySelector('.gallery .icon') as HTMLElement
+  const carousel = document.querySelector('.gallery .large-carousel')
+  const icon = document.querySelector('.gallery .icon')
   const smallImages = document.querySelectorAll('.gallery .small-image')
 
-  icon.addEventListener('click', () => {
-    const carouselWidth = carousel.offsetWidth
-    const currentScroll = carousel.scrollLeft
-    const maxScroll = carousel.scrollWidth - carouselWidth
+  carousel &&
+    icon?.addEventListener('click', () => {
+      const carouselWidth = carousel.offsetWidth
+      const currentScroll = carousel.scrollLeft
+      const maxScroll = carousel.scrollWidth - carouselWidth
 
-    let scrollAmount = currentScroll + carouselWidth
-    if (scrollAmount > maxScroll) {
-      scrollAmount = 0 // Reset to beginning if we're at the end
-    }
+      let scrollAmount = currentScroll + carouselWidth
+      if (scrollAmount > maxScroll) {
+        scrollAmount = 0 // Reset to beginning if we're at the end
+      }
 
-    carousel.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth',
-    })
-  })
-
-  smallImages.forEach((image, i) => {
-    image.addEventListener('click', () => {
-      const imageWidth = carousel.offsetWidth
       carousel.scrollTo({
-        left: i * imageWidth,
+        left: scrollAmount,
         behavior: 'smooth',
       })
     })
-  })
+
+  carousel &&
+    smallImages.forEach((image, i) => {
+      image.addEventListener('click', () => {
+        const imageWidth = carousel.offsetWidth
+        carousel.scrollTo({
+          left: i * imageWidth,
+          behavior: 'smooth',
+        })
+      })
+    })
 </script>
 
 <div

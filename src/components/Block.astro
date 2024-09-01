@@ -76,6 +76,23 @@ const references =
       ).map((item) => ({ href: `/${item.slug}/`, ...item.data }))
     : undefined
 
+const siblings =
+  source === 'siblings' && slug
+    ? (
+        await getCollection('pages', (page) => {
+          const currentPageFolder = slug.split('/').slice(0, -1).join('/')
+          const pageFolder = page.slug.split('/').slice(0, -1).join('/')
+          return (
+            page.slug !== slug &&
+            pageFolder === currentPageFolder &&
+            page.slug.startsWith(currentPageFolder)
+          )
+        })
+      )
+        .map((item) => ({ href: `/${item.slug}/`, ...item.data }))
+        .sort(() => Math.random() - 0.5) // Randomize the order
+    : undefined
+
 const mergedPages = pages
   ? await Promise.all(
       pages.map(async (page: any) => {
@@ -105,13 +122,37 @@ const mergedReferences = references
       })
     )
   : undefined
+
+const mergedSiblings = siblings
+  ? await Promise.all(
+      siblings.map(async (sibling: any) => {
+        if (!sibling.i18n) return sibling
+        const i18n = await getEntry(sibling.i18n)
+        return assign(i18n.data, sibling)
+      })
+    )
+  : undefined
+
+console.log(siblings)
 ---
 
 {
   Component && (
     <Component
-      cards={mergedPages || records || mergedChildren || mergedReferences}
-      pages={mergedPages || records || mergedChildren || mergedReferences}
+      cards={
+        mergedPages ||
+        mergedSiblings ||
+        records ||
+        mergedChildren ||
+        mergedReferences
+      }
+      pages={
+        mergedPages ||
+        mergedSiblings ||
+        records ||
+        mergedChildren ||
+        mergedReferences
+      }
       {...rest}
     />
   )
