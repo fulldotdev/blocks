@@ -3,7 +3,7 @@ import { AstroSeo } from '@astrolib/seo'
 import type { CollectionEntry } from 'astro:content'
 import { ViewTransitions } from 'astro:transitions'
 
-type Props = CollectionEntry<'pages'>
+type Props = Partial<CollectionEntry<'pages'>>
 
 const { slug, data, render } = Astro.props
 const { title, description, image, seo, code } = data || {}
@@ -12,7 +12,7 @@ const renderTitle = render && (await render()).headings[0]?.text
 const mergedTitle = seo?.title || title || renderTitle
 const mergedDescription = seo?.description || description
 const mergedImage = (seo?.image || image)?.startsWith('/')
-  ? Astro.url.origin ?? '' + (seo?.image || image) ?? ''
+  ? (Astro.url.origin ?? '' + (seo?.image || image) ?? '')
   : seo?.image || image
 ---
 

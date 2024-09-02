@@ -7,7 +7,8 @@ import { Button } from 'fulldev-ui'
 
 type Props = CollectionEntry<'pages'>
 
-const { logo, header, headers, footer, footers } = Astro.props.data || {}
+const { logo, header, headers, footer, footers, channels } =
+  Astro.props.data || {}
 ---
 
 <Layout {...Astro.props}>
@@ -20,19 +21,23 @@ const { logo, header, headers, footer, footers } = Astro.props.data || {}
   <main>
     <slot />
   </main>
-  <Button
-    variant="solid"
-    color="brand"
-    icon="brand-whatsapp"
-    size="lg"
-    href="https://wa.me/31649670696"
-    style={{
-      position: 'fixed',
-      right: 'var(--space-4)',
-      bottom: 'var(--space-4)',
-      backgroundColor: '#46A758',
-    }}
-  />
+  {
+    channels.whatsapp && (
+      <Button
+        variant="solid"
+        color="brand"
+        icon="brand-whatsapp"
+        size="lg"
+        href={`https://wa.me/${channels.whatsapp}`}
+        style={{
+          position: 'fixed',
+          right: 'var(--space-4)',
+          bottom: 'var(--space-4)',
+          backgroundColor: '#46A758',
+        }}
+      />
+    )
+  }
   <Block
     _bookshop_name="Footer"
     {logo}

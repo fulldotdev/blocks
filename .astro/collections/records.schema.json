@@ -1,0 +1,1046 @@
+{
+  "$ref": "#/definitions/records",
+  "definitions": {
+    "records": {
+      "type": "object",
+      "properties": {
+        "tagline": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "badge": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "text",
+                "href"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "heading": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "html": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rating": {
+          "type": "number"
+        },
+        "button": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            },
+            "icon": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "buttons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/records/properties/button"
+          }
+        },
+        "link": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "href": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/records/properties/link"
+          }
+        },
+        "list": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "avatar": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "input": {
+          "type": "object",
+          "properties": {
+            "placeholder": {
+              "type": "string"
+            },
+            "submit": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "logos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logo": {
+          "type": "string"
+        },
+        "channels": {
+          "type": "object",
+          "properties": {
+            "phone": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "address": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "socials": {
+          "type": "object",
+          "properties": {
+            "facebook": {
+              "type": "string"
+            },
+            "instagram": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "hours": {
+          "type": "object",
+          "properties": {
+            "monday": {
+              "type": "string"
+            },
+            "tuesday": {
+              "type": "string"
+            },
+            "wednesday": {
+              "type": "string"
+            },
+            "thursday": {
+              "type": "string"
+            },
+            "friday": {
+              "type": "string"
+            },
+            "saturday": {
+              "type": "string"
+            },
+            "sunday": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "i18n": {
+          "allOf": [
+            {
+              "type": "string"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "collection": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "collection"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string"
+                    },
+                    "collection": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "collection"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          ]
+        },
+        "settings": {
+          "allOf": [
+            {
+              "type": "string"
+            },
+            {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "collection": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "collection"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "slug": {
+                      "type": "string"
+                    },
+                    "collection": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "slug",
+                    "collection"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          ]
+        },
+        "seo": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "image": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "code": {
+          "type": "object",
+          "properties": {
+            "head": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "type": "string"
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "collection": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "collection"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string"
+                      },
+                      "collection": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "collection"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "allOf": [
+              {
+                "type": "string"
+              },
+              {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "collection": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "collection"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "slug": {
+                        "type": "string"
+                      },
+                      "collection": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "slug",
+                      "collection"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "header": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "tagline": {
+                  "$ref": "#/definitions/records/properties/tagline"
+                },
+                "icon": {
+                  "$ref": "#/definitions/records/properties/icon"
+                },
+                "badge": {
+                  "$ref": "#/definitions/records/properties/badge"
+                },
+                "heading": {
+                  "$ref": "#/definitions/records/properties/heading"
+                },
+                "text": {
+                  "$ref": "#/definitions/records/properties/text"
+                },
+                "html": {
+                  "$ref": "#/definitions/records/properties/html"
+                },
+                "image": {
+                  "$ref": "#/definitions/records/properties/image"
+                },
+                "images": {
+                  "$ref": "#/definitions/records/properties/images"
+                },
+                "rating": {
+                  "$ref": "#/definitions/records/properties/rating"
+                },
+                "button": {
+                  "$ref": "#/definitions/records/properties/button"
+                },
+                "buttons": {
+                  "$ref": "#/definitions/records/properties/buttons"
+                },
+                "link": {
+                  "$ref": "#/definitions/records/properties/link"
+                },
+                "links": {
+                  "$ref": "#/definitions/records/properties/links"
+                },
+                "list": {
+                  "$ref": "#/definitions/records/properties/list"
+                },
+                "avatar": {
+                  "$ref": "#/definitions/records/properties/avatar"
+                },
+                "price": {
+                  "$ref": "#/definitions/records/properties/price"
+                },
+                "input": {
+                  "$ref": "#/definitions/records/properties/input"
+                },
+                "logos": {
+                  "$ref": "#/definitions/records/properties/logos"
+                },
+                "logo": {
+                  "$ref": "#/definitions/records/properties/logo"
+                },
+                "channels": {
+                  "$ref": "#/definitions/records/properties/channels"
+                },
+                "socials": {
+                  "$ref": "#/definitions/records/properties/socials"
+                },
+                "hours": {
+                  "$ref": "#/definitions/records/properties/hours"
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "tagline": {
+                        "$ref": "#/definitions/records/properties/tagline"
+                      },
+                      "icon": {
+                        "$ref": "#/definitions/records/properties/icon"
+                      },
+                      "badge": {
+                        "$ref": "#/definitions/records/properties/badge"
+                      },
+                      "heading": {
+                        "$ref": "#/definitions/records/properties/heading"
+                      },
+                      "text": {
+                        "$ref": "#/definitions/records/properties/text"
+                      },
+                      "html": {
+                        "$ref": "#/definitions/records/properties/html"
+                      },
+                      "image": {
+                        "$ref": "#/definitions/records/properties/image"
+                      },
+                      "images": {
+                        "$ref": "#/definitions/records/properties/images"
+                      },
+                      "rating": {
+                        "$ref": "#/definitions/records/properties/rating"
+                      },
+                      "button": {
+                        "$ref": "#/definitions/records/properties/button"
+                      },
+                      "buttons": {
+                        "$ref": "#/definitions/records/properties/buttons"
+                      },
+                      "link": {
+                        "$ref": "#/definitions/records/properties/link"
+                      },
+                      "links": {
+                        "$ref": "#/definitions/records/properties/links"
+                      },
+                      "list": {
+                        "$ref": "#/definitions/records/properties/list"
+                      },
+                      "avatar": {
+                        "$ref": "#/definitions/records/properties/avatar"
+                      },
+                      "price": {
+                        "$ref": "#/definitions/records/properties/price"
+                      },
+                      "input": {
+                        "$ref": "#/definitions/records/properties/input"
+                      },
+                      "logos": {
+                        "$ref": "#/definitions/records/properties/logos"
+                      },
+                      "logo": {
+                        "$ref": "#/definitions/records/properties/logo"
+                      },
+                      "channels": {
+                        "$ref": "#/definitions/records/properties/channels"
+                      },
+                      "socials": {
+                        "$ref": "#/definitions/records/properties/socials"
+                      },
+                      "hours": {
+                        "$ref": "#/definitions/records/properties/hours"
+                      }
+                    },
+                    "additionalProperties": true
+                  }
+                },
+                "cards": {
+                  "type": "array",
+                  "items": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/definitions/records/properties/header/anyOf/0/properties/columns/items"
+                      },
+                      {
+                        "allOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "anyOf": [
+                              {
+                                "type": "string"
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "collection": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "collection"
+                                ],
+                                "additionalProperties": false
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "slug": {
+                                    "type": "string"
+                                  },
+                                  "collection": {
+                                    "type": "string"
+                                  }
+                                },
+                                "required": [
+                                  "slug",
+                                  "collection"
+                                ],
+                                "additionalProperties": false
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "source": {
+                  "type": "string",
+                  "enum": [
+                    "children",
+                    "references"
+                  ]
+                },
+                "pages": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "slug",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "records": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "slug",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "page": {
+                  "allOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "collection": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "collection"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "slug": {
+                              "type": "string"
+                            },
+                            "collection": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "slug",
+                            "collection"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "block": {
+                  "allOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "anyOf": [
+                        {
+                          "type": "string"
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                            },
+                            "collection": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "id",
+                            "collection"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "slug": {
+                              "type": "string"
+                            },
+                            "collection": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "slug",
+                            "collection"
+                          ],
+                          "additionalProperties": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "posts": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "slug",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "reviews": {
+                  "type": "array",
+                  "items": {
+                    "allOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "id",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "collection": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "slug",
+                              "collection"
+                            ],
+                            "additionalProperties": false
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "review": {
+                  "$ref": "#/definitions/records/properties/header/anyOf/0/properties/columns/items"
+                },
+                "features": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/records/properties/header/anyOf/0/properties/columns/items"
+                  }
+                }
+              },
+              "additionalProperties": true
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "headers": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/records/properties/header/anyOf/0"
+              }
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "hero": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/records/properties/header/anyOf/0"
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "block": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/records/properties/header/anyOf/0"
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "section": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/records/properties/header/anyOf/0"
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "blocks": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/records/properties/header/anyOf/0"
+              }
+            },
+            {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": {
+                "$ref": "#/definitions/records/properties/header/anyOf/0"
+              }
+            }
+          ]
+        },
+        "sections": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/records/properties/header/anyOf/0"
+              }
+            },
+            {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": {
+                "$ref": "#/definitions/records/properties/header/anyOf/0"
+              }
+            }
+          ]
+        },
+        "cta": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/records/properties/header/anyOf/0"
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "footer": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/records/properties/header/anyOf/0"
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "footers": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/records/properties/header/anyOf/0"
+              }
+            },
+            {
+              "type": "boolean",
+              "const": false
+            }
+          ]
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

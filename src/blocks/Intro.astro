@@ -9,10 +9,12 @@ const {
   structure = 'column',
   size = 'sm',
   level = 1,
-  variant = 'outline',
+  variant = 'subtle',
   align,
   position,
   heading,
+  title,
+  description,
   badge,
   tagline,
   text,
@@ -34,9 +36,9 @@ const {
   <Tagline html={tagline} />
   <Heading
     {level}
-    html={heading}
+    html={heading || title}
   />
-  <Text html={text} />
+  <Text html={text || description} />
 </Section>
 
 <style is:global>

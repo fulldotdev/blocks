@@ -1,0 +1,14 @@
+---
+_layout: BlockLayout
+title: Content
+
+section:
+  heading: Lorem ipsum dolor sit amet
+  text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  buttons:
+    - text: Lorem ipsum
+      href: '#'
+    - text: Lorem ipsum
+      href: '#'
+  image: /placeholder.webp
+---

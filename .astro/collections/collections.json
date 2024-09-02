@@ -1,0 +1,35 @@
+{
+  "collections": [
+    {
+      "hasSchema": true,
+      "name": "pages"
+    },
+    {
+      "hasSchema": true,
+      "name": "records"
+    },
+    {
+      "hasSchema": true,
+      "name": "settings"
+    }
+  ],
+  "entries": {
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/components.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/index.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/system.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/categories.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/content.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/cta.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/features.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/hero.mdx": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/posts.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/prices.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/product.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/products.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/reviews.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/pages/blocks/stats.md": "pages",
+    "file:///users/silveltman/github/blocks/src/content/records/record": "records",
+    "file:///users/silveltman/github/blocks/src/content/settings/base": "settings"
+  }
+}

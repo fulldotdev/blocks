@@ -18,7 +18,7 @@ const {
   structure = 'column',
   size = 'xl',
   level = 1,
-  align,
+  align = 'center',
   position,
   label,
   heading,
@@ -49,11 +49,15 @@ const {
   >
     <Column align={structure === 'column' ? align : 'start'}>
       <Rating value={rating} />
-      <ReviewCard
+      <!-- <ReviewCard
         frame="none"
         {...review}
+      /> -->
+      <Badge
+        radius="full"
+        size="md"
+        {...typeof badge === 'string' ? { html: badge } : badge}
       />
-      <Badge html={badge} />
       <Label
         color="brand"
         html={label}
@@ -70,7 +74,15 @@ const {
       />
     </Column>
     <Wrap>
-      {[button, ...(buttons || [])]?.map((button) => <Button {...button} />)}
+      {
+        buttons?.map((button, i) => (
+          <Button
+            color="brand"
+            variant={i > 0 ? 'soft' : 'solid'}
+            {...button}
+          />
+        ))
+      }
     </Wrap>
   </Box>
   <Image
@@ -78,12 +90,3 @@ const {
     src={image}
   />
 </Section>
-
-<slot name="script" />
-<slot name="style" />
-
-<!-- <style>
-  .heading {
-    text-wrap: balance;
-  }
-</style> -->

@@ -7,13 +7,12 @@ import {
   Heading,
   Image,
   Input,
+  Label,
   Rating,
   Section,
-  Tagline,
   Text,
   Wrap,
 } from 'fulldev-ui'
-import ReviewCard from './ReviewCard.astro'
 
 const {
   structure = 'column',
@@ -21,11 +20,11 @@ const {
   variant = 'subtle',
   align = 'center',
   frame = 'panel',
-  position = 'background',
+  position,
   level,
   badge,
   rating,
-  tagline,
+  label,
   review,
   heading,
   text,
@@ -48,9 +47,8 @@ const {
 >
   <Column align={structure === 'column' ? align : 'start'}>
     <Rating value={rating} />
-    <ReviewCard {...review} />
     <Badge html={badge} />
-    <Tagline html={tagline} />
+    <Label html={label} />
     <Heading
       color="base"
       html={heading}
@@ -63,7 +61,15 @@ const {
     />
   </Column>
   <Wrap>
-    {[button, ...(buttons || [])]?.map((button) => <Button {...button} />)}
+    {
+      buttons?.map((button, i) => (
+        <Button
+          color="brand"
+          variant={i > 0 ? 'soft' : 'solid'}
+          {...button}
+        />
+      ))
+    }
   </Wrap>
   <Form
     structure="row"

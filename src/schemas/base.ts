@@ -21,7 +21,12 @@ export const base = z
   .object({
     tagline: z.string(),
     icon: z.string(),
-    badge: z.string(),
+    badge: z.string().or(
+      z.object({
+        text: z.string(),
+        href: z.string(),
+      })
+    ),
     heading: z.string(),
     text: z.string(),
     html: z.string(),
