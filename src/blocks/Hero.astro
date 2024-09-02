@@ -75,7 +75,7 @@ const {
     </Column>
     <Wrap>
       {
-        buttons?.map((button, i) => (
+        buttons?.map((button: any, i: number) => (
           <Button
             color="brand"
             variant={i > 0 ? 'soft' : 'solid'}
