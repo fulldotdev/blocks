@@ -123,6 +123,8 @@ const mergedReferences = references
     )
   : undefined
 
+console.log('references', mergedReferences)
+
 const mergedSiblings = siblings
   ? await Promise.all(
       siblings.map(async (sibling: any) => {

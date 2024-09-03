@@ -25,7 +25,7 @@ const { Content } = await render()
     {...children}
   />
   <Block
-    _bookshop_name="Products"
+    _bookshop_name="ProductDeck"
     heading={data.title && references
       ? `Alle ${data.title.toLowerCase()}`
       : undefined}
@@ -33,7 +33,6 @@ const { Content } = await render()
     structure="grid"
     {...references}
   />
-
   <Section
     size="lg"
     style={{ '--screen': '768px' }}
