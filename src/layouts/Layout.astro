@@ -1,7 +1,6 @@
 ---
 import { AstroSeo } from '@astrolib/seo'
 import type { CollectionEntry } from 'astro:content'
-import { ViewTransitions } from 'astro:transitions'
 
 type Props = Partial<CollectionEntry<'pages'>>
 
@@ -30,7 +29,6 @@ const mergedImage = (seo?.image || image)?.startsWith('/')
       name="generator"
       content={Astro.generator}
     />
-    <ViewTransitions />
     <AstroSeo
       title={mergedTitle}
       description={mergedDescription}
